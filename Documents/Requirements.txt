@@ -1,0 +1,3 @@
+Jordan Weaver, Jacqueline Justice, Ben Bruyns
+
+This project is meant to offer a simple, straightforward text editor that allows local document sharing with authentication.
