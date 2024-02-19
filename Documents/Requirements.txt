@@ -1,3 +1,53 @@
 Jordan Weaver, Jacqueline Justice, Ben Bruyns
 
 This project is meant to offer a simple, straightforward text editor that allows local document sharing with authentication.
+
+REQUIREMENTS:
+
+1.  Name: create_account
+    Type: Functional
+    Summary: Must be able to create an account.
+
+2.  Name: authenticate_user
+    Type: Functional
+    Summary: Must be able to authenticate a user account.
+
+3.  Name: add_document
+    Type: Functional
+    Summary: Must have the ability to create a document.
+
+4.  Name: delete_document
+    Type: Functional
+    Summary: A document owner must be able to delete a document.
+
+5.  Name: transfer_owner
+    Type: Functional
+    Summary: The document owner must be able to transfer ownership of a document to another account.
+
+6.  Name: grant_all_permissions
+    Type: Functional
+    Summary: The document owner must be able to grant other accounts the ability to alter a file.
+
+7.  Name: remove_write_permissions
+    Type: Functional
+    Summary: The document owner must be able to remove another user's access to a document.
+
+8.  Name: grant_read_permissions
+    Type: Functional
+    Summary: Must be able to grant an account access to read a document.
+
+9.  Name: remove_all_permissions
+    Type: Functional
+    Summary: Must be able to remove an account's access to a document.
+
+10. Name: permit_combinations
+    Type: Functional
+    Summary: Must have different configuration options for the document (font size, font type, etc.).
+
+11. Name: use_keybinds
+    Type: Functional
+    Summary: Must have the ability to use common keybinds (ctrl+c, ctrl+v, etc.).
+
+12: Name: code_restrictions
+    Type: Non-functional
+    Summary: Must use Java language for programming.
