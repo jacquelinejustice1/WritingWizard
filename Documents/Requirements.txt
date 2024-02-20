@@ -51,3 +51,23 @@ REQUIREMENTS:
 12: Name: code_restrictions
     Type: Non-functional
     Summary: Must use Java language for programming.
+
+13: Name: security
+    Type: Non-functional
+    Summary: User documents are only access through created accounts unless granted access. 
+
+14: Name: privacy 
+    Type: Non-functional
+    Summary: Privacy is provided through accounts 
+
+15: Name: offline_mode
+    Type: Constraint
+    Summary: Offline mode is prioritized in developement.
+
+16: Name: text_editing
+    Type: Functional 
+    Summary: Creating, editting, and managing text documents.
+
+17: Name: formatting_options 
+    Type: Functional 
+    Summary: Users have access to basic formatting options such as text alignment, bold, italic, underline. 
