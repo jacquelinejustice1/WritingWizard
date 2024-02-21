@@ -30,7 +30,7 @@ REQUIREMENTS:
 
 7.  Name: remove_write_permissions
     Type: Functional
-    Summary: The document owner must be able to remove another user's access to a document.
+    Summary: The document owner must be able to remove another user's write access to a document.
 
 8.  Name: grant_read_permissions
     Type: Functional
@@ -42,7 +42,7 @@ REQUIREMENTS:
 
 10. Name: formating_options
     Type: Functional
-    Summary: Must have different configuration options for the document (font size, font type, etc.).
+    Summary: Must be able to change configuration options for the document (font size, font type, etc.).
 
 11. Name: use_keybinds
     Type: Functional
@@ -56,17 +56,19 @@ REQUIREMENTS:
     Type: Non-functional
     Summary: Must use Java language for programming.
 
-14: Name: security
+14: Name: privacy 
     Type: Non-functional
-    Summary: User documents are only access through created accounts unless granted access. 
+    Summary: Privacy is provided through accounts.
 
-15: Name: privacy 
-    Type: Non-functional
-    Summary: Privacy is provided through accounts 
+15: Name: security
+    Type: risk
+    Summary: User documents are only accessed through created accounts unless granted access. 
 
 16: Name: offline_mode
     Type: Constraint
     Summary: Offline mode is prioritized in developement.
 
-
+17: Name: platform_os
+    Type: Constraint
+    Summary: Must be able to operate on a Windows 11
 
