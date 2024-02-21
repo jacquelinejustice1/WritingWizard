@@ -40,7 +40,7 @@ REQUIREMENTS:
     Type: Functional
     Summary: Must be able to remove an account's access to a document.
 
-10. Name: permit_combinations
+10. Name: formating_options
     Type: Functional
     Summary: Must have different configuration options for the document (font size, font type, etc.).
 
@@ -48,26 +48,25 @@ REQUIREMENTS:
     Type: Functional
     Summary: Must have the ability to use common keybinds (ctrl+c, ctrl+v, etc.).
 
-12: Name: code_restrictions
-    Type: Non-functional
-    Summary: Must use Java language for programming.
-
-13: Name: security
-    Type: Non-functional
-    Summary: User documents are only access through created accounts unless granted access. 
-
-14: Name: privacy 
-    Type: Non-functional
-    Summary: Privacy is provided through accounts 
-
-15: Name: offline_mode
-    Type: Constraint
-    Summary: Offline mode is prioritized in developement.
-
-16: Name: text_editing
+12: Name: text_editing
     Type: Functional 
     Summary: Creating, editting, and managing text documents.
 
-17: Name: formatting_options 
-    Type: Functional 
-    Summary: Users have access to basic formatting options such as text alignment, bold, italic, underline. 
+13: Name: code_restrictions
+    Type: Non-functional
+    Summary: Must use Java language for programming.
+
+14: Name: security
+    Type: Non-functional
+    Summary: User documents are only access through created accounts unless granted access. 
+
+15: Name: privacy 
+    Type: Non-functional
+    Summary: Privacy is provided through accounts 
+
+16: Name: offline_mode
+    Type: Constraint
+    Summary: Offline mode is prioritized in developement.
+
+
+
