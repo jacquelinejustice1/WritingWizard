@@ -22,4 +22,8 @@ John goes into a file and clicks the share button. There is a drop down of usern
 John can either none, one, or more. Once selected, John shares the document by clicking submit/enter. 
 There are 2 options when sharing, either read or write access. John gets to choose which permission to give to selected users. 
 
-
+Scenario 5: Formatting A Document 
+Harold needs to create an MLA formatted paper. Harold logs into his already created account on Writing Wizard. 
+He creates a new document. Harold has the ability to add
+bold, italics, underline, and strike through. He has the ability to left, center, and right align his texts. 
+He easily creates a MLA style paper for school.
