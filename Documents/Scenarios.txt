@@ -18,6 +18,8 @@ She has many siblings and is worried her documents for school would be deleted o
 She creates an account on the application and begins writing her essay for school. She saves the document on Writing Wizard for the future and logs out. 
 
 Scenario 4: Sharing Document
-John goes into a file and clicks the share button. There is a drop down of usernames of people who John can share with including current permissions. John can either none, one, or more. Once selected, John shares the document by clicking submit/enter. There are 2 options when sharing, either read or write access. John gets to choose which permission to give to selected users. 
+John goes into a file and clicks the share button. There is a drop down of usernames of people who John can share with including current permissions.
+John can either none, one, or more. Once selected, John shares the document by clicking submit/enter. 
+There are 2 options when sharing, either read or write access. John gets to choose which permission to give to selected users. 
 
 
