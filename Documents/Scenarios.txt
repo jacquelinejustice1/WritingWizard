@@ -45,3 +45,8 @@ Scenario 8: Writing Wizard as a Source
 Brittany is on an online forum when she sees someone talking about a topic she has done research on. She knowss her research dcuments are on 
 Writing Wizard and her points were better written there. So, she goes to writing wizard and uses Ctrl+C to copy pertainent text. Then she goes to 
 the online forum and uses Ctrl+V to paste the copied text to the forum.
+
+Scenario 9: Legal Document Sharing
+Louis is a lawyer and he is working on a big case. He creates documents on Writing Wizard for specific clients or cases.
+When Louis wants his cases or clients to be reviewed for collaboration by his peers, Louis uses Writing Wizard's document sharing to give 
+his colleagues permission to edit his documents. His peers can then make notes and editing on the initial document from Louis through the cases. 
