@@ -4,7 +4,7 @@ She is met with a create asking her to log in or create an account. Mary does no
 She is asked to create a username, password, and extra security questions. 
 Mary is then directed to the text editor's homepage to begin creating documents.
 
-Scenario 2: School
+Scenario 2: School/Training Tool
 Mrs. Jane is an elementary school teacher at her local school. She wants to teach her students how to create essays, papers, book reports,
 and other documents for school early so they can get a head start in life. 
 Mrs. Jane already created her account for Writing Wizard and downloaded it on all of the school's computers in the computer lab.
