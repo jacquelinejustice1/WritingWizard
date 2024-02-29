@@ -18,12 +18,19 @@ She has many siblings and is worried her documents for school would be deleted o
 She creates an account on the application and begins writing her essay for school. She saves the document on Writing Wizard for the future and logs out. 
 
 Scenario 4: Sharing Document
-John goes into a file and clicks the share button. There is a drop down of usernames of people who John can share with including current permissions.
-John can either none, one, or more. Once selected, John shares the document by clicking submit/enter. 
-There are 2 options when sharing, either read or write access. John gets to choose which permission to give to selected users. 
+John goes into a file and clicks the share button. There is a drop down of usernames of people who John can share with including current permissions. John can press on the permission level of a user to create another dropdown of permission levels for that user. John may select none, read, or write permissions. John may select any number of users and change their permissions. John submits permission changes by clicking submit/enter.
 
 Scenario 5: Formatting A Document 
 Harold needs to create an MLA formatted paper. Harold logs into his already created account on Writing Wizard. 
 He creates a new document. Harold has the ability to add
 bold, italics, underline, and strike through. He has the ability to left, center, and right align his texts. 
 He easily creates a MLA style paper for school.
+
+Scenario 6: Tranfer ownership of document
+Mario made a template document for his brother Luigi. He now wants to tranfer ownership of the document to Luigi because it will be Luigi's document. While in said document, Mario will press the Transfer ownership button. This will show a dropdown of users to choose from. After Mario has selected Luigi, he can press submit. Mario will be asked for his user credentials to ensure that Mario is authorized. After correct credentials are entered, Luigi will become the owner and Mario's access permissions will be set to none.
+
+Scenario 7: Using external text
+Jonah was instructed to write a 5 page paper on an excruciatingly boring topic. Fortunately, there are a lot of good sources online on the topic. So, Jonah finds a couple good sources. Being an avid computer user, he presses Ctrl+C to copy pertainent text. Then, he goes to his paper on Writing Wizard and places his cursor on the spot where he wants the text. Finally, he presses Ctrl+V to paste the copied text into his document.
+
+Scenario 8: Writing Wizard as a Source
+Brittany is on an online forum when she sees someone talking about a topic she has done research on. She knowss her research dcuments are on Writing Wizard and her points were better written there. So, she goes to writing wizard and uses Ctrl+C to copy pertainent text. Then she goes to the online forum and uses Ctrl+V to paste the copied text to the forum.
