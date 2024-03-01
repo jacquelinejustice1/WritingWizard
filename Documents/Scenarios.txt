@@ -51,9 +51,7 @@ Louis is a lawyer and he is working on a big case. He creates documents on Writi
 When Louis wants his cases or clients to be reviewed for collaboration by his peers, Louis uses Writing Wizard's document sharing to give 
 his colleagues permission to edit his documents. His peers can then make notes and edit the initial document from Louis through the cases. 
 
-Scenario 10: Simple Interface
-Emma's grandmother loves to write in her free time, but she finds it harder on her bones and muscles to write for long lengths of time. 
-Emma's grandmother hasn't used computer writing tools due to overwhelming features and the fact that they are hard to understand.
-After hearing about Writing Wizard's simple interface, Emma downloads Writing Wizard on her grandmother's computer.
-Emma's grandmother can now write on the computer which will be easier on her bones and keep her from being overwhelmed
-by many different and complicated features.
+Scenario 10: Selecting All Text
+Emma has written a lot of text in Writing Wizard, but she wants to copy all the text so her friend can proofread it.
+Instead of dragging the mouse across the screen to select the text, Emma presses Ctrl+A to select all the text.
+She then copies the text and sends it to her friend.
