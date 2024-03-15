@@ -26,4 +26,7 @@ public class CreateAccountController {
 
     public void submitAccountInfo(ActionEvent actionEvent) {
     }
+
+    public void saveSchool(ActionEvent actionEvent) {
+    }
 }
