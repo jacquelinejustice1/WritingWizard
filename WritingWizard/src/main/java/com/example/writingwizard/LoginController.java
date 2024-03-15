@@ -10,4 +10,7 @@ public class LoginController {
 
     public void usernameLogin(ActionEvent actionEvent) {
     }
+
+    public void signInButton(ActionEvent actionEvent) {
+    }
 }

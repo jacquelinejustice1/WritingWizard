@@ -23,4 +23,7 @@ public class CreateAccountController {
 
     public void saveMotherName(ActionEvent actionEvent) {
     }
+
+    public void submitAccountInfo(ActionEvent actionEvent) {
+    }
 }
