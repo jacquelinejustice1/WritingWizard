@@ -20,4 +20,13 @@ public class HelloController {
 
     public void strikeText(ActionEvent actionEvent) {
     }
+
+    public void rightAlignment(ActionEvent actionEvent) {
+    }
+
+    public void leftAlignment(ActionEvent actionEvent) {
+    }
+
+    public void centerAlignmnet(ActionEvent actionEvent) {
+    }
 }
