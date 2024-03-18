@@ -29,4 +29,13 @@ public class HelloController {
 
     public void centerAlignmnet(ActionEvent actionEvent) {
     }
+
+    public void signOut(ActionEvent actionEvent) {
+    }
+
+    public void share(ActionEvent actionEvent) {
+    }
+
+    public void createNewFile(ActionEvent actionEvent) {
+    }
 }

@@ -17,25 +17,23 @@
 
         <MenuBar prefHeight="20.0" prefWidth="130.0" AnchorPane.leftAnchor="1200.0" AnchorPane.topAnchor="10.0">
             <menus>
-                <Menu text="Sign Out">
+                <Menu fx:id="signOut" onAction="#signOut" text="Sign Out">
                 </Menu>
-                <Menu text="Share">
+                <Menu fx:id="Share" onAction="#share" text="Share">
                 </Menu>
             </menus>
 
         </MenuBar>
-
-
     </AnchorPane>
 <AnchorPane prefHeight="20.0" prefWidth="1366.0">
     <MenuBar prefHeight="20.0" prefWidth="1366.0" AnchorPane.topAnchor="10.0">
         <menus>
-            <Menu text="NEW FILE">
+            <Menu fx:id="newFile" onAction="#createNewFile" text="NEW FILE">
                 <items>
                     <MenuItem text="CREATE NEW FILE" />
                 </items>
             </Menu>
-            <Menu text="OPEN FILE">
+            <Menu fx:id="openFile" text="OPEN FILE">
                 <items>
                     <MenuItem text="OPEN EXISTING FILE" />
                 </items>
@@ -55,7 +53,7 @@
      </AnchorPane>
     <!--Text Box For Users to Type In-->
     <AnchorPane VBox.vgrow="ALWAYS">
-        <TextArea prefHeight="500" prefWidth="1000" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="10.0" />
+        <TextArea fx:id="docTextArea" prefHeight="500" prefWidth="1000" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="10.0" />
 
         <Pane prefHeight="500" prefWidth="270" style="-fx-background-color: lightgray;" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0">
          <children>

@@ -29,4 +29,7 @@ public class CreateAccountController {
 
     public void saveSchool(ActionEvent actionEvent) {
     }
+
+    public void returnToLogIn(ActionEvent actionEvent) {
+    }
 }
