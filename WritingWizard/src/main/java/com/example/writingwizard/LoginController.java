@@ -47,4 +47,7 @@ public class LoginController {
 
     public void signInButton(ActionEvent actionEvent) {
     }
+
+  public void createNewAccount(ActionEvent actionEvent) {
+  }
 }

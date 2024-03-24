@@ -28,20 +28,16 @@
 <AnchorPane prefHeight="20.0" prefWidth="1366.0">
     <MenuBar prefHeight="20.0" prefWidth="1366.0" AnchorPane.topAnchor="10.0">
         <menus>
-            <Menu fx:id="newFile" onAction="#createNewFile" text="NEW FILE">
+            <Menu fx:id="openFile" text="OPEN FILE" />
+            <Menu fx:id="newFile" text="NEW FILE">
                 <items>
-                    <MenuItem text="CREATE NEW FILE" />
+                    <MenuItem onAction="#createNewFile" text="CREATE NEW FILE" />
                 </items>
             </Menu>
-            <Menu fx:id="openFile" text="OPEN FILE">
-                <items>
-                    <MenuItem text="OPEN EXISTING FILE" />
-                </items>
-            </Menu>
-            <Menu>
-                <items>
-                    <MenuItem text="HELP" />
-                </items>
+            <Menu mnemonicParsing="false" text="SAVE FILE">
+              <items>
+                    <MenuItem text="SAVE CURRENT FILE" />
+              </items>
             </Menu>
         </menus>
     </MenuBar>
@@ -54,6 +50,7 @@
     <!--Text Box For Users to Type In-->
     <AnchorPane VBox.vgrow="ALWAYS">
         <TextArea fx:id="docTextArea" prefHeight="500" prefWidth="1000" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="10.0" />
+      <ScrollBar fx:id="scrollBar" layoutX="342.0" orientation="VERTICAL" prefHeight="500.0" prefWidth="14.0" />
 
         <Pane prefHeight="500" prefWidth="270" style="-fx-background-color: lightgray;" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0">
          <children>

@@ -16,7 +16,7 @@ public class HelloApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
 
-
+/*
             FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
             //stage.getIcons().add(new Image("WritingWizard\\Images\\Wizard2.png"));
 
@@ -26,15 +26,16 @@ public class HelloApplication extends Application {
             stage.setTitle("Writing Wizard");
             stage.setScene(scene);
             stage.show();
-
+*/
         //login
+
         FXMLLoader fxmlLoader2 = new FXMLLoader(HelloApplication.class.getResource("login.fxml"));
 
         Scene scene2 = new Scene(fxmlLoader2.load(),1366, 768);
         stage.setTitle("Writing Wizard");
         stage.setScene(scene2);
         stage.show();
-
+/*
         //create account
         FXMLLoader fxmlLoader3 = new FXMLLoader(HelloApplication.class.getResource("create-account1.fxml"));
 
@@ -42,7 +43,13 @@ public class HelloApplication extends Application {
         stage.setTitle("Writing Wizard");
         stage.setScene(scene3);
         stage.show();
+*/
+        FXMLLoader fxmlLoader4 = new FXMLLoader(HelloApplication.class.getResource("view-only.fxml"));
 
+        Scene scene4 = new Scene(fxmlLoader4.load(),1366, 768);
+        stage.setTitle("Writing Wizard");
+        stage.setScene(scene4);
+        stage.show();
     }
 
     public static void main(String[] args) {
