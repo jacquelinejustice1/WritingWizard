@@ -43,14 +43,6 @@ public class CreateAccountController {
     }
 
     public void returnToLogIn(ActionEvent actionEvent) throws IOException {
-        /*
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("login.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 1366, 768);
-
-        stage.setScene(scene);
-        stage.setTitle("Login"); // You can set a different title if needed
-        stage.show();
-        */
 
         stage.setScene(loginScene);
         stage.setTitle("Writing Wizard");

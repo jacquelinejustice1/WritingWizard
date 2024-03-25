@@ -2,9 +2,22 @@ package com.example.writingwizard;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.stage.Stage;
 
 public class HelloController {
+
+    private Stage stage;
+    private Scene textEditorScene;
+
+    public void setStage(Stage stage) {
+        this.stage = stage;
+    }
+
+    public void setTextEditorScene(Scene textEditorScene) {
+        this.textEditorScene = textEditorScene;
+    }
 
     public void documentName(ActionEvent actionEvent) {
     }

@@ -21,6 +21,12 @@ public class HelloApplication extends Application {
         FXMLLoader createAccountLoader = new FXMLLoader(HelloApplication.class.getResource("create-account1.fxml"));
         Scene createAccountScene = new Scene(createAccountLoader.load(), 1366, 768);
 
+        FXMLLoader textEditorLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
+        Scene textEditorScene = new Scene(textEditorLoader.load(), 1366, 768);
+
+        HelloController textEditorController = textEditorLoader.getController();
+        textEditorController.setStage(stage);
+
         LoginController loginController = loginLoader.getController();
         loginController.setStage(stage);
 
@@ -34,38 +40,6 @@ public class HelloApplication extends Application {
         stage.setTitle("Writing Wizard");
         stage.show();
 
-/*
-            FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
-            //stage.getIcons().add(new Image("WritingWizard\\Images\\Wizard2.png"));
-
-            //"C:\Users\jjust\Documents\CSCI 4600\WritingWizard\Wizard2.png"
-            Scene scene = new Scene(fxmlLoader.load(), 1366, 768);
-            //scene.getStylesheets().add("C:\\Users\\jjust\\Documents\\CSCI 4600\\WritingWizard\\WritingWizard\\src\\main\\java\\com\\example\\writingwizard\\stylesheet.css");
-            stage.setTitle("Writing Wizard");
-            stage.setScene(scene);
-            stage.show();
-*/
-        //login
-        /*
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("login.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 1366, 768);
-
-        LoginController controller = fxmlLoader.getController();
-        controller.setStage(stage); // Pass the stage reference to the controller
-
-        stage.setTitle("Writing Wizard");
-        stage.setScene(scene);
-        stage.show();
-*/
-/*
-        //create account
-        FXMLLoader fxmlLoader3 = new FXMLLoader(HelloApplication.class.getResource("create-account1.fxml"));
-
-        Scene scene3 = new Scene(fxmlLoader3.load(),1366, 768);
-        stage.setTitle("Writing Wizard");
-        stage.setScene(scene3);
-        stage.show();
-*/
         /*
         FXMLLoader fxmlLoader4 = new FXMLLoader(HelloApplication.class.getResource("view-only.fxml"));
 
