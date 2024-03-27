@@ -11,7 +11,7 @@ public class TextFile {
     private Permission[] permissions;
 
     /**
-     * Contructor for TextFile
+     * Constructor for TextFile
      * @param fileName of file
      * @param content of file
      * @param ownerName of file
@@ -58,7 +58,7 @@ public class TextFile {
 
     /**
      * ownerName getter
-     * @return ownername
+     * @return owner name
      */
     public String getOwnerName() {
         return ownerName;
