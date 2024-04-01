@@ -4,9 +4,20 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontPosture;
+import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
+import javafx.scene.control.ComboBox;
 
 public class HelloController {
+
+    @FXML
+    private ComboBox<Font> fontSelect;
+    @FXML
+    private ColorPicker fontColor;
+    @FXML
+    private ComboBox<FontWeight> fontSize;
     @FXML
     private Menu signOut;
     @FXML
@@ -35,7 +46,6 @@ public class HelloController {
     private TextField documentName;
     private Stage stage;
     private Scene textEditorScene;
-
     @FXML
     private TextArea docTextArea;
 
@@ -64,6 +74,10 @@ public class HelloController {
     public void setBoldText(Button boldText){ this.boldText = boldText; }
     public void setShare(Menu shareMenuButton){ this.shareMenuButton = shareMenuButton; }
     public void setSignOutMenuButton(Menu signOutMenuButton){this.signOutMenuButton = signOutMenuButton; }
+    public void setFontSize(ComboBox<FontWeight> fontSize){ this.fontSize = fontSize; }
+    public void setFontColor(ColorPicker fontColor){ this.fontColor = fontColor; }
+    public void setFontSelect(ComboBox<Font> fontSelect){ this.fontSelect = fontSelect; }
+
     //getters
     public TextArea getDocTextArea(){
         return docTextArea;
@@ -78,8 +92,12 @@ public class HelloController {
     public Button getBoldText() {return boldText;}
     public Menu getShareMenuButton(){ return shareMenuButton; }
     public Menu getSignOutMenuButton(){return signOutMenuButton; }
-    //methods
+    public ComboBox<FontWeight> getFontSize(){ return fontSize; }
+    public ColorPicker getFontColor() {return fontColor; }
+    public ComboBox<Font> getFontSelect(){ return fontSelect; }
 
+
+    //methods
     public void documentName(ActionEvent actionEvent) {
     }
 
@@ -114,5 +132,11 @@ public class HelloController {
     }
 
     public void createNewFile(ActionEvent actionEvent) {
+    }
+
+    public void changeFontSize(ActionEvent actionEvent) {
+    }
+
+    public void changeFontColor(ActionEvent actionEvent) {
     }
 }
