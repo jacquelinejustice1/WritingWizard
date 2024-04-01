@@ -36,6 +36,15 @@ public class HelloApplication extends Application {
         loginController.setCreateAccountScene(createAccountScene);
         createAccountController.setLoginScene(loginScene);
 
+        textEditorController.setTextEditorScene(loginScene);
+        loginController.setTextEditorScene(textEditorScene);
+
+        textEditorController.setTextEditorScene(createAccountScene);
+        createAccountController.setTextEditorScene(textEditorScene);
+
+        textEditorController.setLoginScene(loginScene);
+        loginController.setTextEditorScene(textEditorScene);
+
         stage.setScene(loginScene);
         stage.setTitle("Writing Wizard");
         stage.show();

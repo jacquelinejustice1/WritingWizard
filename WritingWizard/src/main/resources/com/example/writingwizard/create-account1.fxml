@@ -49,7 +49,7 @@
                <Font name="Arial Bold" size="12.0" />
             </font>
          </Label>
-         <TextField fx:id="reeneterUsernameText" layoutX="146.0" layoutY="135.0" />
+         <TextField fx:id="reenterUsernameText" layoutX="146.0" layoutY="135.0" />
          <Label layoutX="150.0" layoutY="119.0" text="Re-enter Username">
             <font>
                <Font name="Arial Bold" size="12.0" />
@@ -84,42 +84,7 @@
                <Font name="Arial Bold" size="12.0" />
             </font>
          </Label>
-         <Button fx:id="createUsername" layoutX="307.0" layoutY="84.0" mnemonicParsing="false" onAction="#createNewUsername" style="-fx-background-color: #8515FF;" text="Submit" textFill="WHITE">
-            <font>
-               <Font name="Arial Bold" size="13.0" />
-            </font>
-         </Button>
-         <Button fx:id="reenterCreateUsername" layoutX="307.0" layoutY="136.0" mnemonicParsing="false" onAction="#createUsernameReenter" style="-fx-background-color: #8515FF;" text="Submit" textFill="WHITE">
-            <font>
-               <Font name="Arial Bold" size="13.0" />
-            </font>
-         </Button>
-         <Button fx:id="createPassword" layoutX="654.0" layoutY="85.0" mnemonicParsing="false" onAction="#createPassword" style="-fx-background-color: #8515FF;" text="Submit" textFill="WHITE">
-            <font>
-               <Font name="Arial Bold" size="13.0" />
-            </font>
-         </Button>
-         <Button fx:id="createPasswordReenter" layoutX="654.0" layoutY="136.0" mnemonicParsing="false" onAction="#createPasswordReenter" style="-fx-background-color: #8515FF;" text="Submit" textFill="WHITE">
-            <font>
-               <Font name="Arial Bold" size="13.0" />
-            </font>
-         </Button>
-         <Button fx:id="firstPet" layoutX="1074.0" layoutY="84.0" mnemonicParsing="false" onAction="#saveFirstPetQuestion" style="-fx-background-color: #8515FF;" text="Submit" textFill="WHITE">
-            <font>
-               <Font name="Arial Bold" size="13.0" />
-            </font>
-         </Button>
-         <Button fx:id="motherName" layoutX="1092.0" layoutY="136.0" mnemonicParsing="false" onAction="#saveMotherName" style="-fx-background-color: #8515FF;" text="Submit" textFill="WHITE">
-            <font>
-               <Font name="Arial Bold" size="13.0" />
-            </font>
-         </Button>
-         <Button fx:id="elementaryName" layoutX="1149.0" layoutY="190.0" mnemonicParsing="false" onAction="#saveSchool" style="-fx-background-color: #8515FF;" text="Submit" textFill="WHITE">
-            <font>
-               <Font name="Arial Bold" size="13.0" />
-            </font>
-         </Button>
-         <Button fx:id="submitAccount" layoutX="544.0" layoutY="282.0" mnemonicParsing="false" onAction="#submitAccountInfo" prefHeight="25.0" prefWidth="228.0" style="-fx-background-color: #8515FF;" text="CREATE ACCOUNT" textFill="WHITE">
+         <Button fx:id="submitAccountButton" layoutX="544.0" layoutY="282.0" mnemonicParsing="false" onAction="#submitAccountInfo" prefHeight="25.0" prefWidth="228.0" style="-fx-background-color: #8515FF;" text="CREATE ACCOUNT" textFill="WHITE">
             <font>
                <Font name="Arial Bold" size="20.0" />
             </font>

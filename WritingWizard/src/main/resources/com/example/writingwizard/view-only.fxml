@@ -14,7 +14,7 @@
         <!--Logo and Name of Application -->
         <ImageView fitHeight="76.0" fitWidth="77.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" />
         <ImageView fitHeight="63.0" fitWidth="282.0" layoutX="86.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true" />
-      <Button layoutX="1188.0" layoutY="20.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="124.0" style="-fx-background-color: #8515FF;" text="SIGN OUT" textFill="WHITE">
+      <Button fx:id="signOutViewOnlyButton" layoutX="1188.0" layoutY="20.0" mnemonicParsing="false" onAction="#signOutViewOnly" prefHeight="32.0" prefWidth="124.0" style="-fx-background-color: #8515FF;" text="SIGN OUT" textFill="WHITE">
          <font>
             <Font name="Arial Bold" size="18.0" />
          </font>
@@ -24,22 +24,22 @@
 
     </AnchorPane>
     <AnchorPane prefHeight="43.0" prefWidth="1366.0">
-      <children>
-         <Label layoutX="190.0" layoutY="4.0" text="YOU ARE VIEWING">
-            <font>
+        <Label layoutX="190.0" layoutY="4.0" text="YOU ARE VIEWING">
+           <font>
                <Font name="Arial Bold" size="14.0" />
-            </font></Label>
-         <Label fx:id="adminUsername" layoutX="333.0" layoutY="4.0" text="(username)">
-            <font>
+           </font>
+        </Label>
+        <Label fx:id="adminUsername" layoutX="333.0" layoutY="4.0" text="(username)">
+           <font>
                <Font name="Arial Bold" size="14.0" />
-            </font>
-         </Label>
-         <Label layoutX="426.0" layoutY="6.0" text="FILE (VIEW ONLY)">
-            <font>
+           </font>
+        </Label>
+        <Label layoutX="426.0" layoutY="6.0" text="FILE (VIEW ONLY)">
+           <font>
                <Font name="Arial Bold" size="14.0" />
-            </font>
-         </Label>
-      </children></AnchorPane>
+           </font>
+        </Label>
+    </AnchorPane>
     <!--Text Box For Users to Type In-->
     <AnchorPane VBox.vgrow="ALWAYS">
         <TextArea fx:id="docTextArea" prefHeight="600" prefWidth="1116.0" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="100.0" />

@@ -12,25 +12,24 @@
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
     <AnchorPane prefHeight="300.0" prefWidth="1366">
-      <children>
-         <Label layoutX="571.0" layoutY="92.0" text="Welcome to">
-            <font>
-               <Font name="Arial Bold" size="36.0" />
-            </font>
-         </Label>
-         <Label layoutX="362.0" layoutY="134.0" text="WRITING WIZARD">
-            <font>
-               <Font name="Arial Bold" size="72.0" />
-            </font>
-            <effect>
+        <Label layoutX="571.0" layoutY="92.0" text="Welcome to">
+           <font>
+               <Font name="Arial Bold" size="36.0"/>
+           </font>
+        </Label>
+        <Label layoutX="362.0" layoutY="134.0" text="WRITING WIZARD">
+           <font>
+               <Font name="Arial Bold" size="72.0"/>
+           </font>
+           <effect>
                <DropShadow blurType="ONE_PASS_BOX" height="26.86" offsetX="5.0" radius="12.1975" width="23.93">
-                  <color>
-                     <Color red="0.5215686559677124" green="0.08235294371843338" blue="1.0" />
-                  </color>
+                   <color>
+                       <Color red="0.5215686559677124" green="0.08235294371843338" blue="1.0"/>
+                   </color>
                </DropShadow>
-            </effect>
-         </Label>
-      </children></AnchorPane>
+           </effect>
+        </Label>
+    </AnchorPane>
     <AnchorPane prefHeight="300.0" prefWidth="1366">
       <PasswordField fx:id="passwordLogin" layoutX="596.0" layoutY="138.0" />
       <TextField fx:id="usernameLogin" layoutX="594.0" layoutY="80.0" onAction="#usernameLogin" />
