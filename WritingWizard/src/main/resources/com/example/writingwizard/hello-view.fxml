@@ -14,35 +14,37 @@
         <!--Logo and Name of Application -->
       <ImageView fitHeight="76.0" fitWidth="77.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" />
       <ImageView fitHeight="63.0" fitWidth="282.0" layoutX="86.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true" />
-      <Button fx:id="signOutButton" layoutX="1070.0" layoutY="61.0" mnemonicParsing="false" onAction="#signOut" style="-fx-background-color: #8515FF;" text="SIGN OUT" textFill="WHITE">
+      <Button fx:id="signOutButton" layoutX="1133.0" layoutY="67.0" mnemonicParsing="false" onAction="#signOut" prefHeight="39.0" prefWidth="86.0" style="-fx-background-color: #8515FF;" text="SIGN OUT" textFill="WHITE">
          <font>
             <Font name="Arial Bold" size="12.0" />
          </font>
       </Button>
-      <Button fx:id="shareButton" layoutX="1169.0" layoutY="61.0" mnemonicParsing="false" onAction="#shareDocument" style="-fx-background-color: #8515FF;" text="SHARE" textFill="WHITE">
+      <Button fx:id="shareButton" layoutX="1231.0" layoutY="67.0" mnemonicParsing="false" onAction="#shareDocument" prefHeight="39.0" prefWidth="79.0" style="-fx-background-color: #8515FF;" text="SHARE" textFill="WHITE">
          <font>
             <Font name="Arial Bold" size="12.0" />
          </font>
       </Button>
     </AnchorPane>
-<AnchorPane prefHeight="20.0" prefWidth="1366.0" />
-    <Pane prefHeight="39.0" prefWidth="1366.0" style="-fx-background-color: lightgrey;">
-        <Button fx:id="openFileButton" layoutX="14.0" layoutY="8.0" mnemonicParsing="false" onAction="#openDocument" style="-fx-background-color: #8515FF;" text="OPEN FILE" textFill="WHITE">
-           <font>
-               <Font name="Arial Bold" size="12.0" />
-           </font>
-        </Button>
-        <Button fx:id="newFileButton" layoutX="108.0" layoutY="8.0" mnemonicParsing="false" onAction="#createNewDocument" style="-fx-background-color: #8515FF;" text="NEW FILE" textFill="WHITE">
-           <font>
-               <Font name="Arial Bold" size="12.0" />
-           </font>
-        </Button>
-        <Button fx:id="saveDocumentButton" layoutX="193.0" layoutY="8.0" mnemonicParsing="false" onAction="#saveDocument" style="-fx-background-color: #8515FF;" text="SAVE FILE" textFill="WHITE">
-           <font>
-               <Font name="Arial Bold" size="12.0" />
-           </font>
-        </Button>
-    </Pane>
+<AnchorPane prefHeight="20.0" prefWidth="1366.0">
+      <children>
+          <Pane prefHeight="39.0" prefWidth="1366.0" style="-fx-background-color: lightgrey;">
+              <Button fx:id="openFileButton" layoutX="14.0" layoutY="8.0" mnemonicParsing="false" onAction="#openDocument" style="-fx-background-color: #8515FF;" text="OPEN FILE" textFill="WHITE">
+                 <font>
+                     <Font name="Arial Bold" size="12.0" />
+                 </font>
+              </Button>
+              <Button fx:id="newFileButton" layoutX="108.0" layoutY="8.0" mnemonicParsing="false" onAction="#createNewDocument" style="-fx-background-color: #8515FF;" text="NEW FILE" textFill="WHITE">
+                 <font>
+                     <Font name="Arial Bold" size="12.0" />
+                 </font>
+              </Button>
+              <Button fx:id="saveDocumentButton" layoutX="193.0" layoutY="8.0" mnemonicParsing="false" onAction="#saveDocument" style="-fx-background-color: #8515FF;" text="SAVE FILE" textFill="WHITE">
+                 <font>
+                     <Font name="Arial Bold" size="12.0" />
+                 </font>
+              </Button>
+          </Pane>
+      </children></AnchorPane>
      <AnchorPane prefHeight="41.0" prefWidth="1366.0">
          <TextField fx:id="documentName" layoutX="316.0" layoutY="47.0" onAction="#documentName" prefWidth="400.0" promptText="Untitled Document (1)" AnchorPane.leftAnchor="316.0">
 
@@ -119,9 +121,8 @@
         </Pane>
     </AnchorPane>
     <AnchorPane layoutX="30.0" layoutY="30.0" prefHeight="36.0" prefWidth="1366.0">
-        <ImageView fitHeight="76.0" fitWidth="77.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true"/>
-        <ImageView fitHeight="63.0" fitWidth="282.0" layoutX="86.0" layoutY="20.0" pickOnBounds="true"
-                   preserveRatio="true"/>
+        <ImageView fitHeight="76.0" fitWidth="77.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" />
+        <ImageView fitHeight="63.0" fitWidth="282.0" layoutX="86.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true" />
 
     </AnchorPane>
 

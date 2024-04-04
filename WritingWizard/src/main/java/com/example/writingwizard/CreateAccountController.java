@@ -52,6 +52,15 @@ public class CreateAccountController {
     public void setElementaryNameText(TextField elementaryNameText){this.elementaryNameText=elementaryNameText;}
     public void setSubmitAccountButton(Button submitAccountButton){this.submitAccountButton = submitAccountButton;}
 
+
+    public void setLoginScene(Scene loginScene) {
+        this.loginScene = loginScene;
+    }
+
+    public void setTextEditorScene(Scene textEditorScene) {
+        this.textEditorScene = textEditorScene;
+    }
+
     //getters
     public Button getReturnToLogIn(){return returnToLogIn; }
     public TextField getUsernameText(){return usernameText;}
@@ -102,11 +111,4 @@ public class CreateAccountController {
         stage.show();
     }
 
-    public void setLoginScene(Scene loginScene) {
-        this.loginScene = loginScene;
-    }
-
-    public void setTextEditorScene(Scene textEditorScene) {
-        this.textEditorScene = textEditorScene;
-    }
 }

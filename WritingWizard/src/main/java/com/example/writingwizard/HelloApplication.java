@@ -24,6 +24,14 @@ public class HelloApplication extends Application {
         FXMLLoader textEditorLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
         Scene textEditorScene = new Scene(textEditorLoader.load(), 1366, 768);
 
+        FXMLLoader viewOnlyLoader = new FXMLLoader(HelloApplication.class.getResource("view-only.fxml"));
+        Scene viewOnlyScene = new Scene(viewOnlyLoader.load(),1366,768);
+
+
+
+        ViewOnlyController viewOnlyController = viewOnlyLoader.getController();
+        viewOnlyController.setStage(stage);
+
         HelloController textEditorController = textEditorLoader.getController();
         textEditorController.setStage(stage);
 
@@ -45,18 +53,13 @@ public class HelloApplication extends Application {
         textEditorController.setLoginScene(loginScene);
         loginController.setTextEditorScene(textEditorScene);
 
+        viewOnlyController.setLoginScene(loginScene);
+
+
         stage.setScene(loginScene);
         stage.setTitle("Writing Wizard");
         stage.show();
 
-        /*
-        FXMLLoader fxmlLoader4 = new FXMLLoader(HelloApplication.class.getResource("view-only.fxml"));
-
-        Scene scene4 = new Scene(fxmlLoader4.load(),1366, 768);
-        stage.setTitle("Writing Wizard");
-        stage.setScene(scene4);
-        stage.show();
-        */
 
     }
 

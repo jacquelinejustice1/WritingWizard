@@ -36,6 +36,9 @@ public class Manager {
 
     //Login Functions
     /*
+    To alert the user if the account is valid or not
+
+
     public boolean validateLogin(String username, String password){
     validates user log in
     returns true if user
@@ -45,15 +48,15 @@ public class Manager {
 
     */
 
-    //View-Only functions
     /*
-    public static String openFile(File filePath, TextArea document){
-    opens text file from user that shared the text files to the document
+    View-Only functions
+     public static String openFile(File filePath, TextArea document){
+     opens text file from user that shared the text files to the document
 
-    }
-     */
+     }
+    Main text editor functions
+    */
 
-    //Main text editor functions
     /*
     public static String openFile(File filePath, TextArea document){
     opens a user's already made documents into the textarea to edit
