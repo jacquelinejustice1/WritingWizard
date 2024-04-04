@@ -12,12 +12,12 @@
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
     <AnchorPane prefHeight="250.0" prefWidth="1366">
-        <Label layoutX="555.0" layoutY="92.0" text="Welcome to">
+        <Label layoutX="562.0" layoutY="92.0" text="Welcome to">
             <font>
                 <Font name="Arial Bold" size="36.0" />
             </font>
         </Label>
-        <Label layoutX="346.0" layoutY="134.0" text="WRITING WIZARD">
+        <Label layoutX="354.0" layoutY="134.0" text="WRITING WIZARD">
             <font>
                 <Font name="Arial Bold" size="72.0" />
             </font>
@@ -37,60 +37,60 @@
 
     </AnchorPane>
     <AnchorPane prefHeight="600.0" prefWidth="1366">
-      <children>
-         <Label layoutX="616.0" layoutY="22.0" text="Create Account">
-            <font>
+        <Label layoutX="616.0" layoutY="22.0" text="Create Account">
+           <font>
                <Font name="Arial Bold" size="24.0" />
-            </font>
-         </Label>
-         <TextField fx:id="usernameText" layoutX="146.0" layoutY="84.0" />
-         <Label layoutX="146.0" layoutY="67.0" text="Username">
-            <font>
+           </font>
+        </Label>
+        <TextField fx:id="usernameText" layoutX="146.0" layoutY="84.0" />
+        <Label layoutX="146.0" layoutY="67.0" text="Username">
+           <font>
                <Font name="Arial Bold" size="12.0" />
-            </font>
-         </Label>
-         <TextField fx:id="reenterUsernameText" layoutX="146.0" layoutY="135.0" />
-         <Label layoutX="150.0" layoutY="119.0" text="Re-enter Username">
-            <font>
+           </font>
+        </Label>
+        <TextField fx:id="reenterUsernameText" layoutX="146.0" layoutY="135.0" />
+        <Label layoutX="150.0" layoutY="119.0" text="Re-enter Username">
+           <font>
                <Font name="Arial Bold" size="12.0" />
-            </font>
-         </Label>
-         <PasswordField fx:id="createPasswordText" layoutX="494.0" layoutY="84.0" />
-         <Label layoutX="494.0" layoutY="67.0" text="Password">
-            <font>
+           </font>
+        </Label>
+        <PasswordField fx:id="createPasswordText" layoutX="494.0" layoutY="84.0" />
+        <Label layoutX="494.0" layoutY="67.0" text="Password">
+           <font>
                <Font name="Arial Bold" size="12.0" />
-            </font></Label>
-         <PasswordField fx:id="createPasswordReenterText" layoutX="494.0" layoutY="136.0" />
-         <Label layoutX="497.0" layoutY="119.0" text="Re-enter password">
-            <font>
+           </font>
+        </Label>
+        <PasswordField fx:id="createPasswordReenterText" layoutX="494.0" layoutY="136.0" />
+        <Label layoutX="497.0" layoutY="119.0" text="Re-enter password">
+           <font>
                <Font name="Arial Bold" size="12.0" />
-            </font>
-         </Label>
-         <TextField fx:id="firstPetText" layoutX="866.0" layoutY="84.0" prefHeight="25.0" prefWidth="198.0" />
-         <Label layoutX="866.0" layoutY="67.0" text="What is the name of your first pet?">
-            <font>
+           </font>
+        </Label>
+        <TextField fx:id="firstPetText" layoutX="866.0" layoutY="84.0" prefHeight="25.0" prefWidth="198.0" />
+        <Label layoutX="866.0" layoutY="67.0" text="What is the name of your first pet?">
+           <font>
                <Font name="Arial Bold" size="12.0" />
-            </font>
-         </Label>
-         <TextField fx:id="motherNameText" layoutX="866.0" layoutY="135.0" prefHeight="25.0" prefWidth="213.0" />
-         <Label layoutX="866.0" layoutY="119.0" text="What is your mother's maiden name?">
-            <font>
+           </font>
+        </Label>
+        <TextField fx:id="motherNameText" layoutX="866.0" layoutY="135.0" prefHeight="25.0" prefWidth="213.0" />
+        <Label layoutX="866.0" layoutY="119.0" text="What is your mother's maiden name?">
+           <font>
                <Font name="Arial Bold" size="12.0" />
-            </font>
-         </Label>
-         <TextField fx:id="elementaryNameText" layoutX="866.0" layoutY="189.0" prefHeight="25.0" prefWidth="272.0" />
-         <Label layoutX="866.0" layoutY="173.0" text="What was the name of your elementary school?">
-            <font>
+           </font>
+        </Label>
+        <TextField fx:id="elementaryNameText" layoutX="866.0" layoutY="189.0" prefHeight="25.0" prefWidth="272.0" />
+        <Label layoutX="866.0" layoutY="173.0" text="What was the name of your elementary school?">
+           <font>
                <Font name="Arial Bold" size="12.0" />
-            </font>
-         </Label>
-         <Button fx:id="submitAccountButton" layoutX="544.0" layoutY="282.0" mnemonicParsing="false" onAction="#submitAccountInfo" prefHeight="25.0" prefWidth="228.0" style="-fx-background-color: #8515FF;" text="CREATE ACCOUNT" textFill="WHITE">
-            <font>
+           </font>
+        </Label>
+        <Button fx:id="submitAccountButton" layoutX="544.0" layoutY="282.0" mnemonicParsing="false" onAction="#submitAccountInfo" prefHeight="25.0" prefWidth="228.0" style="-fx-background-color: #8515FF;" text="CREATE ACCOUNT" textFill="WHITE">
+           <font>
                <Font name="Arial Bold" size="20.0" />
-            </font>
-         </Button>
+           </font>
+        </Button>
 
-      </children></AnchorPane>
+    </AnchorPane>
 
 
 </VBox>

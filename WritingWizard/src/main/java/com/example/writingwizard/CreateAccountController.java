@@ -65,12 +65,12 @@ public class CreateAccountController {
 
     //functions
 
-    public String createNewUsername(ActionEvent actionEvent){
-        return null;
+    public void createNewUsername(ActionEvent actionEvent){
+
     }
 
-    public void createUsernameReenter(ActionEvent actionEvent) {
-    }
+    //public void createUsernameReenter(ActionEvent actionEvent) {
+    //}
 
     public void createPassword(ActionEvent actionEvent) {
     }

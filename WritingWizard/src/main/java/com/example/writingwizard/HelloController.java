@@ -13,21 +13,21 @@ import javafx.scene.control.ComboBox;
 public class HelloController {
 
     @FXML
+    private Button saveDocumentButton;
+    @FXML
     private ComboBox<Font> fontSelect;
     @FXML
     private ColorPicker fontColor;
     @FXML
     private ComboBox<FontWeight> fontSize;
     @FXML
-    private Menu signOut;
+    private Button signOutButton;
     @FXML
-    private Menu signOutMenuButton;
+    private Button shareButton;
     @FXML
-    private Menu shareMenuButton;
+    private Button openFileButton;
     @FXML
-    private Menu openFileButton;
-    @FXML
-    private Menu newFileButton;
+    private Button newFileButton;
     @FXML
     private Button boldText;
     @FXML
@@ -72,11 +72,12 @@ public class HelloController {
     public void setUnderlineText(Button underlineText){ this.underlineText = underlineText; }
     public void setItalicText(Button italicText){ this.italicText = italicText; }
     public void setBoldText(Button boldText){ this.boldText = boldText; }
-    public void setShare(Menu shareMenuButton){ this.shareMenuButton = shareMenuButton; }
-    public void setSignOutMenuButton(Menu signOutMenuButton){this.signOutMenuButton = signOutMenuButton; }
+    public void setShare(Button shareButton){ this.shareButton = shareButton; }
+    public void setSignOutMenuButton(Button signOutButton){this.signOutButton = signOutButton; }
     public void setFontSize(ComboBox<FontWeight> fontSize){ this.fontSize = fontSize; }
     public void setFontColor(ColorPicker fontColor){ this.fontColor = fontColor; }
     public void setFontSelect(ComboBox<Font> fontSelect){ this.fontSelect = fontSelect; }
+    public void setSaveDocumentButton(Button saveDocumentButton){ this.saveDocumentButton = saveDocumentButton; }
 
     //getters
     public TextArea getDocTextArea(){
@@ -90,11 +91,12 @@ public class HelloController {
     public Button getUnderlineText(){ return underlineText; }
     public Button getItalicText() { return italicText; }
     public Button getBoldText() {return boldText;}
-    public Menu getShareMenuButton(){ return shareMenuButton; }
-    public Menu getSignOutMenuButton(){return signOutMenuButton; }
+    public Button getShareButton(){ return shareButton; }
+    public Button getSignOutButton(){return signOutButton; }
     public ComboBox<FontWeight> getFontSize(){ return fontSize; }
     public ColorPicker getFontColor() {return fontColor; }
     public ComboBox<Font> getFontSelect(){ return fontSelect; }
+    public Button getSaveDocumentButton() { return saveDocumentButton; }
 
 
     //methods
@@ -138,5 +140,17 @@ public class HelloController {
     }
 
     public void changeFontColor(ActionEvent actionEvent) {
+    }
+
+    public void shareDocument(ActionEvent actionEvent) {
+    }
+
+    public void openDocument(ActionEvent actionEvent) {
+    }
+
+    public void createNewDocument(ActionEvent actionEvent) {
+    }
+
+    public void saveDocument(ActionEvent actionEvent) {
     }
 }
