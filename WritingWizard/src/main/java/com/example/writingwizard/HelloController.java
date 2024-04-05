@@ -63,8 +63,7 @@ public class HelloController {
 
     ComboBox<String> sharingOptions = new ComboBox<String>();
     TextField shareUsernameDialog = new TextField();
-    ComboBox<String> securityQuestions = new ComboBox<String>();
-    TextField secAnswers = new TextField();
+
 
     Label shareType = new Label("View Only or Modifiable");
     Label usernameOptionLabel = new Label("Share with");
@@ -172,14 +171,6 @@ public class HelloController {
         dialog.getDialogPane().setContent(dialogContent);
         dialogContent.getChildren().add(shareUsernameDialog);
 
-        //adding security questions
-        dialogContent.getChildren().add(securityQuestionLabel);
-        securityQuestions.getItems().addAll("What was the name of your first pet",
-                "What is your mother's maiden name?","What was the name of your elementary school?");
-        dialogContent.getChildren().addAll(securityQuestions);
-        secAnswers.setPromptText("Answer here");
-        dialogContent.getChildren().add(secAnswers);
-
         //buttons
         dialog.getDialogPane().getButtonTypes().addAll(ButtonType.FINISH, ButtonType.CANCEL);
 
@@ -188,7 +179,7 @@ public class HelloController {
         //clearing when done
         dialogContent.getChildren().clear();
         sharingOptions.getItems().clear();
-        securityQuestions.getItems().clear();;
+
     }
 
 
