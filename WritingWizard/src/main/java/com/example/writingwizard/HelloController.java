@@ -151,36 +151,44 @@ public class HelloController {
 
 
     public void shareDocument(ActionEvent actionEvent) {
+        //setting the dialog up
         Dialog<ButtonType> dialog = new Dialog<>();
         dialog.initOwner(((Node) actionEvent.getSource()).getScene().getWindow());
         dialog.setTitle("Share Document");
         dialog.setWidth(500);
         dialog.setHeight(500);
-
         VBox dialogContent = new VBox();
         dialogContent.setSpacing(10);
         dialogContent.setPadding(new Insets(10));
+
+        //adding what type of share file
         dialogContent.getChildren().add(shareType);
         sharingOptions.getItems().addAll("View Only", "Modifiable");
         dialogContent.getChildren().addAll(sharingOptions);
+
+        //adding username
         dialogContent.getChildren().add(usernameOptionLabel);
-        shareUsernameDialog.setPromptText("Enter username here"); // Set prompt text
-
+        shareUsernameDialog.setPromptText("Enter username here");
         dialog.getDialogPane().setContent(dialogContent);
-
-        //CreateAccountController secQ = new CreateAccountController();
         dialogContent.getChildren().add(shareUsernameDialog);
+
+        //adding security questions
         dialogContent.getChildren().add(securityQuestionLabel);
         securityQuestions.getItems().addAll("What was the name of your first pet",
                 "What is your mother's maiden name?","What was the name of your elementary school?");
         dialogContent.getChildren().addAll(securityQuestions);
-
         secAnswers.setPromptText("Answer here");
         dialogContent.getChildren().add(secAnswers);
 
+        //buttons
         dialog.getDialogPane().getButtonTypes().addAll(ButtonType.FINISH, ButtonType.CANCEL);
 
         dialog.showAndWait();
+
+        //clearing when done
+        dialogContent.getChildren().clear();
+        sharingOptions.getItems().clear();
+        securityQuestions.getItems().clear();;
     }
 
 
