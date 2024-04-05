@@ -16,12 +16,6 @@ public class CreateAccountController {
     @FXML
     private Button submitAccountButton;
     @FXML
-    private TextField elementaryNameText;
-    @FXML
-    private TextField motherNameText;
-    @FXML
-    private TextField firstPetText;
-    @FXML
     private PasswordField createPasswordReenterText;
     @FXML
     private PasswordField createPasswordText;
@@ -47,9 +41,6 @@ public class CreateAccountController {
     public void setCreatePasswordText(PasswordField createPasswordText){this.createPasswordText = createPasswordText; }
     public void setCreatePasswordReenterText(PasswordField createPasswordReenterText) {
         this.createPasswordReenterText = createPasswordReenterText; }
-    public void setFirstPetText(TextField firstPetText){this.firstPetText = firstPetText; }
-    public void setMotherNameText(TextField motherNameText){this.motherNameText=motherNameText;}
-    public void setElementaryNameText(TextField elementaryNameText){this.elementaryNameText=elementaryNameText;}
     public void setSubmitAccountButton(Button submitAccountButton){this.submitAccountButton = submitAccountButton;}
 
 
@@ -67,9 +58,6 @@ public class CreateAccountController {
     public TextField getReenterUsernameText(){return reenterUsernameText;}
     public PasswordField getCreatePasswordText(){return createPasswordText;}
     public PasswordField getCreatePasswordReenterText(){return createPasswordReenterText;}
-    public TextField getFirstPetText(){return firstPetText;}
-    public TextField getMotherNameText(){return motherNameText;}
-    public TextField getElementaryNameText(){return elementaryNameText; }
     public Button getSubmitAccountButton(){ return submitAccountButton;}
 
     //functions
