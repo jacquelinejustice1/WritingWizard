@@ -15,6 +15,7 @@ import java.io.IOException;
 public class HelloApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
+
         FXMLLoader loginLoader = new FXMLLoader(HelloApplication.class.getResource("login.fxml"));
         Scene loginScene = new Scene(loginLoader.load(), 1366, 768);
 
@@ -54,6 +55,9 @@ public class HelloApplication extends Application {
         loginController.setTextEditorScene(textEditorScene);
 
         viewOnlyController.setLoginScene(loginScene);
+
+        textEditorController.initializeFonts();
+        textEditorController.initializeFontSize();
 
 
         stage.setScene(loginScene);

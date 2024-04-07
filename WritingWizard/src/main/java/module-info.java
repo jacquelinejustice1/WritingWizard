@@ -6,6 +6,7 @@ module com.example.writingwizard {
     requires com.dlsc.formsfx;
     requires org.kordamp.ikonli.javafx;
     requires org.kordamp.bootstrapfx.core;
+    requires java.desktop;
 
     opens com.example.writingwizard to javafx.fxml;
     exports com.example.writingwizard;

@@ -1,6 +1,8 @@
 package com.example.writingwizard;
 
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
@@ -14,7 +16,9 @@ import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 import javafx.scene.control.ComboBox;
-import javafx.stage.Popup;
+import java.awt.GraphicsEnvironment;
+
+
 
 
 
@@ -25,11 +29,11 @@ public class HelloController {
     @FXML
     private Button saveDocumentButton;
     @FXML
-    private ComboBox<Font> fontSelect;
+    private ComboBox<String> fontSelect = new ComboBox<>();
     @FXML
     private ColorPicker fontColor;
     @FXML
-    private ComboBox<FontWeight> fontSize;
+    private ComboBox<Integer> fontSize = new ComboBox<>();
     @FXML
     private Button signOutButton;
     @FXML
@@ -60,15 +64,16 @@ public class HelloController {
 
     private Scene loginScene;
     //share dialog variables
-
-    ComboBox<String> sharingOptions = new ComboBox<String>();
+    ComboBox<String> sharingOptions = new ComboBox<>();
     TextField shareUsernameDialog = new TextField();
-
-
     Label shareType = new Label("View Only or Modifiable");
     Label usernameOptionLabel = new Label("Share with");
 
-    Label securityQuestionLabel = new Label("Answer one of the following");
+    //for text editing buttons
+    String selectedText;
+    Font font;
+
+
 
     //setters
     public void setStage(Stage stage) {
@@ -92,10 +97,12 @@ public class HelloController {
     public void setBoldText(Button boldText){ this.boldText = boldText; }
     public void setShare(Button shareButton){ this.shareButton = shareButton; }
     public void setSignOutMenuButton(Button signOutButton){this.signOutButton = signOutButton; }
-    public void setFontSize(ComboBox<FontWeight> fontSize){ this.fontSize = fontSize; }
+    public void setFontSize(ComboBox<Integer> fontSize){ this.fontSize = fontSize; }
     public void setFontColor(ColorPicker fontColor){ this.fontColor = fontColor; }
-    public void setFontSelect(ComboBox<Font> fontSelect){ this.fontSelect = fontSelect; }
+    public void setFontSelect(ComboBox<String> fontSelect){ this.fontSelect = fontSelect; }
     public void setSaveDocumentButton(Button saveDocumentButton){ this.saveDocumentButton = saveDocumentButton; }
+    public void setOpenFileButton(Button openFileButton){ this.openFileButton = openFileButton; }
+    public void setNewFileButton(Button newFileButton){this.newFileButton = newFileButton; }
 
     //getters
     public TextArea getDocTextArea(){
@@ -111,26 +118,73 @@ public class HelloController {
     public Button getBoldText() {return boldText;}
     public Button getShareButton(){ return shareButton; }
     public Button getSignOutButton(){return signOutButton; }
-    public ComboBox<FontWeight> getFontSize(){ return fontSize; }
+    public ComboBox<Integer> getFontSize(){ return fontSize; }
     public ColorPicker getFontColor() {return fontColor; }
-    public ComboBox<Font> getFontSelect(){ return fontSelect; }
+    public ComboBox<String> getFontSelect(){ return fontSelect; }
     public Button getSaveDocumentButton() { return saveDocumentButton; }
+    public Button getNewFileButton() { return newFileButton; }
+    public Button getOpenFileButton() { return openFileButton; }
 
+    //fonts combobox
+    public void initializeFonts(){
+        String[] fonts = GraphicsEnvironment.getLocalGraphicsEnvironment()
+                .getAvailableFontFamilyNames();
+
+        ObservableList<String> items = FXCollections.observableArrayList();
+        items.addAll(fonts);
+        fontSelect.setItems(items);
+    }
+    public void initializeFontSize(){
+        ObservableList<Integer> fontSizeOptions = FXCollections.observableArrayList();
+        fontSizeOptions.add(9);
+        fontSizeOptions.add(10);
+        fontSizeOptions.add(11);
+        fontSizeOptions.add(12);
+        fontSizeOptions.add(14);
+        fontSizeOptions.add(16);
+        fontSizeOptions.add(18);
+        fontSizeOptions.add(20);
+        fontSizeOptions.add(22);
+        fontSizeOptions.add(24);
+        fontSizeOptions.add(36);
+        fontSizeOptions.add(48);
+        fontSize.setItems(fontSizeOptions);
+
+    }
+    public void initializeFontColor(){
+
+    }
 
     //methods
     public void documentName(ActionEvent actionEvent) {
     }
 
     public void boldText(ActionEvent actionEvent) {
-    }
 
+        selectedText = getDocTextArea().getSelectedText();
+        if (!selectedText.isEmpty()) {
+            font = getDocTextArea().getFont();
+            getDocTextArea().setFont(Font.font(fontSelect.getValue(),FontWeight.BOLD,fontSize.getValue()));
+
+        }
+    }
     public void italicText(ActionEvent actionEvent) {
+
+        selectedText = getDocTextArea().getSelectedText();
+        if (!selectedText.isEmpty()) {
+            font = docTextArea.getFont();
+            getDocTextArea().setFont(Font.font(fontSelect.getValue(),FontPosture.ITALIC,fontSize.getValue()));
+        }
+
+
     }
 
     public void underlineText(ActionEvent actionEvent) {
+
     }
 
     public void strikeText(ActionEvent actionEvent) {
+
     }
 
     public void rightAlignment(ActionEvent actionEvent) {
@@ -192,6 +246,8 @@ public class HelloController {
     public void changeFontColor(ActionEvent actionEvent) {
     }
 
+
+
     //public void shareDocument(ActionEvent actionEvent) {
     //}
 
@@ -203,4 +259,5 @@ public class HelloController {
 
     public void saveDocument(ActionEvent actionEvent) {
     }
+
 }
