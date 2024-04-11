@@ -48,6 +48,16 @@
          <TextField fx:id="documentName" layoutX="316.0" layoutY="47.0" onAction="#documentName" prefWidth="400.0" promptText="Untitled Document (1)" AnchorPane.leftAnchor="316.0">
 
          </TextField>
+      <Label fx:id="counter" layoutX="776.0" layoutY="50.0" prefHeight="17.0" prefWidth="124.0" text="Paragraphs: 1">
+         <font>
+            <Font name="Arial Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="wordCounter" layoutX="948.0" layoutY="51.0" prefHeight="17.0" prefWidth="117.0" text="Word Count: 0">
+         <font>
+            <Font name="Arial Bold" size="14.0" />
+         </font>
+      </Label>
      </AnchorPane>
     <!--Text Box For Users to Type In-->
     <AnchorPane VBox.vgrow="ALWAYS">
@@ -116,7 +126,7 @@
                <Font name="Arial Bold" size="15.0" />
             </font>
          </Label>
-         <ComboBox fx:id="fontSelect" layoutX="15.0" layoutY="229.0" onAction="#changeFontSize" prefHeight="25.0" prefWidth="86.0" promptText="Select" style="-fx-background-color: #FFFfFF;" />
+         <ComboBox fx:id="fontSelect" layoutX="15.0" layoutY="229.0" onAction="#changeFont" prefHeight="25.0" prefWidth="86.0" promptText="Select" style="-fx-background-color: #FFFfFF;" />
         </Pane>
     </AnchorPane>
     <AnchorPane layoutX="30.0" layoutY="30.0" prefHeight="36.0" prefWidth="1366.0">

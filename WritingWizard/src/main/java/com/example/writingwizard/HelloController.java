@@ -18,12 +18,17 @@ import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 import javafx.scene.control.ComboBox;
 import java.awt.GraphicsEnvironment;
+import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 
 
 public class HelloController {
 
 
+    @FXML
+    private Label counter;
+    @FXML
+    private Label wordCounter;
     @FXML
     private Button saveDocumentButton;
     @FXML
@@ -106,6 +111,9 @@ public class HelloController {
     public TextArea getDocTextArea(){
         return docTextArea;
     };
+    public Label getCounter() {
+        return counter;
+    }
     public TextField getDocumentName() { return documentName; }
     public Button getRightAlignment() { return rightAlignment; }
     public Button getLeftAlignment() { return leftAlignment; }
@@ -169,6 +177,29 @@ public class HelloController {
                 (int) (color.getBlue() * 255));
     }
 
+    @FXML
+    void initializeParAndWordCount() {
+
+        docTextArea.textProperty().addListener((observable, oldValue, newValue) -> {
+
+            updateParagraphCount();
+            updateWordCount();
+        });
+    }
+    @FXML
+    void updateParagraphCount() {
+        ObservableList<CharSequence> list = docTextArea.getParagraphs();
+        int par = list.size();
+        counter.setText("Paragraphs: " + par);
+    }
+    @FXML
+    void updateWordCount() {
+        String text = docTextArea.getText();
+
+        String[] words = text.trim().split("\\s+");
+        int wordCount = words.length;
+        wordCounter.setText("Word Count: " + wordCount);
+    }
 
     //methods
     public void documentName(ActionEvent actionEvent) {
@@ -263,16 +294,35 @@ public class HelloController {
 
     public void changeFontSize(ActionEvent actionEvent) {
         if(fontSelect.getValue() == null && fontSize.getValue() == null){
-            font = Font.font("Arial", FontPosture.ITALIC, 11);
+            font = Font.font("Arial", FontWeight.NORMAL, 11);
             getDocTextArea().setFont(font);
         }
         selectedText = getDocTextArea().getSelectedText();
         if (!selectedText.isEmpty() && fontSelect.getValue() == null && fontSize.getValue() != null) {
             font = docTextArea.getFont();
+            getDocTextArea().setFont(Font.font("Arial",FontWeight.NORMAL,fontSize.getValue()));
+        }
+        if (!selectedText.isEmpty() && fontSelect.getValue() != null && fontSize.getValue() != null) {
+            font = docTextArea.getFont();
             getDocTextArea().setFont(Font.font(fontSelect.getValue(),FontWeight.NORMAL,fontSize.getValue()));
         }
 
 
+    }
+    public void changeFont(ActionEvent actionEvent) {
+        if(fontSelect.getValue() == null && fontSize.getValue() == null){
+            font = Font.font("Arial", FontWeight.NORMAL, 11);
+            getDocTextArea().setFont(font);
+        }
+        selectedText = getDocTextArea().getSelectedText();
+        if (!selectedText.isEmpty() && fontSelect.getValue() != null && fontSize.getValue() == null) {
+            font = docTextArea.getFont();
+            getDocTextArea().setFont(Font.font(fontSelect.getValue(),FontWeight.NORMAL,11));
+        }
+        if (!selectedText.isEmpty() && fontSelect.getValue() != null && fontSize.getValue() != null) {
+            font = docTextArea.getFont();
+            getDocTextArea().setFont(Font.font(fontSelect.getValue(),FontWeight.NORMAL,fontSize.getValue()));
+        }
     }
 
     public void changeFontColor(ActionEvent actionEvent) {
@@ -284,9 +334,6 @@ public class HelloController {
 
     }
 
-    //public void shareDocument(ActionEvent actionEvent) {
-    //}
-
     public void openDocument(ActionEvent actionEvent) {
     }
 
@@ -295,5 +342,6 @@ public class HelloController {
 
     public void saveDocument(ActionEvent actionEvent) {
     }
+
 
 }

@@ -10,6 +10,7 @@ import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 
+import java.awt.event.KeyEvent;
 import java.io.IOException;
 import java.util.Objects;
 
@@ -62,6 +63,8 @@ public class HelloApplication extends Application {
         textEditorController.initializeFontColor();
 
         textEditorScene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("stylesheet.css")).toExternalForm());
+
+        textEditorController.initializeParAndWordCount();
 
         stage.setScene(loginScene);
         stage.setTitle("Writing Wizard");
