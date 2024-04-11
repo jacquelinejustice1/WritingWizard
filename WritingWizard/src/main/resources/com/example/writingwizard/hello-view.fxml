@@ -25,26 +25,25 @@
          </font>
       </Button>
     </AnchorPane>
-<AnchorPane prefHeight="20.0" prefWidth="1366.0">
-      <children>
-          <Pane prefHeight="39.0" prefWidth="1366.0" style="-fx-background-color: lightgrey;">
-              <Button fx:id="openFileButton" layoutX="14.0" layoutY="8.0" mnemonicParsing="false" onAction="#openDocument" style="-fx-background-color: #8515FF;" text="OPEN FILE" textFill="WHITE">
-                 <font>
-                     <Font name="Arial Bold" size="12.0" />
-                 </font>
-              </Button>
-              <Button fx:id="newFileButton" layoutX="108.0" layoutY="8.0" mnemonicParsing="false" onAction="#createNewDocument" style="-fx-background-color: #8515FF;" text="NEW FILE" textFill="WHITE">
-                 <font>
-                     <Font name="Arial Bold" size="12.0" />
-                 </font>
-              </Button>
-              <Button fx:id="saveDocumentButton" layoutX="193.0" layoutY="8.0" mnemonicParsing="false" onAction="#saveDocument" style="-fx-background-color: #8515FF;" text="SAVE FILE" textFill="WHITE">
-                 <font>
-                     <Font name="Arial Bold" size="12.0" />
-                 </font>
-              </Button>
-          </Pane>
-      </children></AnchorPane>
+    <AnchorPane prefHeight="20.0" prefWidth="1366.0">
+        <Pane prefHeight="39.0" prefWidth="1366.0" style="-fx-background-color: lightgrey;">
+            <Button fx:id="openFileButton" layoutX="14.0" layoutY="8.0" mnemonicParsing="false" onAction="#openDocument" style="-fx-background-color: #8515FF;" text="OPEN FILE" textFill="WHITE">
+                <font>
+                    <Font name="Arial Bold" size="12.0" />
+                </font>
+            </Button>
+            <Button fx:id="newFileButton" layoutX="108.0" layoutY="8.0" mnemonicParsing="false" onAction="#createNewDocument" style="-fx-background-color: #8515FF;" text="NEW FILE" textFill="WHITE">
+                <font>
+                    <Font name="Arial Bold" size="12.0" />
+                </font>
+            </Button>
+            <Button fx:id="saveDocumentButton" layoutX="193.0" layoutY="8.0" mnemonicParsing="false" onAction="#saveDocument" style="-fx-background-color: #8515FF;" text="SAVE FILE" textFill="WHITE">
+                <font>
+                    <Font name="Arial Bold" size="12.0" />
+                </font>
+            </Button>
+        </Pane>
+    </AnchorPane>
      <AnchorPane prefHeight="41.0" prefWidth="1366.0">
          <TextField fx:id="documentName" layoutX="316.0" layoutY="47.0" onAction="#documentName" prefWidth="400.0" promptText="Untitled Document (1)" AnchorPane.leftAnchor="316.0">
 
@@ -65,12 +64,12 @@
                     <Font name="Arial Bold" size="12.0" />
                 </font>
             </Button>
-            <Button fx:id="underlineText" layoutX="15.0" layoutY="60.0" mnemonicParsing="false" onAction="#underlineText" style="-fx-background-color: #8515FF;" text="UNDERLINE" textFill="WHITE">
+            <Button id="underlineID" fx:id="underlineText" layoutX="15.0" layoutY="60.0" mnemonicParsing="false" onAction="#underlineText" style="-fx-background-color: #8515FF;" stylesheets="@stylesheet.css" text="UNDERLINE" textFill="WHITE">
                 <font>
                     <Font name="Arial Bold" size="12.0" />
                 </font>
             </Button>
-            <Button fx:id="strikeText" layoutX="127.0" layoutY="31.0" mnemonicParsing="false" onAction="#strikeText" style="-fx-background-color: #8515FF;" text="STRIKE" textFill="WHITE">
+            <Button id="strikeId" fx:id="strikeText" layoutX="127.0" layoutY="31.0" mnemonicParsing="false" onAction="#strikeText" style="-fx-background-color: #8515FF;" stylesheets="@stylesheet.css" text="STRIKE" textFill="WHITE">
                 <font>
                     <Font name="Arial Bold" size="12.0" />
                 </font>
@@ -90,12 +89,12 @@
                     <Font name="Arial Bold" size="12.0" />
                 </font>
             </Button>
-            <Button fx:id="leftAlignment" layoutX="15.0" layoutY="115.0" mnemonicParsing="false" onAction="#leftAlignment" style="-fx-background-color: #8515FF;" text="LEFT" textFill="WHITE">
+            <Button id="leftAlignId" fx:id="leftAlignment" layoutX="15.0" layoutY="115.0" mnemonicParsing="false" onAction="#leftAlignment" style="-fx-background-color: #8515FF;" stylesheets="@stylesheet.css" text="LEFT" textFill="WHITE">
                 <font>
                     <Font name="Arial Bold" size="12.0" />
                 </font>
             </Button>
-            <Button fx:id="centerAlignment" layoutX="65.0" layoutY="115.0" mnemonicParsing="false" onAction="#centerAlignment" style="-fx-background-color: #8515FF;" text="CENTER" textFill="WHITE">
+            <Button id="centerAlignId" fx:id="centerAlignment" layoutX="65.0" layoutY="115.0" mnemonicParsing="false" onAction="#centerAlignment" style="-fx-background-color: #8515FF;" stylesheets="@stylesheet.css" text="CENTER" textFill="WHITE">
                 <font>
                     <Font name="Arial Bold" size="12.0" />
                 </font>

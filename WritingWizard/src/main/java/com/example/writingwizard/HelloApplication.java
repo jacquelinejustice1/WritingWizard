@@ -11,6 +11,7 @@ import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 
 import java.io.IOException;
+import java.util.Objects;
 
 public class HelloApplication extends Application {
     @Override
@@ -58,10 +59,14 @@ public class HelloApplication extends Application {
 
         textEditorController.initializeFonts();
         textEditorController.initializeFontSize();
+        textEditorController.initializeFontColor();
 
+        textEditorScene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("stylesheet.css")).toExternalForm());
 
         stage.setScene(loginScene);
         stage.setTitle("Writing Wizard");
+
+       // stage.getIcons().add(new Image());
         stage.show();
 
 

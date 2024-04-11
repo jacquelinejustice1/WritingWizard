@@ -11,16 +11,14 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 import javafx.scene.control.ComboBox;
 import java.awt.GraphicsEnvironment;
-
-
-
-
+import java.awt.event.MouseEvent;
 
 
 public class HelloController {
@@ -153,25 +151,48 @@ public class HelloController {
     }
     public void initializeFontColor(){
 
+        setColor(Color.BLACK);
+
+        fontColor.setOnAction(e -> {
+            setColor(fontColor.getValue());
+        });
     }
+
+    private void setColor(Color color) {
+        docTextArea.setStyle("-fx-text-fill: #" + toRGBCode(color));
+    }
+
+    private String toRGBCode(Color color) {
+        return String.format("%02X%02X%02X",
+                (int) (color.getRed() * 255),
+                (int) (color.getGreen() * 255),
+                (int) (color.getBlue() * 255));
+    }
+
 
     //methods
     public void documentName(ActionEvent actionEvent) {
     }
 
     public void boldText(ActionEvent actionEvent) {
-
+        if(fontSelect.getValue() == null && fontSize.getValue() == null){
+            font = Font.font("Arial", FontWeight.BOLD, 11);
+            getDocTextArea().setFont(font);
+        }
         selectedText = getDocTextArea().getSelectedText();
-        if (!selectedText.isEmpty()) {
+        if (!selectedText.isEmpty() && fontSelect.getValue() != null && fontSize.getValue() != null) {
             font = getDocTextArea().getFont();
             getDocTextArea().setFont(Font.font(fontSelect.getValue(),FontWeight.BOLD,fontSize.getValue()));
-
         }
+
     }
     public void italicText(ActionEvent actionEvent) {
-
+        if(fontSelect.getValue() == null && fontSize.getValue() == null){
+            font = Font.font("Arial", FontPosture.ITALIC, 11);
+            getDocTextArea().setFont(font);
+        }
         selectedText = getDocTextArea().getSelectedText();
-        if (!selectedText.isEmpty()) {
+        if (!selectedText.isEmpty() && fontSelect.getValue() != null && fontSize.getValue() != null) {
             font = docTextArea.getFont();
             getDocTextArea().setFont(Font.font(fontSelect.getValue(),FontPosture.ITALIC,fontSize.getValue()));
         }
@@ -184,7 +205,7 @@ public class HelloController {
     }
 
     public void strikeText(ActionEvent actionEvent) {
-
+            //CSS SHEET
     }
 
     public void rightAlignment(ActionEvent actionEvent) {
@@ -241,12 +262,27 @@ public class HelloController {
     }
 
     public void changeFontSize(ActionEvent actionEvent) {
+        if(fontSelect.getValue() == null && fontSize.getValue() == null){
+            font = Font.font("Arial", FontPosture.ITALIC, 11);
+            getDocTextArea().setFont(font);
+        }
+        selectedText = getDocTextArea().getSelectedText();
+        if (!selectedText.isEmpty() && fontSelect.getValue() == null && fontSize.getValue() != null) {
+            font = docTextArea.getFont();
+            getDocTextArea().setFont(Font.font(fontSelect.getValue(),FontWeight.NORMAL,fontSize.getValue()));
+        }
+
+
     }
 
     public void changeFontColor(ActionEvent actionEvent) {
+        setColor(Color.BLACK);
+
+        fontColor.setOnAction(e -> {
+            setColor(fontColor.getValue());
+        });
+
     }
-
-
 
     //public void shareDocument(ActionEvent actionEvent) {
     //}

@@ -1,0 +1,16 @@
+#strikeId{
+    -fx-strikethrough: true;
+}
+#underlineId{
+    -fx-underline: true;
+}
+
+#leftAlignId{
+    -fx-text-alignment: left;
+}
+#centerAlignId{
+    -fx-text-alignment: center;
+}
+#rightAlignId{
+    -fx-text-alignment: right;
+}

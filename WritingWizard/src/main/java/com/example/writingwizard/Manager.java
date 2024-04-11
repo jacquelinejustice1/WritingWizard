@@ -65,6 +65,12 @@ public class Manager {
     public static void createFile(File filepath, TextArea document){
     creates a file from the content in the textarea
     }
+
+    public boolean checkIfSaved(???){
+     check to see if the document is saved
+     if saved return true
+     if not saved return false
+    }
      */
 
     //share screen
