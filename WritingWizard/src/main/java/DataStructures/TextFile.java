@@ -1,10 +1,12 @@
 package DataStructures;
 
+import java.io.Serializable;
+
 /**
  * @author benbruyns
  * Contains filename, content, owner name, and permission levels for non-owners of a file
  */
-public class TextFile {
+public class TextFile implements Serializable {
     private String fileName;
     private String content;
     private String ownerName;
@@ -78,5 +80,14 @@ public class TextFile {
      */
     public Permission[] getPermissions() {
         return permissions;
+    }
+
+    /**
+     * Add permission to file (WIP)
+     * @param permission permission to add
+     * @return return true if successful
+     */
+    public boolean addPermission(Permission permission) {
+        return true;
     }
 }
