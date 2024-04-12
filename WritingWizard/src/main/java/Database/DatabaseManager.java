@@ -1,13 +1,24 @@
-package com.example.writingwizard;
+package Database;
 
-
+import DataStructures.*;
 
 public class DatabaseManager {
 
-    //check if given username exists
+    private final Database db = new Database();
+
+    /**
+     * Determine if a username has already been used
+     * @param username username to find
+     * @return if username was found
+     */
     public boolean userExists(String username) {
-        // if exists, return true
-        // else return false
+        User[] users = db.readUsers();
+
+        for(User user : users)
+            if(user.getName().equals(username))
+                return true;
+
+        return false;
     }
 
     public boolean
