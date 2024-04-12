@@ -4,14 +4,14 @@ import DataStructures.*;
 
 public class DatabaseManager {
 
-    private final Database db = new Database();
+    private static final Database db = new Database();
 
     /**
      * Determine if a username has already been used
      * @param username username to find
      * @return if username was found
      */
-    public boolean userExists(String username) {
+    public static boolean userExists(String username) {
         User[] users = db.readUsers();
 
         for(User user : users)
@@ -21,5 +21,17 @@ public class DatabaseManager {
         return false;
     }
 
-    public boolean
+    /**
+     * Verifies a user
+     * @param username
+     * @param password
+     * @return User if valid, null if invalid
+     */
+    public static User validateAccount(String username, String password) {
+
+    }
+
+    public static void createAccount(User user) {
+
+    }
 }
