@@ -11,7 +11,7 @@ public class Database {
      * Read from user file
      * @return all users
      */
-    private User[] readUsers() {
+    public User[] readUsers() {
         try {
             ObjectInputStream in = new ObjectInputStream(new FileInputStream(userFile));
             User[] users = (User[]) in.readObject();
@@ -27,7 +27,7 @@ public class Database {
      * Write to user file
      * @param users updated users array
      */
-    private void writePermissions(User[] users) {
+    public void writePermissions(User[] users) {
         try {
             ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(userFile, false));
             out.writeObject(users);
@@ -41,7 +41,7 @@ public class Database {
      * Read from user file
      * @return all users
      */
-    private TextFile[] readFiles() {
+    public TextFile[] readFiles() {
         try {
             ObjectInputStream in = new ObjectInputStream(new FileInputStream(fileFile));
             TextFile[] files = (TextFile[]) in.readObject();
@@ -57,7 +57,7 @@ public class Database {
      * Write to user file
      * @param files updated files array
      */
-    private void writeFiles(TextFile[] files) {
+    public void writeFiles(TextFile[] files) {
         try {
             ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(fileFile, false));
             out.writeObject(files);
