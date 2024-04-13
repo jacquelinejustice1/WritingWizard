@@ -27,7 +27,7 @@ public class Database {
      * Write to user file
      * @param users updated users array
      */
-    public void writePermissions(User[] users) {
+    public void writeUsers(User[] users) {
         try {
             ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(userFile, false));
             out.writeObject(users);
