@@ -53,4 +53,27 @@ public class DatabaseManager {
 
         db.writeUsers(users);
     }
+
+    /**
+     * Gets all files a user has access to
+     * @param user
+     * @return files accessible to the user
+     */
+    public static TextFile[] getUserFiles(User user) {
+        TextFile[] allFiles = db.readFiles();
+        ArrayList<TextFile> userFilesList = new ArrayList<TextFile>(Arrays.asList(allFiles));
+
+        for(TextFile file : allFiles) {
+            for(Permission perm : file.getPermissions())
+                if(perm.getUsername().equals(user.getName())){
+                    userFilesList.add(file);
+                    break;
+                }
+        }
+
+        TextFile[] userFiles = new TextFile[userFilesList.size()];
+        userFiles = userFilesList.toArray(userFiles);
+
+        return userFiles;
+    }
 }
