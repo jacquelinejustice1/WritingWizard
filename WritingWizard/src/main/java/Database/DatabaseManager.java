@@ -55,6 +55,30 @@ public class DatabaseManager {
     }
 
     /**
+     * Saves file to database by adding it to database or overwriting previous version
+     * @param file textFile to save
+     */
+    public static void saveFile(TextFile file) {
+        TextFile[] allFiles = db.readFiles();
+
+        for(TextFile textFile : allFiles) {
+            if(textFile.getFileName().equals(file.getFileName())
+                    && textFile.getOwnerName().equals(file.getOwnerName())) {
+
+                textFile = file;
+                db.writeFiles(allFiles);
+                return;
+            }
+        }
+
+        ArrayList<TextFile> fileList = new ArrayList<TextFile>(Arrays.asList(allFiles));
+        fileList.add(file);
+        TextFile[] files = new TextFile[fileList.size()];
+        files = fileList.toArray(files);
+
+    }
+
+    /**
      * Gets all files a user has access to
      * @param user
      * @return files accessible to the user
