@@ -46,7 +46,7 @@ public class DatabaseManager {
     public static void createAccount(User user) {
         User[] users = db.readUsers();
 
-        ArrayList<User> userList = new ArrayList<User>(Arrays.asList(users));
+        ArrayList<User> userList = new ArrayList<>(Arrays.asList(users));
         userList.add(user);
         users = new User[userList.size()];
         users = userList.toArray(users);
@@ -71,11 +71,12 @@ public class DatabaseManager {
             }
         }
 
-        ArrayList<TextFile> fileList = new ArrayList<TextFile>(Arrays.asList(allFiles));
+        ArrayList<TextFile> fileList = new ArrayList<>(Arrays.asList(allFiles));
         fileList.add(file);
         TextFile[] files = new TextFile[fileList.size()];
         files = fileList.toArray(files);
 
+        db.writeFiles(files);
     }
 
     /**
@@ -85,11 +86,11 @@ public class DatabaseManager {
      */
     public static TextFile[] getUserFiles(User user) {
         TextFile[] allFiles = db.readFiles();
-        ArrayList<TextFile> userFilesList = new ArrayList<TextFile>(Arrays.asList(allFiles));
+        ArrayList<TextFile> userFilesList = new ArrayList<>(Arrays.asList(allFiles));
 
         for(TextFile file : allFiles) {
             for(Permission perm : file.getPermissions())
-                if(perm.getUsername().equals(user.getName())){
+                if(perm.getUsername().equals(user.getName()) || file.getOwnerName().equals(user.getName())){
                     userFilesList.add(file);
                     break;
                 }
