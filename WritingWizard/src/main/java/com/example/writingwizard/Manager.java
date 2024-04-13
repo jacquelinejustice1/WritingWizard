@@ -1,7 +1,7 @@
 package com.example.writingwizard;
 
-import DataStructures.User;
-import Database.DatabaseManager;
+import DataStructures.*;
+import Database.*;
 import javafx.scene.control.TextField;
 
 import java.awt.*;
@@ -43,6 +43,19 @@ public class Manager {
                 return false;
         } else
             return false;
+    }
+
+    public PermissionLevel checkPermissions(TextFile file) {
+        // check if currentuser is owner
+        Permission[] perms = file.getPermissions();
+        for (Permission perm: perms) {
+            if (perm.getUsername().equals(currentuser.getName())) {
+                return (perm.getPermissionLevel());
+            }
+        }
+        // if not, check if they have read permissions
+        // check if they have write permissions
+        return PermissionLevel.none;
     }
 
     //View-Only functions

@@ -1,13 +1,5 @@
 package DataStructures;
 
-/**
- * Enum for permission levels
- */
-enum PermissionLevel {
-    none,
-    read,
-    write,
-}
 
 /**
  * @author benbruyns
