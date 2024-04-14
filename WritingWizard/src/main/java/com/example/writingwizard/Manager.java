@@ -57,7 +57,7 @@ public class Manager {
         // check if they have write permissions
         return PermissionLevel.none;
     }
-
+/*
     //View-Only functions
      public static String openFileView(File filePath, TextArea document){
         //opens text file from user that shared the text files to the document
@@ -78,5 +78,5 @@ public class Manager {
         //if not saved return false
     }
 
-
+*/
 }

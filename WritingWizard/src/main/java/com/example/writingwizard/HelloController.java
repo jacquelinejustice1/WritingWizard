@@ -20,11 +20,14 @@ import javafx.scene.control.ComboBox;
 import java.awt.GraphicsEnvironment;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
+import java.util.Optional;
 
 
 public class HelloController {
 
 
+    @FXML
+    private Button clearTextAreaButton;
     @FXML
     private Label counter;
     @FXML
@@ -76,6 +79,8 @@ public class HelloController {
     String selectedText;
     Font font;
 
+    //for clear button
+    Label confirm = new Label("Are you sure you would \n like to clear the text area?");
 
 
     //setters
@@ -130,6 +135,7 @@ public class HelloController {
     public Button getSaveDocumentButton() { return saveDocumentButton; }
     public Button getNewFileButton() { return newFileButton; }
     public Button getOpenFileButton() { return openFileButton; }
+
 
     //fonts combobox
     public void initializeFonts(){
@@ -331,6 +337,29 @@ public class HelloController {
         fontColor.setOnAction(e -> {
             setColor(fontColor.getValue());
         });
+
+    }
+
+    public void clearTextArea(ActionEvent actionEvent) {
+        Dialog<ButtonType> dialogClear = new Dialog<>();
+        dialogClear.initOwner(((Node) actionEvent.getSource()).getScene().getWindow());
+        dialogClear.setTitle("Clear TextArea");
+        dialogClear.setWidth(500);
+        dialogClear.setHeight(150);
+        VBox dialogContentClear = new VBox();
+        dialogContentClear.setSpacing(10);
+        dialogContentClear.setPadding(new Insets(10));
+
+        dialogContentClear.getChildren().add(confirm);
+
+        dialogClear.getDialogPane().getButtonTypes().addAll(ButtonType.APPLY, ButtonType.CANCEL);
+        dialogClear.getDialogPane().setContent(dialogContentClear);
+        //dialogClear.showAndWait();
+        Optional<ButtonType> result = dialogClear.showAndWait();
+
+        if (result.isPresent() && result.get() == ButtonType.APPLY) {
+            docTextArea.clear();
+        }
 
     }
 
