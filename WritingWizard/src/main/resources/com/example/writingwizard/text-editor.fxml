@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.writingwizard.HelloController">
+<VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.writingwizard.EditorController">
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
@@ -79,7 +79,7 @@
                     <Font name="Arial Bold" size="12.0" />
                 </font>
             </Button>
-            <Button id="strikeId" fx:id="strikeText" layoutX="127.0" layoutY="31.0" mnemonicParsing="false" onAction="#strikeText" style="-fx-background-color: #8515FF;" stylesheets="@stylesheet.css" text="STRIKE" textFill="WHITE">
+            <Button id="strikeId" fx:id="strikeText" layoutX="127.0" layoutY="31.0" mnemonicParsing="false" onAction="#strikeText" style="-fx-background-color: #8515FF;" text="STRIKE" textFill="WHITE">
                 <font>
                     <Font name="Arial Bold" size="12.0" />
                 </font>

@@ -3,7 +3,6 @@ package com.example.writingwizard;
 import DataStructures.*;
 import Database.*;
 import javafx.scene.control.TextField;
-
 import java.awt.*;
 import java.io.File;
 
@@ -21,7 +20,9 @@ public class Manager {
         } else
             return false;
     }
+    /*
 
+     */
     //I need the following functions for alerts on the createAccount page to send to the user
 
     public boolean validateUserNameCreation(String username, String usernameReenter){

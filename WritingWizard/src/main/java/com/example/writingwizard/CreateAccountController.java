@@ -2,17 +2,22 @@ package com.example.writingwizard;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 
 public class CreateAccountController {
+    Manager manager = new Manager();
+    @FXML
+    private Label errorUsername;
+    @FXML
+    private Label errorPassword;
+    @FXML
+    private Label errorCreateAccount;
     @FXML
     private Button submitAccountButton;
     @FXML
@@ -35,16 +40,55 @@ public class CreateAccountController {
     public void setStage(Stage stage) {
         this.stage = stage;
     }
-    public void setReturnToLogIn(Button returnToLogIn){ this.returnToLogIn = returnToLogIn; }
-    public void setUsernameText(TextField usernameText){this.usernameText=usernameText;}
-    public void setReenterUsernameText(TextField reenterUsernameText){ this.reenterUsernameText=reenterUsernameText;}
-    public void setCreatePasswordText(PasswordField createPasswordText){this.createPasswordText = createPasswordText; }
+
+    public void setReturnToLogIn(Button returnToLogIn) {
+        this.returnToLogIn = returnToLogIn;
+    }
+
+    public void setUsernameText(TextField usernameText) {
+        this.usernameText = usernameText;
+    }
+
+    public void setReenterUsernameText(TextField reenterUsernameText) {
+        this.reenterUsernameText = reenterUsernameText;
+    }
+
+    public void setCreatePasswordText(PasswordField createPasswordText) {
+        this.createPasswordText = createPasswordText;
+    }
+
     public void setCreatePasswordReenterText(PasswordField createPasswordReenterText) {
-        this.createPasswordReenterText = createPasswordReenterText; }
-    public void setSubmitAccountButton(Button submitAccountButton){this.submitAccountButton = submitAccountButton;}
+        this.createPasswordReenterText = createPasswordReenterText;
+    }
 
+    public void setSubmitAccountButton(Button submitAccountButton) {
+        this.submitAccountButton = submitAccountButton;
+    }
+    public Label getErrorUsername() {
+        return errorUsername;
+    }
 
-    public void setLoginScene(Scene loginScene) {
+    public void setErrorUsername(Label errorUsername) {
+        this.errorUsername = errorUsername;
+    }
+
+    public Label getErrorPassword() {
+        return errorPassword;
+    }
+
+    public void setErrorPassword(Label errorPassword) {
+        this.errorPassword = errorPassword;
+    }
+
+    public Label getErrorCreateAccount() {
+        return errorCreateAccount;
+    }
+
+    public void setErrorCreateAccount(Label errorCreateAccount) {
+        this.errorCreateAccount = errorCreateAccount;
+    }
+
+public void setLoginScene(Scene loginScene) {
         this.loginScene = loginScene;
     }
 
@@ -53,47 +97,47 @@ public class CreateAccountController {
     }
 
     //getters
-    public Button getReturnToLogIn(){return returnToLogIn; }
-    public TextField getUsernameText(){return usernameText;}
-    public TextField getReenterUsernameText(){return reenterUsernameText;}
-    public PasswordField getCreatePasswordText(){return createPasswordText;}
-    public PasswordField getCreatePasswordReenterText(){return createPasswordReenterText;}
-    public Button getSubmitAccountButton(){ return submitAccountButton;}
+    public Button getReturnToLogIn() {
+        return returnToLogIn;
+    }
+
+    public TextField getUsernameText() {
+        return usernameText;
+    }
+
+    public TextField getReenterUsernameText() {
+        return reenterUsernameText;
+    }
+
+    public PasswordField getCreatePasswordText() {
+        return createPasswordText;
+    }
+
+    public PasswordField getCreatePasswordReenterText() {
+        return createPasswordReenterText;
+    }
+
+    public Button getSubmitAccountButton() {
+        return submitAccountButton;
+    }
 
     //functions
 
-    public void createNewUsername(ActionEvent actionEvent){
-
-    }
-
-    //public void createUsernameReenter(ActionEvent actionEvent) {
-    //}
-
-    public void createPassword(ActionEvent actionEvent) {
-    }
-
-    public void createPasswordReenter(ActionEvent actionEvent) {
-    }
-
-    public void saveFirstPetQuestion(ActionEvent actionEvent) {
-    }
-
-    public void saveMotherName(ActionEvent actionEvent) {
-    }
-
     public void submitAccountInfo(ActionEvent actionEvent) {
 
-        stage.setScene(textEditorScene);
-        stage.setTitle("Text Editor");
-        stage.show();
+        if(!manager.validateUserNameCreation(getUsernameText().getText(), getReenterUsernameText().getText())){
+            errorUsername.setText("Enter the same username again.");
+        }
+        if(!manager.validatePasswordCreation(getCreatePasswordText().getText(), getCreatePasswordReenterText().getText())){
+            errorPassword.setText("Enter the same password again.");
+        }
+        //stage.setScene(textEditorScene);
+        // stage.setTitle("Text Editor");
+        //stage.show();
+        }
 
-    }
 
-    public void saveSchool(ActionEvent actionEvent) {
-    }
-
-    public void returnToLogIn(ActionEvent actionEvent) throws IOException {
-
+   public void returnToLogIn(ActionEvent actionEvent) throws IOException {
         stage.setScene(loginScene);
         stage.setTitle("Writing Wizard");
         stage.show();

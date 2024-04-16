@@ -32,7 +32,7 @@
     </AnchorPane>
     <AnchorPane prefHeight="300.0" prefWidth="1366">
       <PasswordField fx:id="passwordLogin" layoutX="596.0" layoutY="138.0" />
-      <TextField fx:id="usernameLogin" layoutX="594.0" layoutY="80.0" onAction="#usernameLogin" />
+      <TextField fx:id="usernameLogin" layoutX="594.0" layoutY="80.0" />
       <Label layoutX="633.0" layoutY="14.0" text="Sign In">
          <font>
             <Font name="Arial Bold" size="18.0" />

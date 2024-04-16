@@ -58,12 +58,6 @@ public class LoginController {
 
     //functions
 
-    public void password(ActionEvent actionEvent) {
-    }
-
-    public void usernameLogin(ActionEvent actionEvent) {
-    }
-
     public void signInButton(ActionEvent actionEvent) throws IOException {
 
         stage.setScene(textEditorScene);

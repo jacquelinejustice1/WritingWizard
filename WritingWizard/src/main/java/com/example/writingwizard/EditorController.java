@@ -9,23 +9,22 @@ import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.scene.control.ComboBox;
 import java.awt.GraphicsEnvironment;
-import java.awt.event.KeyEvent;
-import java.awt.event.MouseEvent;
 import java.util.Optional;
 
 
-public class HelloController {
+public class EditorController {
 
 
+    Manager manager = new Manager();
     @FXML
     private Button clearTextAreaButton;
     @FXML
@@ -163,6 +162,7 @@ public class HelloController {
         fontSize.setItems(fontSizeOptions);
 
     }
+
     public void initializeFontColor(){
 
         setColor(Color.BLACK);
@@ -242,7 +242,11 @@ public class HelloController {
     }
 
     public void strikeText(ActionEvent actionEvent) {
-            //CSS SHEET
+        String selectedText = docTextArea.getSelectedText();
+        Text strikeThroughText = new Text(selectedText);
+        if(!selectedText.isEmpty()){
+            strikeThroughText.setStrikethrough(true);
+        }
     }
 
     public void rightAlignment(ActionEvent actionEvent) {
@@ -354,7 +358,7 @@ public class HelloController {
 
         dialogClear.getDialogPane().getButtonTypes().addAll(ButtonType.APPLY, ButtonType.CANCEL);
         dialogClear.getDialogPane().setContent(dialogContentClear);
-        //dialogClear.showAndWait();
+
         Optional<ButtonType> result = dialogClear.showAndWait();
 
         if (result.isPresent() && result.get() == ButtonType.APPLY) {
