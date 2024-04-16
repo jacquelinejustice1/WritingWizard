@@ -117,24 +117,38 @@ public void setLoginScene(Scene loginScene) {
         return createPasswordReenterText;
     }
 
-    public Button getSubmitAccountButton() {
-        return submitAccountButton;
-    }
-
     //functions
 
     public void submitAccountInfo(ActionEvent actionEvent) {
+        /*
+        boolean successful = true;
 
         if(!manager.validateUserNameCreation(getUsernameText().getText(), getReenterUsernameText().getText())){
             errorUsername.setText("Enter the same username again.");
+            successful = false;
         }
         if(!manager.validatePasswordCreation(getCreatePasswordText().getText(), getCreatePasswordReenterText().getText())){
             errorPassword.setText("Enter the same password again.");
+            successful = false;
         }
-        //stage.setScene(textEditorScene);
-        // stage.setTitle("Text Editor");
-        //stage.show();
+        if(successful){
+            errorUsername.setText("");
+            errorPassword.setText("");
+            boolean account = manager.createUser(getUsernameText().getText(),getCreatePasswordText().getText());
+            if(account){
+
+         */
+                stage.setScene(textEditorScene);
+                stage.setTitle("Text Editor");
+                stage.show();
+                /*
+            }else{
+                errorCreateAccount.setText("Username is taken. Try Again");
+            }
         }
+
+                 */
+    }
 
 
    public void returnToLogIn(ActionEvent actionEvent) throws IOException {
