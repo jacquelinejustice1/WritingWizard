@@ -10,3 +10,9 @@
 .right-aligned-textarea .text{
     -fx-text-alignment: right;
 }
+.strike-out-textarea .text{
+    -fx-strikethrough: true;
+}
+.underline-textarea .text{
+    -fx-underline: true;
+}

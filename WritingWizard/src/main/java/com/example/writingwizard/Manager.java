@@ -100,9 +100,9 @@ public class Manager {
         //creates a file from the content in the textarea
     }
 
-    public boolean checkIfSaved(TextFile file){
-        return fileExists(file);
-    }
+    //public boolean checkIfSaved(TextFile file){
+       // return fileExists(file);
+    //}
 
 
 }

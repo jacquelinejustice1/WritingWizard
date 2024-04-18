@@ -74,12 +74,12 @@
                     <Font name="Arial Bold" size="12.0" />
                 </font>
             </Button>
-            <Button id="underlineID" layoutX="15.0" layoutY="60.0" mnemonicParsing="false" onAction="#underlineText" style="-fx-background-color: #8515FF;" stylesheets="@stylesheet.css" text="UNDERLINE" textFill="WHITE">
+            <Button id="underlineID" fx:id="underlineButton" layoutX="15.0" layoutY="60.0" mnemonicParsing="false" onAction="#underlineText" style="-fx-background-color: #8515FF;" stylesheets="@stylesheet.css" text="UNDERLINE" textFill="WHITE">
                 <font>
                     <Font name="Arial Bold" size="12.0" />
                 </font>
             </Button>
-            <Button id="strikeId" layoutX="127.0" layoutY="31.0" mnemonicParsing="false" onAction="#strikeText" style="-fx-background-color: #8515FF;" stylesheets="@stylesheet.css" text="STRIKE" textFill="WHITE">
+            <Button id="strikeId" fx:id="strikeButton" layoutX="127.0" layoutY="31.0" mnemonicParsing="false" onAction="#strikeText" style="-fx-background-color: #8515FF;" stylesheets="@stylesheet.css" text="STRIKE" textFill="WHITE">
                 <font>
                     <Font name="Arial Bold" size="12.0" />
                 </font>
@@ -94,7 +94,7 @@
                     <Font name="Arial Bold" size="15.0" />
                 </font>
             </Label>
-            <Button layoutX="135.0" layoutY="116.0" mnemonicParsing="false" fx:id="rightAlignButton" onAction="#rightAlignment" style="-fx-background-color: #8515FF;" text="RIGHT" textFill="WHITE">
+            <Button fx:id="rightAlignButton" layoutX="135.0" layoutY="116.0" mnemonicParsing="false" onAction="#rightAlignment" style="-fx-background-color: #8515FF;" text="RIGHT" textFill="WHITE">
                 <font>
                     <Font name="Arial Bold" size="12.0" />
                 </font>

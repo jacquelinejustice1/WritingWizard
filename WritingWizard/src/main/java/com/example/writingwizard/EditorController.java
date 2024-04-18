@@ -26,6 +26,10 @@ import java.util.Optional;
 public class EditorController {
 
     @FXML
+    private Button underlineButton;
+    @FXML
+    private Button strikeButton;
+    @FXML
     private Button rightAlignButton;
     @FXML
     private Button leftAlignButton;
@@ -319,7 +323,10 @@ public class EditorController {
      * When the user clicks the Underline Text button, text in the text area is underlined
      */
     public void underlineText(ActionEvent actionEvent) {
-
+        underlineButton.setOnAction(e ->{
+            docTextArea.getStyleClass().clear();
+            docTextArea.getStyleClass().add("underline-textarea");
+        });
     }
 
     /**
@@ -328,11 +335,11 @@ public class EditorController {
      * When the user clicks the strike button, text in the text area is struck out
      */
     public void strikeText(ActionEvent actionEvent) {
-        String selectedText = docTextArea.getSelectedText();
-        Text strikeThroughText = new Text(selectedText);
-        if(!selectedText.isEmpty()){
-            strikeThroughText.setStrikethrough(true);
-        }
+        strikeButton.setOnAction(e ->{
+            docTextArea.getStyleClass().clear();
+            docTextArea.getStyleClass().add("strike-out-textarea");
+        });
+
     }
 
     /**

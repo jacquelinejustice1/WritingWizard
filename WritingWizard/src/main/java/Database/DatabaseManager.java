@@ -29,9 +29,9 @@ public class DatabaseManager {
      * @return if file was found
      */
 
-    public static boolean fileExists(TextFile file) {
+    //public static boolean fileExists(TextFile file) {
 
-    }
+    //}
 
     /**
      * Verifies a user
