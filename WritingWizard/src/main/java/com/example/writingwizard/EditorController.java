@@ -1,6 +1,7 @@
 package com.example.writingwizard;
 
 
+import DataStructures.Permission;
 import DataStructures.TextFile;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -19,6 +20,7 @@ import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 import javafx.scene.control.ComboBox;
 import java.awt.GraphicsEnvironment;
+import java.util.HashMap;
 import java.util.Optional;
 
 
@@ -430,6 +432,13 @@ public class EditorController {
     public void openDocument(ActionEvent actionEvent) {
         Label selectFile = new Label("Select a file to open:");
         ComboBox<String> textFileNames = new ComboBox<>();
+        textFileNames.setPromptText("Document Name : Permission");
+        HashMap<Permission[], TextFile> filesMap = manager.getFiles();
+
+        for (TextFile file : filesMap.values()) {
+            textFileNames.getItems().add(file.getFileName());
+        }
+
         textFileNames.setMinWidth(400);
         //setting the dialog up
         Dialog<ButtonType> openDialog = new Dialog<>();
@@ -453,10 +462,12 @@ public class EditorController {
     }
 
     public void createNewDocument(ActionEvent actionEvent) {
+       // manager.createFile(documentName.getText(),docTextArea.getText(),manager.currentuser);
 
     }
 
     public void saveDocument(ActionEvent actionEvent) {
+
     }
 
 
