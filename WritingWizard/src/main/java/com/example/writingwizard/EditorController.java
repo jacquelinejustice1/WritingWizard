@@ -16,7 +16,6 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.scene.control.ComboBox;
 import java.awt.GraphicsEnvironment;
@@ -48,8 +47,6 @@ public class EditorController {
     private ColorPicker fontColor;
     @FXML
     private ComboBox<Integer> fontSize = new ComboBox<>();
-    @FXML
-    private Button signOutButton;
     @FXML
     private Button shareButton;
     @FXML
@@ -456,6 +453,7 @@ public class EditorController {
     }
 
     public void createNewDocument(ActionEvent actionEvent) {
+
     }
 
     public void saveDocument(ActionEvent actionEvent) {

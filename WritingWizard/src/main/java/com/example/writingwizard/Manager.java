@@ -18,7 +18,7 @@ public class Manager {
     //Create Account Functions
 
     public boolean createUser(String username, String password){
-        if (DatabaseManager.userExists(username)) {
+        if (!DatabaseManager.userExists(username)) {
             User user = new User(username, password);
             DatabaseManager.createAccount(user);
             currentuser = new User(username, password);

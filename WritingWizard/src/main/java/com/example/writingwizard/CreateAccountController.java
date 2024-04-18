@@ -120,7 +120,11 @@ public void setLoginScene(Scene loginScene) {
     //functions
 
     public void submitAccountInfo(ActionEvent actionEvent) {
-        /*
+        //if(getCreatePasswordText().getText() == null && getCreatePasswordText().getText() == null && getCreatePasswordReenterText().getText() == null
+        //        && getCreatePasswordReenterText().getText() == null){
+        //    errorCreateAccount.setText("Please enter the information");
+        //}
+
         boolean successful = true;
 
         if(!manager.validateUserNameCreation(getUsernameText().getText(), getReenterUsernameText().getText())){
@@ -131,23 +135,25 @@ public void setLoginScene(Scene loginScene) {
             errorPassword.setText("Enter the same password again.");
             successful = false;
         }
+
         if(successful){
             errorUsername.setText("");
             errorPassword.setText("");
             boolean account = manager.createUser(getUsernameText().getText(),getCreatePasswordText().getText());
             if(account){
 
-         */
+
                 stage.setScene(textEditorScene);
                 stage.setTitle("Text Editor");
                 stage.show();
-                /*
+
             }else{
-                errorCreateAccount.setText("Username is taken. Try Again");
+                errorCreateAccount.setText("Username taken. Try Again");
             }
+
         }
 
-                 */
+
     }
 
 

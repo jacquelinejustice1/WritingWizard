@@ -16,6 +16,10 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class LoginController {
+
+    @FXML
+    private Label errorLogin;
+    Manager manager = new Manager();
     @FXML
     public Button createAccount;
     @FXML
@@ -59,10 +63,13 @@ public class LoginController {
     //functions
 
     public void signInButton(ActionEvent actionEvent) throws IOException {
-
-        stage.setScene(textEditorScene);
-        stage.setTitle("Text Editor");
-        stage.show();
+     if(manager.validateLogin(usernameLogin.getText(),passwordLogin.getText())){
+         stage.setScene(textEditorScene);
+         stage.setTitle("Text Editor");
+         stage.show();
+     }else{
+         errorLogin.setText("Error, please try again.");
+     }
 
     }
 
