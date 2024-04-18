@@ -74,8 +74,13 @@ public class EditorController {
 
     //for clear button
     Label confirm = new Label("Are you sure you would \n like to clear the text area?");
+    private Scene viewOnlyScene;
 
     //setters
+    public void setViewOnlyScene(Scene viewOnlyScene) {
+        this.viewOnlyScene = viewOnlyScene;
+    }
+    
     public void setStage(Stage stage) {
         this.stage = stage;
     }
@@ -423,6 +428,7 @@ public class EditorController {
 
         dialog.showAndWait();
 
+
         //clearing when done
         dialogContent.getChildren().clear();
         sharingOptions.getItems().clear();
@@ -444,7 +450,7 @@ public class EditorController {
         Dialog<ButtonType> openDialog = new Dialog<>();
         openDialog.initOwner(((Node) actionEvent.getSource()).getScene().getWindow());
         openDialog.setTitle("Open Document");
-        openDialog.setWidth(700);
+        openDialog.setWidth(900);
         openDialog.setHeight(700);
         VBox dialogContentOpen = new VBox();
         dialogContentOpen.setSpacing(10);
@@ -456,8 +462,14 @@ public class EditorController {
         openDialog.getDialogPane().getButtonTypes().addAll(ButtonType.FINISH, ButtonType.CANCEL);
         openDialog.getDialogPane().setContent(dialogContentOpen);
 
-        openDialog.showAndWait();
+        Optional<ButtonType> result = openDialog.showAndWait();
 
+        if (result.isPresent() && result.get() == ButtonType.FINISH) {
+
+            stage.setScene(viewOnlyScene);
+            stage.setTitle("View Only");
+            stage.show();
+        }
         dialogContentOpen.getChildren().clear();
     }
 

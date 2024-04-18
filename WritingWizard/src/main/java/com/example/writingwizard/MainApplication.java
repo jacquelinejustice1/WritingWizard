@@ -50,6 +50,11 @@ public class MainApplication extends Application {
         textEditorController.setLoginScene(loginScene);
         loginController.setTextEditorScene(textEditorScene);
 
+        textEditorController.setViewOnlyScene(viewOnlyScene);
+        viewOnlyController.setTextEditorScene(textEditorScene);
+
+
+
         viewOnlyController.setLoginScene(loginScene);
 
         textEditorController.initializeFonts();
