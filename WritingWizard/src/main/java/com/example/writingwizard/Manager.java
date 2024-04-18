@@ -2,13 +2,19 @@ package com.example.writingwizard;
 
 import DataStructures.*;
 import Database.*;
+import static Database.DatabaseManager.*;
+import static java.util.Arrays.asList;
+
 import javafx.scene.control.TextField;
 import java.awt.*;
 import java.io.File;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
 
 public class Manager {
 
-    User currentuser;
+    static User currentuser;
     //Create Account Functions
 
     public boolean createUser(String username, String password){
@@ -58,26 +64,45 @@ public class Manager {
         // check if they have write permissions
         return PermissionLevel.none;
     }
-/*
+
+    /*public HashMap<TextFile, Permission[]> getFiles() {
+        HashMap<TextFile, Permission[]> hash = new HashMap<>();
+        TextFile[] files = getUserFiles(currentuser);
+        for (TextFile file: files) {
+            hash.put(file, file.getPermissions());
+        }
+        return hash;
+    }*/
+
+    public HashMap<Permission[], TextFile> getFiles() {
+        HashMap<Permission[], TextFile> hash = new HashMap<>();
+        TextFile[] files = getUserFiles(currentuser);
+        for (TextFile file: files) {
+            hash.put(file.getPermissions(), file);
+        }
+        return hash;
+    }
+
     //View-Only functions
-     public static String openFileView(File filePath, TextArea document){
+     public static String openFile(TextFile file){
+        return file.getContent();
         //opens text file from user that shared the text files to the document
      }
 
     //Main text editor functions
-    public static String openFileEdit(File filePath, TextArea document){
+    public static String openFileEdit(TextFile file){
+        return file.getContent();
         //opens a user's already made documents into the textarea to edit
     }
 
-    public static void createFile(File filepath, TextArea document){
+    public static void createFile(String name, String content, String owner, Permission[] perms){
+        TextFile file = new TextFile(name, content, owner, perms);
         //creates a file from the content in the textarea
     }
 
-    public boolean checkIfSaved(){
-        //check to see if the document is saved
-        //if saved return true
-        //if not saved return false
+    public boolean checkIfSaved(TextFile file){
+        return fileExists(file);
     }
 
-*/
+
 }
