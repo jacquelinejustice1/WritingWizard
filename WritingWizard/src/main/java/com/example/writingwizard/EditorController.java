@@ -7,6 +7,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -24,7 +25,12 @@ import java.util.Optional;
 
 public class EditorController {
 
-
+    @FXML
+    private Button rightAlignButton;
+    @FXML
+    private Button leftAlignButton;
+    @FXML
+    private Button centerAlignButton;
     Manager manager = new Manager();
     @FXML
     private Label counter;
@@ -332,27 +338,44 @@ public class EditorController {
     /**
      *
      * @param actionEvent
+     * Aligns text in the textarea to the right alignment
      */
     public void rightAlignment(ActionEvent actionEvent) {
+        rightAlignButton.setOnAction(e ->{
+            docTextArea.getStyleClass().clear();
+            docTextArea.getStyleClass().add("right-aligned-textarea");
+        });
+
     }
     /**
      *
      * @param actionEvent
+     * When clicked, the text in the text area is aligned to the left
      */
-    public void leftAlignment(ActionEvent actionEvent) {
+    public void leftAlignment(ActionEvent actionEvent){
+        leftAlignButton.setOnAction(e ->{
+            docTextArea.getStyleClass().clear();
+            docTextArea.getStyleClass().add("left-aligned-textarea");
+        });
     }
     /**
      *
      * @param actionEvent
+     * When clicked, the text in the text area is center aligned
      */
     public void centerAlignment(ActionEvent actionEvent) {
+        centerAlignButton.setOnAction(e -> {
+            docTextArea.getStyleClass().clear();
+            docTextArea.getStyleClass().add("centered-textarea");
+        });
+
     }
 
-    /**
-     *
-     * @param actionEvent
-     * When the user clicks the sign-out button, the stage is returned to the login stage
-     */
+        /**
+         *
+         * @param actionEvent
+         * When the user clicks the sign-out button, the stage is returned to the login stage
+         */
     public void signOut(ActionEvent actionEvent) {
         stage.setScene(loginScene);
         stage.setTitle("Writing Wizard");

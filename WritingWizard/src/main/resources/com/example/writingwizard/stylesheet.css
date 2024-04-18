@@ -1,16 +1,12 @@
-#strikeId{
-    -fx-strikethrough: true;
-}
-#underlineId{
-    -fx-underline: true;
-}
 
-#leftAlignId{
+
+.left-aligned-textarea .text {
     -fx-text-alignment: left;
 }
-#centerAlignId{
+
+.centered-textarea .text {
     -fx-text-alignment: center;
 }
-#rightAlignId{
+.right-aligned-textarea .text{
     -fx-text-alignment: right;
 }

@@ -61,7 +61,7 @@
      </AnchorPane>
     <!--Text Box For Users to Type In-->
     <AnchorPane VBox.vgrow="ALWAYS">
-        <TextArea fx:id="docTextArea" wrapText="true" prefHeight="500" prefWidth="1000" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="10.0" />
+        <TextArea fx:id="docTextArea" prefHeight="500" prefWidth="1000" wrapText="true" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="10.0" />
 
         <Pane prefHeight="500" prefWidth="270" style="-fx-background-color: lightgray;" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0">
             <Button accessibleRole="TEXT_AREA" layoutX="15.0" layoutY="31.0" mnemonicParsing="false" onAction="#boldText" style="-fx-background-color: #8515FF;" text="BOLD" textFill="WHITE">
@@ -79,7 +79,7 @@
                     <Font name="Arial Bold" size="12.0" />
                 </font>
             </Button>
-            <Button id="strikeId" layoutX="127.0" layoutY="31.0" mnemonicParsing="false" onAction="#strikeText" style="-fx-background-color: #8515FF;" text="STRIKE" textFill="WHITE">
+            <Button id="strikeId" layoutX="127.0" layoutY="31.0" mnemonicParsing="false" onAction="#strikeText" style="-fx-background-color: #8515FF;" stylesheets="@stylesheet.css" text="STRIKE" textFill="WHITE">
                 <font>
                     <Font name="Arial Bold" size="12.0" />
                 </font>
@@ -94,17 +94,17 @@
                     <Font name="Arial Bold" size="15.0" />
                 </font>
             </Label>
-            <Button layoutX="135.0" layoutY="116.0" mnemonicParsing="false" onAction="#rightAlignment" style="-fx-background-color: #8515FF;" text="RIGHT" textFill="WHITE">
+            <Button layoutX="135.0" layoutY="116.0" mnemonicParsing="false" fx:id="rightAlignButton" onAction="#rightAlignment" style="-fx-background-color: #8515FF;" text="RIGHT" textFill="WHITE">
                 <font>
                     <Font name="Arial Bold" size="12.0" />
                 </font>
             </Button>
-            <Button id="leftAlignId" layoutX="15.0" layoutY="115.0" mnemonicParsing="false" onAction="#leftAlignment" style="-fx-background-color: #8515FF;" stylesheets="@stylesheet.css" text="LEFT" textFill="WHITE">
+            <Button id="leftAlignId" fx:id="leftAlignButton" layoutX="15.0" layoutY="115.0" mnemonicParsing="false" onAction="#leftAlignment" style="-fx-background-color: #8515FF;" stylesheets="@stylesheet.css" text="LEFT" textFill="WHITE">
                 <font>
                     <Font name="Arial Bold" size="12.0" />
                 </font>
             </Button>
-            <Button id="centerAlignId" layoutX="65.0" layoutY="115.0" mnemonicParsing="false" onAction="#centerAlignment" style="-fx-background-color: #8515FF;" stylesheets="@stylesheet.css" text="CENTER" textFill="WHITE">
+            <Button id="centerAlignId" fx:id="centerAlignButton" layoutX="65.0" layoutY="115.0" mnemonicParsing="false" onAction="#centerAlignment" style="-fx-background-color: #8515FF;" stylesheets="@stylesheet.css" text="CENTER" textFill="WHITE">
                 <font>
                     <Font name="Arial Bold" size="12.0" />
                 </font>
