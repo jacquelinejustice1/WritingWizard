@@ -5,7 +5,7 @@ import Database.*;
 import static Database.DatabaseManager.*;
 import static java.util.Arrays.asList;
 
-import javafx.scene.control.TextField;
+//import javafx.scene.control.TextField;
 import java.awt.*;
 import java.io.File;
 import java.util.ArrayList;
@@ -14,7 +14,7 @@ import java.util.HashMap;
 
 public class Manager {
 
-    static User currentuser;
+    User currentuser;
     //Create Account Functions
 
     public boolean createUser(String username, String password){
@@ -42,14 +42,18 @@ public class Manager {
     //Login Functions
     //To alert the user if the account is valid or not
     public boolean validateLogin(String username, String password){ //validates user log in
-        if (DatabaseManager.userExists(username)) {
-            if (DatabaseManager.validateAccount(username, password) != null) {
-                currentuser = new User(username, password);
-                return true;
+        if (username.isBlank() || password.isBlank())
+            return false;
+        else {
+            if (DatabaseManager.userExists(username)) {
+                if (DatabaseManager.validateAccount(username, password) != null) {
+                    currentuser = new User(username, password);
+                    return true;
+                } else
+                    return false;
             } else
                 return false;
-        } else
-            return false;
+        }
     }
 
     public PermissionLevel checkPermissions(TextFile file) {
@@ -84,18 +88,18 @@ public class Manager {
     }
 
     //View-Only functions
-     public static String openFile(TextFile file){
+     public String openFile(TextFile file){
         return file.getContent();
         //opens text file from user that shared the text files to the document
      }
 
     //Main text editor functions
-    public static String openFileEdit(TextFile file){
+    public String openFileEdit(TextFile file){
         return file.getContent();
         //opens a user's already made documents into the textarea to edit
     }
 
-    public static void createFile(String name, String content, String owner, Permission[] perms){
+    public void createFile(String name, String content, String owner, Permission[] perms){
         TextFile file = new TextFile(name, content, owner, perms);
         //creates a file from the content in the textarea
     }
