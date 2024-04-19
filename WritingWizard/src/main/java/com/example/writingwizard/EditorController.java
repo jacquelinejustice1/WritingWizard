@@ -2,6 +2,7 @@ package com.example.writingwizard;
 
 
 import DataStructures.Permission;
+import DataStructures.PermissionLevel;
 import DataStructures.TextFile;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -20,8 +21,11 @@ import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 import javafx.scene.control.ComboBox;
 import java.awt.GraphicsEnvironment;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Optional;
+
+import static java.util.Arrays.asList;
 
 
 public class EditorController {
@@ -463,6 +467,13 @@ public class EditorController {
         openDialog.getDialogPane().setContent(dialogContentOpen);
 
         Optional<ButtonType> result = openDialog.showAndWait();
+
+        if (Manager.hasWrite()) {
+            //Manager.openFile(TextFile);
+        } else {
+            //Manager.openFile(TextFile);
+            //view only
+        }
 
         if (result.isPresent() && result.get() == ButtonType.FINISH) {
 

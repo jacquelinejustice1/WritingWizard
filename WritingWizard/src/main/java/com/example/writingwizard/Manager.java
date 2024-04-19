@@ -5,16 +5,17 @@ import Database.*;
 import static Database.DatabaseManager.*;
 import static java.util.Arrays.asList;
 
-//import javafx.scene.control.TextField;
 import java.awt.*;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
 
 public class Manager {
 
-    User currentuser;
+    static User currentuser;
+    static TextFile currentFile;
     //Create Account Functions
 
     public boolean createUser(String username, String password){
@@ -78,7 +79,7 @@ public class Manager {
         return hash;
     }*/
 
-    public HashMap<Permission[], TextFile> getFiles() {
+    public static HashMap<Permission[], TextFile> getFiles() {
         HashMap<Permission[], TextFile> hash = new HashMap<>();
         TextFile[] files = getUserFiles(currentuser);
         for (TextFile file: files) {
@@ -87,21 +88,39 @@ public class Manager {
         return hash;
     }
 
+    public static boolean hasWrite() {
+        ArrayList<Permission> perms = new ArrayList<>(asList(currentFile.getPermissions()));
+        ArrayList<PermissionLevel> permLevel = new ArrayList<>();
+        for (Permission p: perms) {
+            permLevel.add(p.getPermissionLevel());
+        }
+        if (permLevel.contains(PermissionLevel.write)) {
+            return true;
+        } else
+            return false;
+    }
+
     //View-Only functions
-     public String openFile(TextFile file){
+     public static String openFile(TextFile file){
         return file.getContent();
         //opens text file from user that shared the text files to the document
      }
 
     //Main text editor functions
-    public String openFileEdit(TextFile file){
+    public static String openFileEdit(TextFile file){
         return file.getContent();
         //opens a user's already made documents into the textarea to edit
     }
 
-    public void createFile(String name, String content, String owner, Permission[] perms){
-        TextFile file = new TextFile(name, content, owner, perms);
+    public void createFile(String name, String content){
+        currentFile = new TextFile(name, content, currentuser.getName(),
+                new Permission[]{new Permission(currentuser.getName(), PermissionLevel.write)});
         //creates a file from the content in the textarea
+    }
+
+    public void saveFile(String contents) {
+        currentFile.setContent(contents);
+        DatabaseManager.saveFile(currentFile);
     }
 
     //public boolean checkIfSaved(TextFile file){
