@@ -4,8 +4,8 @@ import java.io.*;
 import DataStructures.*;
 
 public class Database {
-    private static String userFile = "Users.dat";
-    private static String fileFile = "TextFiles.dat";
+    private static final String userFile = "Users.dat";
+    private static final String fileFile = "TextFiles.dat";
 
     /***
      * Read from user file
