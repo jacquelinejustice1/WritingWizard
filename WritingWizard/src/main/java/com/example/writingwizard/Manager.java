@@ -3,21 +3,25 @@ package com.example.writingwizard;
 import DataStructures.*;
 import Database.*;
 import static Database.DatabaseManager.*;
-import static java.util.Arrays.asList;
 
-import java.awt.*;
-import java.io.File;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.HashMap;
 
+/**
+ * @author Jordan Weaver
+ * Contains currentuser logged in and currentFile being used.
+ */
 public class Manager {
 
     static User currentuser;
     static TextFile currentFile;
     //Create Account Functions
 
+    /**
+     * Creates a user account if the username it does not already exist.
+     * @param username of user.
+     * @param password of account.
+     * @return whether user was successfully created.
+     */
     public boolean createUser(String username, String password){
         if (!DatabaseManager.userExists(username)) {
             User user = new User(username, password);
@@ -27,21 +31,32 @@ public class Manager {
         } else
             return false;
     }
-    /*
-
+    /**
+     * Validates the username entered and reentered are equal.
+     * @param username of user.
+     * @param usernameReenter of user.
+     * @return whether the params are equal.
      */
-    //I need the following functions for alerts on the createAccount page to send to the user
-
     public boolean validateUserNameCreation(String username, String usernameReenter){
         return username.equalsIgnoreCase(usernameReenter);
     }
 
+    /**
+     * Validates the password entered and reentered are equal.
+     * @param password of account.
+     * @param reEnteredPassword of account.
+     * @return whether params are equal.
+     */
     public boolean validatePasswordCreation(String password, String reEnteredPassword){
         return password.equals(reEnteredPassword);
     }
 
-    //Login Functions
-    //To alert the user if the account is valid or not
+    /**
+     * Validates the user's login attempt.
+     * @param username of user.
+     * @param password of user.
+     * @return whether successfully logged in.
+     */
     public boolean validateLogin(String username, String password){ //validates user log in
         if (username.isBlank() || password.isBlank())
             return false;
@@ -57,6 +72,11 @@ public class Manager {
         }
     }
 
+    /**
+     * Checks currentuser's permission on the given file.
+     * @param file TextFile.
+     * @return user's permissionLevel on the file.
+     */
     public static PermissionLevel checkPermissions(TextFile file) {
         if (currentuser.getName().equals(file.getOwnerName())) {
             return PermissionLevel.write;
@@ -67,8 +87,6 @@ public class Manager {
                 return (perm.getPermissionLevel());
             }
         }
-        // if not, check if they have read permissions
-        // check if they have write permissions
         return PermissionLevel.none;
     }
 
@@ -81,6 +99,10 @@ public class Manager {
         return hash;
     }*/
 
+    /**
+     * Maps PermissionLevel to TextFile.
+     * @return the paired PermissionLevels and TextFiles.
+     */
     public static HashMap<PermissionLevel, TextFile> getFiles() {
         HashMap<PermissionLevel, TextFile> hash = new HashMap<>();
         TextFile[] files = getUserFiles(currentuser);
@@ -90,33 +112,55 @@ public class Manager {
         return hash;
     }
 
+    /**
+     * checks if user has write permissions.
+     * @return whether user has write permissions.
+     */
     public static boolean hasWrite() {
         return (checkPermissions(currentFile) == PermissionLevel.write);
     }
 
-    //View-Only functions
+    /**
+     * Opens the given file.
+     * @param file to open.
+     * @return content of file.
+     */
      public static String openFile(TextFile file){
         return file.getContent();
         //opens text file from user that shared the text files to the document
      }
 
+    /**
+     * Creates a file.
+     * @param name filename.
+     * @param content file contents.
+     */
     public static void createFile(String name, String content){
         currentFile = new TextFile(name, content, currentuser.getName(),
                 new Permission[]{});
         //creates a file from the content in the textarea
     }
 
+    /**
+     * Saves a file.
+     * @param contents to save.
+     */
     public void saveFile(String contents) {
         currentFile.setContent(contents);
         DatabaseManager.saveFile(currentFile);
     }
 
-    /*
-    public void saveSharedInfo(PermissionLevel permissionLevel, String usernameToShareWith){
-        sets the currentfile's permission level to the one selected by the currect user
-        and gives the username entered that permission to the document
-    }
+    /**
+     * Saves shared information.
+     * @param permissionLevel PermissionLevel the added user should have.
+     * @param usernameToShareWith user to share the file with.
      */
+    public void saveSharedInfo(PermissionLevel permissionLevel, String usernameToShareWith) {
+        Permission p = new Permission(usernameToShareWith, permissionLevel);
+        currentFile.addPermission(p);
+        //sets the currentfile's permission level to the one selected by the currect user
+        //and gives the username entered that permission to the document
+    }
 
     //public boolean checkIfSaved(TextFile file){
        // return fileExists(file);
