@@ -66,11 +66,7 @@ public class EditorController {
     private TextArea docTextArea;
     private Scene loginScene;
 
-    //share dialog variables
-    ComboBox<String> sharingOptions = new ComboBox<>();
-    TextField shareUsernameDialog = new TextField();
-    Label shareType = new Label("View Only, Modifiable, or None");
-    Label usernameOptionLabel = new Label("Share with");
+
 
     //for text editing buttons
     String selectedText;
@@ -409,6 +405,11 @@ public class EditorController {
      * 2- Enter the username of whom the user wishes to give the permissions to
      */
     public void shareDocument(ActionEvent actionEvent) {
+        //share dialog variables
+        ComboBox<PermissionLevel> sharingOptions = new ComboBox<>();
+        TextField shareUsernameDialog = new TextField();
+        Label shareType = new Label("Set Permission Level: None, Read, Write");
+        Label usernameOptionLabel = new Label("Share with");
         //setting the dialog up
         Dialog<ButtonType> dialog = new Dialog<>();
         dialog.initOwner(((Node) actionEvent.getSource()).getScene().getWindow());
@@ -421,7 +422,7 @@ public class EditorController {
 
         //adding what type of share file
         dialogContent.getChildren().add(shareType);
-        sharingOptions.getItems().addAll("View Only", "Modifiable","None");
+        sharingOptions.getItems().addAll(PermissionLevel.none,PermissionLevel.read,PermissionLevel.write);
         dialogContent.getChildren().addAll(sharingOptions);
 
         //adding username
@@ -433,8 +434,12 @@ public class EditorController {
         //buttons
         dialog.getDialogPane().getButtonTypes().addAll(ButtonType.FINISH, ButtonType.CANCEL);
 
-        dialog.showAndWait();
 
+        Optional<ButtonType> result = dialog.showAndWait();
+
+        if(result.isPresent() && result.get() == ButtonType.FINISH) {
+
+        }
 
         //clearing when done
         dialogContent.getChildren().clear();
@@ -442,6 +447,13 @@ public class EditorController {
 
     }
 
+    /**
+     *
+     * @param actionEvent
+     * When the user clicks the open file button, the user is presented with a prompt that
+     * allows the user to select a file. Based on the selected files permissions, the
+     * file can either open in the current text editing scene or the view only scene.
+     */
     public void openDocument(ActionEvent actionEvent) {
         Label selectFile = new Label("Select a file to open:");
         ComboBox<TextFile> textFileNames = new ComboBox<>();
@@ -485,6 +497,12 @@ public class EditorController {
         dialogContentOpen.getChildren().clear();
     }
 
+    /**
+     *
+     * @param actionEvent
+     * When the user clicks the new file buttons, the text area is cleared
+     * and a new file is created.
+     */
     public void createNewDocument(ActionEvent actionEvent) {
         Label confirmNewDoc = new Label("Would you like to create a new document?");
         Label confirmBeforeDelete = new Label("Make sure the current document is saved before proceeding.");

@@ -111,6 +111,13 @@ public class Manager {
         DatabaseManager.saveFile(currentFile);
     }
 
+    /*
+    public void saveSharedInfo(PermissionLevel permissionLevel, String usernameToShareWith){
+        sets the currentfile's permission level to the one selected by the currect user
+        and gives the username entered that permission to the document
+    }
+     */
+
     //public boolean checkIfSaved(TextFile file){
        // return fileExists(file);
     //}
