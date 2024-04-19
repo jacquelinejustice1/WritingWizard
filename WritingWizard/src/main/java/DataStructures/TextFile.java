@@ -1,6 +1,8 @@
 package DataStructures;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * @author benbruyns
@@ -88,6 +90,12 @@ public class TextFile implements Serializable {
      * @return return true if successful
      */
     public boolean addPermission(Permission permission) {
+
+        ArrayList<Permission> newPerms = new ArrayList<>(Arrays.asList(permissions));
+        newPerms.add(permission);
+        permissions = new Permission[newPerms.size()];
+        permissions = newPerms.toArray(permissions);
+
         return true;
     }
 }
