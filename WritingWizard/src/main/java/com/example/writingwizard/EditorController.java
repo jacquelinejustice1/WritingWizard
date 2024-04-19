@@ -101,8 +101,8 @@ public class EditorController {
     public TextArea getDocTextArea(){
         return docTextArea;
     };
-    public void getDocumentName(TextField documentName){
-        this.documentName = documentName;
+    public TextField getDocumentName(){
+        return documentName;
     }
 
     /**
@@ -496,15 +496,15 @@ public class EditorController {
         newDocDialog.setTitle("Create New Document");
         newDocDialog.setWidth(500);
         newDocDialog.setHeight(250);
-        VBox dialogContentClear = new VBox();
-        dialogContentClear.setSpacing(10);
-        dialogContentClear.setPadding(new Insets(10));
+        VBox dialogContentNewFile = new VBox();
+        dialogContentNewFile.setSpacing(10);
+        dialogContentNewFile.setPadding(new Insets(10));
 
-        dialogContentClear.getChildren().add(confirmNewDoc);
-        dialogContentClear.getChildren().add(confirmBeforeDelete);
+        dialogContentNewFile.getChildren().add(confirmNewDoc);
+        dialogContentNewFile.getChildren().add(confirmBeforeDelete);
 
         newDocDialog.getDialogPane().getButtonTypes().addAll(ButtonType.FINISH, ButtonType.CANCEL);
-        newDocDialog.getDialogPane().setContent(dialogContentClear);
+        newDocDialog.getDialogPane().setContent(dialogContentNewFile);
 
         Optional<ButtonType> result = newDocDialog.showAndWait();
 
@@ -517,7 +517,37 @@ public class EditorController {
     }
 
     public void saveDocument(ActionEvent actionEvent) {
-       manager.saveFile(docTextArea.getText());
+        if(getDocumentName().getText().isEmpty()){
+            Dialog<ButtonType> saveDocumentName = new Dialog<>();
+            TextField docNameIfEmpty = new TextField();
+            docNameIfEmpty.setPromptText(("Enter document name here"));
+            Label docNameEnter = new Label("The document is not named, please enter a name:");
+            saveDocumentName.initOwner(((Node) actionEvent.getSource()).getScene().getWindow());
+            saveDocumentName.setTitle("Create New Document");
+            saveDocumentName.setWidth(500);
+            saveDocumentName.setHeight(250);
+            VBox dialogContentSaveFile = new VBox();
+            dialogContentSaveFile.setSpacing(10);
+            dialogContentSaveFile.setPadding(new Insets(10));
+
+            dialogContentSaveFile.getChildren().add(docNameEnter);
+            dialogContentSaveFile.getChildren().add(docNameIfEmpty);
+
+            saveDocumentName.getDialogPane().getButtonTypes().addAll(ButtonType.APPLY, ButtonType.CANCEL);
+            saveDocumentName.getDialogPane().setContent(dialogContentSaveFile);
+
+            Optional<ButtonType> result = saveDocumentName.showAndWait();
+
+            if (result.isPresent() && result.get() == ButtonType.APPLY) {
+                Manager.currentFile.setFileName(docNameIfEmpty.getText());
+                manager.saveFile(docTextArea.getText());
+
+            }
+
+        }else {
+            Manager.currentFile.setFileName(documentName.getText());
+            manager.saveFile(docTextArea.getText());
+        }
     }
 
 
