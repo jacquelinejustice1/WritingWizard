@@ -441,12 +441,12 @@ public class EditorController {
 
     public void openDocument(ActionEvent actionEvent) {
         Label selectFile = new Label("Select a file to open:");
-        ComboBox<String> textFileNames = new ComboBox<>();
+        ComboBox<TextFile> textFileNames = new ComboBox<>();
         textFileNames.setPromptText("Document Name : Permission");
-        HashMap<PermissionLevel, TextFile> filesMap = manager.getFiles();
+        HashMap<PermissionLevel, TextFile> filesMap = Manager.getFiles();
 
         for (TextFile file : filesMap.values()) {
-            textFileNames.getItems().add(file.getFileName());
+            textFileNames.getItems().add(file);
         }
 
         textFileNames.setMinWidth(400);
@@ -468,29 +468,56 @@ public class EditorController {
 
         Optional<ButtonType> result = openDialog.showAndWait();
 
-        if (Manager.hasWrite()) {
+       // if (Manager.hasWrite()) {
             //Manager.openFile(TextFile);
-        } else {
+       // } else {
             //Manager.openFile(TextFile);
             //view only
-        }
+       // }
 
         if (result.isPresent() && result.get() == ButtonType.FINISH) {
-
-            stage.setScene(viewOnlyScene);
-            stage.setTitle("View Only");
-            stage.show();
+            if(Manager.hasWrite()){
+                Manager.openFile(textFileNames.getValue());
+            }else{
+                Manager.openFile(textFileNames.getValue());
+                stage.setScene(viewOnlyScene);
+                stage.setTitle("View Only");
+                stage.show();
+            }
         }
         dialogContentOpen.getChildren().clear();
     }
 
     public void createNewDocument(ActionEvent actionEvent) {
-       // manager.createFile(documentName.getText(),docTextArea.getText(),manager.currentuser);
+        Label confirmNewDoc = new Label("Would you like to create a new document?");
+        Label confirmBeforeDelete = new Label("Make sure the current document is saved before proceeding.");
+        Dialog<ButtonType> newDocDialog = new Dialog<>();
+        newDocDialog.initOwner(((Node) actionEvent.getSource()).getScene().getWindow());
+        newDocDialog.setTitle("Create New Document");
+        newDocDialog.setWidth(500);
+        newDocDialog.setHeight(250);
+        VBox dialogContentClear = new VBox();
+        dialogContentClear.setSpacing(10);
+        dialogContentClear.setPadding(new Insets(10));
+
+        dialogContentClear.getChildren().add(confirmNewDoc);
+        dialogContentClear.getChildren().add(confirmBeforeDelete);
+
+        newDocDialog.getDialogPane().getButtonTypes().addAll(ButtonType.FINISH, ButtonType.CANCEL);
+        newDocDialog.getDialogPane().setContent(dialogContentClear);
+
+        Optional<ButtonType> result = newDocDialog.showAndWait();
+
+        if (result.isPresent() && result.get() == ButtonType.FINISH) {
+            docTextArea.clear();
+            Manager.createFile(documentName.getText(),docTextArea.getText());
+
+        }
 
     }
 
     public void saveDocument(ActionEvent actionEvent) {
-
+       manager.saveFile(docTextArea.getText());
     }
 
 

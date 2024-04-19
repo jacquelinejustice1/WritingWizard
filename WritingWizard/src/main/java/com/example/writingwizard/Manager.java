@@ -100,7 +100,7 @@ public class Manager {
         //opens text file from user that shared the text files to the document
      }
 
-    public void createFile(String name, String content){
+    public static void createFile(String name, String content){
         currentFile = new TextFile(name, content, currentuser.getName(),
                 new Permission[]{});
         //creates a file from the content in the textarea
