@@ -96,6 +96,9 @@ public class EditorController {
     public void setDocTextArea(TextArea docTextArea){
         this.docTextArea = docTextArea;
     }
+    public void setDocumentName(TextField documentName){
+        this.documentName = documentName;
+    }
 
     //getters
     public TextArea getDocTextArea(){
@@ -468,13 +471,6 @@ public class EditorController {
 
         Optional<ButtonType> result = openDialog.showAndWait();
 
-       // if (Manager.hasWrite()) {
-            //Manager.openFile(TextFile);
-       // } else {
-            //Manager.openFile(TextFile);
-            //view only
-       // }
-
         if (result.isPresent() && result.get() == ButtonType.FINISH) {
             if(Manager.hasWrite()){
                 Manager.openFile(textFileNames.getValue());
@@ -483,6 +479,7 @@ public class EditorController {
                 stage.setScene(viewOnlyScene);
                 stage.setTitle("View Only");
                 stage.show();
+                //Manager.openFile(textFileNames.getValue());
             }
         }
         dialogContentOpen.getChildren().clear();
@@ -516,6 +513,12 @@ public class EditorController {
 
     }
 
+    /**
+     *
+     * @param actionEvent
+     * When the save document button is clicked, the document will save
+     * if the document is not named, prompts the user to enter a name for the document
+     */
     public void saveDocument(ActionEvent actionEvent) {
         if(getDocumentName().getText().isEmpty()){
             Dialog<ButtonType> saveDocumentName = new Dialog<>();
@@ -541,7 +544,7 @@ public class EditorController {
             if (result.isPresent() && result.get() == ButtonType.APPLY) {
                 Manager.currentFile.setFileName(docNameIfEmpty.getText());
                 manager.saveFile(docTextArea.getText());
-
+                setDocumentName(docNameIfEmpty);
             }
 
         }else {
