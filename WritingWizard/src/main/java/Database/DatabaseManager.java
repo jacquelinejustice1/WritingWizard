@@ -111,4 +111,25 @@ public class DatabaseManager {
 
         return userFiles;
     }
+
+    /**
+     * Deletes a file from storage
+     * @param file file to be deleted
+     * @return true if any files were deleted
+     */
+    public static boolean deleteFile(TextFile file) {
+        TextFile[] allFiles = db.readFiles();
+        ArrayList<TextFile> fileList = new ArrayList<>(Arrays.asList(allFiles));
+
+        boolean success = fileList.removeIf(textFile -> (file.getOwnerName().equals(textFile.getOwnerName())
+                && file.getFileName().equals(textFile.getFileName())));
+
+        allFiles = new TextFile[fileList.size()];
+
+        allFiles = fileList.toArray(allFiles);
+
+        db.writeFiles(allFiles);
+
+        return success;
+    }
 }
