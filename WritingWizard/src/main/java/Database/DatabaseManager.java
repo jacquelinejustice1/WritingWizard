@@ -24,6 +24,16 @@ public class DatabaseManager {
     }
 
     /**
+     * Determines if a file exists
+     * @param file TextFile to find
+     * @return if file was found
+     */
+
+    //public static boolean fileExists(TextFile file) {
+
+    //}
+
+    /**
      * Verifies a user
      * @param username
      * @param password

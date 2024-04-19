@@ -50,16 +50,19 @@ public class MainApplication extends Application {
         textEditorController.setLoginScene(loginScene);
         loginController.setTextEditorScene(textEditorScene);
 
+        textEditorController.setViewOnlyScene(viewOnlyScene);
+        viewOnlyController.setTextEditorScene(textEditorScene);
+
+
+
         viewOnlyController.setLoginScene(loginScene);
 
         textEditorController.initializeFonts();
         textEditorController.initializeFontSize();
         textEditorController.initializeFontColor();
-
-        textEditorScene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("stylesheet.css")).toExternalForm());
-
         textEditorController.initializeParAndWordCount();
 
+        textEditorScene.getStylesheets().add(getClass().getResource("stylesheet.css").toExternalForm());
 
 
         stage.setScene(loginScene);

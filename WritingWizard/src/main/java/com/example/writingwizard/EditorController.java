@@ -1,12 +1,15 @@
 package com.example.writingwizard;
 
 
+import DataStructures.Permission;
+import DataStructures.PermissionLevel;
 import DataStructures.TextFile;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -15,16 +18,28 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.scene.control.ComboBox;
 import java.awt.GraphicsEnvironment;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Optional;
+
+import static java.util.Arrays.asList;
 
 
 public class EditorController {
 
-
+    @FXML
+    private Button underlineButton;
+    @FXML
+    private Button strikeButton;
+    @FXML
+    private Button rightAlignButton;
+    @FXML
+    private Button leftAlignButton;
+    @FXML
+    private Button centerAlignButton;
     Manager manager = new Manager();
     @FXML
     private Label counter;
@@ -38,8 +53,6 @@ public class EditorController {
     private ColorPicker fontColor;
     @FXML
     private ComboBox<Integer> fontSize = new ComboBox<>();
-    @FXML
-    private Button signOutButton;
     @FXML
     private Button shareButton;
     @FXML
@@ -65,8 +78,13 @@ public class EditorController {
 
     //for clear button
     Label confirm = new Label("Are you sure you would \n like to clear the text area?");
+    private Scene viewOnlyScene;
 
     //setters
+    public void setViewOnlyScene(Scene viewOnlyScene) {
+        this.viewOnlyScene = viewOnlyScene;
+    }
+    
     public void setStage(Stage stage) {
         this.stage = stage;
     }
@@ -313,7 +331,10 @@ public class EditorController {
      * When the user clicks the Underline Text button, text in the text area is underlined
      */
     public void underlineText(ActionEvent actionEvent) {
-
+        underlineButton.setOnAction(e ->{
+            docTextArea.getStyleClass().clear();
+            docTextArea.getStyleClass().add("underline-textarea");
+        });
     }
 
     /**
@@ -322,37 +343,54 @@ public class EditorController {
      * When the user clicks the strike button, text in the text area is struck out
      */
     public void strikeText(ActionEvent actionEvent) {
-        String selectedText = docTextArea.getSelectedText();
-        Text strikeThroughText = new Text(selectedText);
-        if(!selectedText.isEmpty()){
-            strikeThroughText.setStrikethrough(true);
-        }
+        strikeButton.setOnAction(e ->{
+            docTextArea.getStyleClass().clear();
+            docTextArea.getStyleClass().add("strike-out-textarea");
+        });
+
     }
 
     /**
      *
      * @param actionEvent
+     * Aligns text in the textarea to the right alignment
      */
     public void rightAlignment(ActionEvent actionEvent) {
+        rightAlignButton.setOnAction(e ->{
+            docTextArea.getStyleClass().clear();
+            docTextArea.getStyleClass().add("right-aligned-textarea");
+        });
+
     }
     /**
      *
      * @param actionEvent
+     * When clicked, the text in the text area is aligned to the left
      */
-    public void leftAlignment(ActionEvent actionEvent) {
+    public void leftAlignment(ActionEvent actionEvent){
+        leftAlignButton.setOnAction(e ->{
+            docTextArea.getStyleClass().clear();
+            docTextArea.getStyleClass().add("left-aligned-textarea");
+        });
     }
     /**
      *
      * @param actionEvent
+     * When clicked, the text in the text area is center aligned
      */
     public void centerAlignment(ActionEvent actionEvent) {
+        centerAlignButton.setOnAction(e -> {
+            docTextArea.getStyleClass().clear();
+            docTextArea.getStyleClass().add("centered-textarea");
+        });
+
     }
 
-    /**
-     *
-     * @param actionEvent
-     * When the user clicks the sign-out button, the stage is returned to the login stage
-     */
+        /**
+         *
+         * @param actionEvent
+         * When the user clicks the sign-out button, the stage is returned to the login stage
+         */
     public void signOut(ActionEvent actionEvent) {
         stage.setScene(loginScene);
         stage.setTitle("Writing Wizard");
@@ -394,6 +432,7 @@ public class EditorController {
 
         dialog.showAndWait();
 
+
         //clearing when done
         dialogContent.getChildren().clear();
         sharingOptions.getItems().clear();
@@ -403,12 +442,19 @@ public class EditorController {
     public void openDocument(ActionEvent actionEvent) {
         Label selectFile = new Label("Select a file to open:");
         ComboBox<String> textFileNames = new ComboBox<>();
+        textFileNames.setPromptText("Document Name : Permission");
+        HashMap<Permission[], TextFile> filesMap = manager.getFiles();
+
+        for (TextFile file : filesMap.values()) {
+            textFileNames.getItems().add(file.getFileName());
+        }
+
         textFileNames.setMinWidth(400);
         //setting the dialog up
         Dialog<ButtonType> openDialog = new Dialog<>();
         openDialog.initOwner(((Node) actionEvent.getSource()).getScene().getWindow());
         openDialog.setTitle("Open Document");
-        openDialog.setWidth(700);
+        openDialog.setWidth(900);
         openDialog.setHeight(700);
         VBox dialogContentOpen = new VBox();
         dialogContentOpen.setSpacing(10);
@@ -420,15 +466,31 @@ public class EditorController {
         openDialog.getDialogPane().getButtonTypes().addAll(ButtonType.FINISH, ButtonType.CANCEL);
         openDialog.getDialogPane().setContent(dialogContentOpen);
 
-        openDialog.showAndWait();
+        Optional<ButtonType> result = openDialog.showAndWait();
 
+        if (Manager.hasWrite()) {
+            //Manager.openFile(TextFile);
+        } else {
+            //Manager.openFile(TextFile);
+            //view only
+        }
+
+        if (result.isPresent() && result.get() == ButtonType.FINISH) {
+
+            stage.setScene(viewOnlyScene);
+            stage.setTitle("View Only");
+            stage.show();
+        }
         dialogContentOpen.getChildren().clear();
     }
 
     public void createNewDocument(ActionEvent actionEvent) {
+       // manager.createFile(documentName.getText(),docTextArea.getText(),manager.currentuser);
+
     }
 
     public void saveDocument(ActionEvent actionEvent) {
+
     }
 
 
