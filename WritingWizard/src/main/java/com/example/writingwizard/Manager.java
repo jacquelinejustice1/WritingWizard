@@ -57,8 +57,10 @@ public class Manager {
         }
     }
 
-    public PermissionLevel checkPermissions(TextFile file) {
-        // check if currentuser is owner
+    public static PermissionLevel checkPermissions(TextFile file) {
+        if (currentuser.getName().equals(file.getOwnerName())) {
+            return PermissionLevel.write;
+        }
         Permission[] perms = file.getPermissions();
         for (Permission perm: perms) {
             if (perm.getUsername().equals(currentuser.getName())) {
@@ -79,27 +81,17 @@ public class Manager {
         return hash;
     }*/
 
-    public static HashMap<Permission[], TextFile> getFiles() {
-        HashMap<Permission[], TextFile> hash = new HashMap<>();
+    public static HashMap<PermissionLevel, TextFile> getFiles() {
+        HashMap<PermissionLevel, TextFile> hash = new HashMap<>();
         TextFile[] files = getUserFiles(currentuser);
         for (TextFile file: files) {
-            hash.put(file.getPermissions(), file);
+            hash.put(checkPermissions(currentFile), file);
         }
         return hash;
     }
 
     public static boolean hasWrite() {
-        if (currentuser.getName().equals(currentFile.getOwnerName())) {
-            return true;
-        }
-
-        ArrayList<Permission> perms = new ArrayList<>(asList(currentFile.getPermissions()));
-        ArrayList<PermissionLevel> permLevel = new ArrayList<>();
-        for (Permission p: perms) {
-            permLevel.add(p.getPermissionLevel());
-        }
-
-        return (permLevel.contains(PermissionLevel.write));
+        return (checkPermissions(currentFile) == PermissionLevel.write);
     }
 
     //View-Only functions
@@ -107,12 +99,6 @@ public class Manager {
         return file.getContent();
         //opens text file from user that shared the text files to the document
      }
-
-    //Main text editor functions
-    public static String openFileEdit(TextFile file){
-        return file.getContent();
-        //opens a user's already made documents into the textarea to edit
-    }
 
     public void createFile(String name, String content){
         currentFile = new TextFile(name, content, currentuser.getName(),

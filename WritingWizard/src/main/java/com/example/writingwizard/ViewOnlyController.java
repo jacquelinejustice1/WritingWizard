@@ -62,7 +62,7 @@ public class ViewOnlyController {
         Label selectFile = new Label("Select a file to open (view only):");
         ComboBox<String> textFileNamesVO = new ComboBox<>();
         textFileNamesVO.setPromptText("Document Name : Permission");
-        HashMap<Permission[], TextFile> filesMap = manager.getFiles();
+        HashMap<DataStructures.PermissionLevel, TextFile> filesMap = manager.getFiles();
 
         for (TextFile file : filesMap.values()) {
             textFileNamesVO.getItems().add(file.getFileName());

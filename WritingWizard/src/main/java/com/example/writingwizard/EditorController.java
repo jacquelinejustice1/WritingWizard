@@ -443,7 +443,7 @@ public class EditorController {
         Label selectFile = new Label("Select a file to open:");
         ComboBox<String> textFileNames = new ComboBox<>();
         textFileNames.setPromptText("Document Name : Permission");
-        HashMap<Permission[], TextFile> filesMap = manager.getFiles();
+        HashMap<PermissionLevel, TextFile> filesMap = manager.getFiles();
 
         for (TextFile file : filesMap.values()) {
             textFileNames.getItems().add(file.getFileName());
