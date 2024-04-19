@@ -89,15 +89,17 @@ public class Manager {
     }
 
     public static boolean hasWrite() {
+        if (currentuser.getName().equals(currentFile.getOwnerName())) {
+            return true;
+        }
+
         ArrayList<Permission> perms = new ArrayList<>(asList(currentFile.getPermissions()));
         ArrayList<PermissionLevel> permLevel = new ArrayList<>();
         for (Permission p: perms) {
             permLevel.add(p.getPermissionLevel());
         }
-        if (permLevel.contains(PermissionLevel.write)) {
-            return true;
-        } else
-            return false;
+
+        return (permLevel.contains(PermissionLevel.write));
     }
 
     //View-Only functions
@@ -114,7 +116,7 @@ public class Manager {
 
     public void createFile(String name, String content){
         currentFile = new TextFile(name, content, currentuser.getName(),
-                new Permission[]{new Permission(currentuser.getName(), PermissionLevel.write)});
+                new Permission[]{});
         //creates a file from the content in the textarea
     }
 
