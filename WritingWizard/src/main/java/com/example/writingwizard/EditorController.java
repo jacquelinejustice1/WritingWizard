@@ -1,7 +1,6 @@
 package com.example.writingwizard;
 
 
-import DataStructures.Permission;
 import DataStructures.PermissionLevel;
 import DataStructures.TextFile;
 import javafx.collections.FXCollections;
@@ -9,10 +8,11 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
-import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -21,15 +21,16 @@ import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 import javafx.scene.control.ComboBox;
 import java.awt.GraphicsEnvironment;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Optional;
-
-import static java.util.Arrays.asList;
 
 
 public class EditorController {
 
+    @FXML
+    private Button undoStrikeButton;
+    @FXML
+    private Button undoUnderlineButton;
     @FXML
     private Button underlineButton;
     @FXML
@@ -46,60 +47,44 @@ public class EditorController {
     @FXML
     private Label wordCounter;
     @FXML
-    private Button saveDocumentButton;
-    @FXML
     private ComboBox<String> fontSelect = new ComboBox<>();
     @FXML
     private ColorPicker fontColor;
     @FXML
     private ComboBox<Integer> fontSize = new ComboBox<>();
     @FXML
-    private Button shareButton;
-    @FXML
-    private Button openFileButton;
-    @FXML
-    private Button newFileButton;
-    @FXML
     private TextField documentName;
     private Stage stage;
     @FXML
     private TextArea docTextArea;
     private Scene loginScene;
-
-
-
-    //for text editing buttons
-    String selectedText;
     Font font;
 
     //for clear button
     Label confirm = new Label("Are you sure you would \n like to clear the text area?");
     private Scene viewOnlyScene;
+    private Scene textEditorScene;
 
     //setters
     public void setViewOnlyScene(Scene viewOnlyScene) {
         this.viewOnlyScene = viewOnlyScene;
     }
-    
     public void setStage(Stage stage) {
         this.stage = stage;
-    }
-    public void setTextEditorScene(Scene textEditorScene) {
     }
     public void setLoginScene(Scene loginScene) {
         this.loginScene = loginScene;
     }
-    public void setDocTextArea(TextArea docTextArea){
-        this.docTextArea = docTextArea;
-    }
     public void setDocumentName(TextField documentName){
         this.documentName = documentName;
     }
+    public void setTextEditorScene(Scene textEditorScene){ this.textEditorScene = textEditorScene; }
 
     //getters
     public TextArea getDocTextArea(){
         return docTextArea;
-    };
+    }
+
     public TextField getDocumentName(){
         return documentName;
     }
@@ -145,17 +130,14 @@ public class EditorController {
 
         setColor(Color.BLACK);
 
-        fontColor.setOnAction(e -> {
-            setColor(fontColor.getValue());
-        });
+        fontColor.setOnAction(e -> setColor(fontColor.getValue()));
     }
 
     /**
      *
-     * @param actionEvent
      * When the user selects a font, the font is changes in the text area
      */
-    public void changeFontSize(ActionEvent actionEvent) {
+    public void changeFontSize() {
         if(fontSelect.getValue() == null && fontSize.getValue() == null){
             font = Font.font("Arial", FontWeight.NORMAL, 11);
             getDocTextArea().setFont(font);
@@ -169,7 +151,11 @@ public class EditorController {
             getDocTextArea().setFont(Font.font(fontSelect.getValue(),FontWeight.NORMAL,fontSize.getValue()));
         }
     }
-    public void changeFont(ActionEvent actionEvent) {
+
+    /**
+     * Changes the font to the one the user selects
+     */
+    public void changeFont() {
         if(fontSelect.getValue() == null && fontSize.getValue() == null){
             font = Font.font("Arial", FontWeight.NORMAL, 11);
             getDocTextArea().setFont(font);
@@ -184,6 +170,11 @@ public class EditorController {
         }
     }
 
+    /**
+     *
+     * @param actionEvent
+     * Clears the text area when the dialog option is confirmed
+     */
     public void clearTextArea(ActionEvent actionEvent) {
         Dialog<ButtonType> dialogClear = new Dialog<>();
         dialogClear.initOwner(((Node) actionEvent.getSource()).getScene().getWindow());
@@ -208,15 +199,12 @@ public class EditorController {
     }
     /**
      *
-     * @param actionEvent
      * Changes the font color
      */
-    public void changeFontColor(ActionEvent actionEvent) {
+    public void changeFontColor() {
         setColor(Color.BLACK);
 
-        fontColor.setOnAction(e -> {
-            setColor(fontColor.getValue());
-        });
+        fontColor.setOnAction(e -> setColor(fontColor.getValue()));
 
     }
     /**
@@ -277,10 +265,9 @@ public class EditorController {
 
     /**
      *
-     * @param actionEvent
      * When user clicks Bold Text button, text in the text area turns bold.
      */
-    public void boldText(ActionEvent actionEvent) {
+    public void boldText() {
         if(fontSelect.getValue() == null && fontSize.getValue() == null){
             font = Font.font("Arial", FontWeight.BOLD, 11);
             getDocTextArea().setFont(font);
@@ -302,10 +289,9 @@ public class EditorController {
 
     /**
      *
-     * @param actionEvent
      * When the user clicks the italic Text button, text in the text area turns italic
      */
-    public void italicText(ActionEvent actionEvent) {
+    public void italicText() {
         if(fontSelect.getValue() == null && fontSize.getValue() == null){
             font = Font.font("Arial", FontPosture.ITALIC, 11);
             getDocTextArea().setFont(font);
@@ -326,10 +312,9 @@ public class EditorController {
 
     /**
      *
-     * @param actionEvent
      * When the user clicks the Underline Text button, text in the text area is underlined
      */
-    public void underlineText(ActionEvent actionEvent) {
+    public void underlineText() {
         underlineButton.setOnAction(e ->{
             docTextArea.getStyleClass().clear();
             docTextArea.getStyleClass().add("underline-textarea");
@@ -338,10 +323,9 @@ public class EditorController {
 
     /**
      *
-     * @param actionEvent
      * When the user clicks the strike button, text in the text area is struck out
      */
-    public void strikeText(ActionEvent actionEvent) {
+    public void strikeText() {
         strikeButton.setOnAction(e ->{
             docTextArea.getStyleClass().clear();
             docTextArea.getStyleClass().add("strike-out-textarea");
@@ -350,11 +334,28 @@ public class EditorController {
     }
 
     /**
+     * When clicked, the strike is gone
+     */
+    public void undoStrike() {
+        undoStrikeButton.setOnAction(e ->{
+            docTextArea.getStyleClass().add("strike-out-undo-textarea");
+        });
+    }
+
+    /**
+     * When clicked, the underline is gone
+     */
+    public void undoUnderline() {
+        undoUnderlineButton.setOnAction(e ->{
+            docTextArea.getStyleClass().add("underline-textarea-undo");
+        });
+    }
+
+    /**
      *
-     * @param actionEvent
      * Aligns text in the textarea to the right alignment
      */
-    public void rightAlignment(ActionEvent actionEvent) {
+    public void rightAlignment() {
         rightAlignButton.setOnAction(e ->{
             docTextArea.getStyleClass().clear();
             docTextArea.getStyleClass().add("right-aligned-textarea");
@@ -363,10 +364,9 @@ public class EditorController {
     }
     /**
      *
-     * @param actionEvent
      * When clicked, the text in the text area is aligned to the left
      */
-    public void leftAlignment(ActionEvent actionEvent){
+    public void leftAlignment(){
         leftAlignButton.setOnAction(e ->{
             docTextArea.getStyleClass().clear();
             docTextArea.getStyleClass().add("left-aligned-textarea");
@@ -374,10 +374,9 @@ public class EditorController {
     }
     /**
      *
-     * @param actionEvent
      * When clicked, the text in the text area is center aligned
      */
-    public void centerAlignment(ActionEvent actionEvent) {
+    public void centerAlignment() {
         centerAlignButton.setOnAction(e -> {
             docTextArea.getStyleClass().clear();
             docTextArea.getStyleClass().add("centered-textarea");
@@ -385,12 +384,11 @@ public class EditorController {
 
     }
 
-        /**
-         *
-         * @param actionEvent
-         * When the user clicks the sign-out button, the stage is returned to the login stage
-         */
-    public void signOut(ActionEvent actionEvent) {
+    /**
+     *
+     * Signs the user out
+     */
+    public void signOut() {
         stage.setScene(loginScene);
         stage.setTitle("Writing Wizard");
         stage.show();
@@ -438,7 +436,7 @@ public class EditorController {
         Optional<ButtonType> result = dialog.showAndWait();
 
         if(result.isPresent() && result.get() == ButtonType.FINISH) {
-
+            manager.saveSharedInfo(sharingOptions.getValue(),shareUsernameDialog.getText());
         }
 
         //clearing when done
@@ -482,12 +480,16 @@ public class EditorController {
         openDialog.getDialogPane().setContent(dialogContentOpen);
 
         Optional<ButtonType> result = openDialog.showAndWait();
+        ViewOnlyController viewOnlyController = new ViewOnlyController();
 
         if (result.isPresent() && result.get() == ButtonType.FINISH) {
             if(Manager.hasWrite()){
                 Manager.openFile(textFileNames.getValue());
             }else{
                 Manager.openFile(textFileNames.getValue());
+                viewOnlyController.setDocTextArea(textFileNames.getValue().getContent());
+                viewOnlyController.setAdminUsername(Manager.currentuser.getName());
+                viewOnlyController.setViewOnlyDocumentName(textFileNames.getValue().getFileName());
                 stage.setScene(viewOnlyScene);
                 stage.setTitle("View Only");
                 stage.show();
@@ -570,6 +572,5 @@ public class EditorController {
             manager.saveFile(docTextArea.getText());
         }
     }
-
 
 }

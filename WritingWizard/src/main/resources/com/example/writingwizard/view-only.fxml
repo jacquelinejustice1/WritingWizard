@@ -47,11 +47,15 @@
     </AnchorPane>
     <!--Text Box For Users to Type In-->
     <AnchorPane VBox.vgrow="ALWAYS">
-        <TextArea fx:id="docTextArea" prefHeight="600" prefWidth="1116.0" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="100.0" />
-      <Button layoutX="10.0" layoutY="14.0" mnemonicParsing="false" onAction="#openFileViewOnly" style="-fx-background-color: #8515FF;" text="OPEN FILE" textFill="WHITE">
-         <font>
-            <Font name="Arial Bold" size="12.0" />
-         </font></Button>
+      <Pane layoutX="8.0" layoutY="5.0" prefHeight="600.0" prefWidth="129.0" style="-fx-background-color: lightgray;">
+         <children>
+            <Button layoutX="9.0" layoutY="14.0" mnemonicParsing="false" onAction="#openFileViewOnly" style="-fx-background-color: #8515FF;" text="OPEN FILE" textFill="WHITE">
+               <font>
+                  <Font name="Arial Bold" size="12.0" />
+               </font>
+            </Button>
+         </children></Pane>
+        <TextArea fx:id="docTextArea" layoutX="156.0" layoutY="5.0" prefHeight="600" prefWidth="1116.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="94.0" />
 
 
     </AnchorPane>
