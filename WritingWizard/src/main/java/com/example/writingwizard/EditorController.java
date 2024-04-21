@@ -11,8 +11,6 @@ import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -337,18 +335,14 @@ public class EditorController {
      * When clicked, the strike is gone
      */
     public void undoStrike() {
-        undoStrikeButton.setOnAction(e ->{
-            docTextArea.getStyleClass().add("strike-out-undo-textarea");
-        });
+        undoStrikeButton.setOnAction(e -> docTextArea.getStyleClass().add("strike-out-undo-textarea"));
     }
 
     /**
      * When clicked, the underline is gone
      */
     public void undoUnderline() {
-        undoUnderlineButton.setOnAction(e ->{
-            docTextArea.getStyleClass().add("underline-textarea-undo");
-        });
+        undoUnderlineButton.setOnAction(e -> docTextArea.getStyleClass().add("underline-textarea-undo"));
     }
 
     /**
@@ -389,6 +383,7 @@ public class EditorController {
      * Signs the user out
      */
     public void signOut() {
+        docTextArea.clear();
         stage.setScene(loginScene);
         stage.setTitle("Writing Wizard");
         stage.show();

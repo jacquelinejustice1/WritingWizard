@@ -1,14 +1,13 @@
 package com.example.writingwizard;
 
-import javafx.event.ActionEvent;
+
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import java.io.IOException;
+
 
 public class CreateAccountController {
     Manager manager = new Manager();
@@ -19,8 +18,6 @@ public class CreateAccountController {
     @FXML
     private Label errorCreateAccount;
     @FXML
-    private Button submitAccountButton;
-    @FXML
     private PasswordField createPasswordReenterText;
     @FXML
     private PasswordField createPasswordText;
@@ -28,8 +25,6 @@ public class CreateAccountController {
     private TextField reenterUsernameText;
     @FXML
     private TextField usernameText;
-    @FXML
-    private Button returnToLogIn;
     private Stage stage;
     private Scene loginScene;
 
@@ -41,54 +36,7 @@ public class CreateAccountController {
         this.stage = stage;
     }
 
-    public void setReturnToLogIn(Button returnToLogIn) {
-        this.returnToLogIn = returnToLogIn;
-    }
-
-    public void setUsernameText(TextField usernameText) {
-        this.usernameText = usernameText;
-    }
-
-    public void setReenterUsernameText(TextField reenterUsernameText) {
-        this.reenterUsernameText = reenterUsernameText;
-    }
-
-    public void setCreatePasswordText(PasswordField createPasswordText) {
-        this.createPasswordText = createPasswordText;
-    }
-
-    public void setCreatePasswordReenterText(PasswordField createPasswordReenterText) {
-        this.createPasswordReenterText = createPasswordReenterText;
-    }
-
-    public void setSubmitAccountButton(Button submitAccountButton) {
-        this.submitAccountButton = submitAccountButton;
-    }
-    public Label getErrorUsername() {
-        return errorUsername;
-    }
-
-    public void setErrorUsername(Label errorUsername) {
-        this.errorUsername = errorUsername;
-    }
-
-    public Label getErrorPassword() {
-        return errorPassword;
-    }
-
-    public void setErrorPassword(Label errorPassword) {
-        this.errorPassword = errorPassword;
-    }
-
-    public Label getErrorCreateAccount() {
-        return errorCreateAccount;
-    }
-
-    public void setErrorCreateAccount(Label errorCreateAccount) {
-        this.errorCreateAccount = errorCreateAccount;
-    }
-
-public void setLoginScene(Scene loginScene) {
+    public void setLoginScene(Scene loginScene) {
         this.loginScene = loginScene;
     }
 
@@ -97,9 +45,6 @@ public void setLoginScene(Scene loginScene) {
     }
 
     //getters
-    public Button getReturnToLogIn() {
-        return returnToLogIn;
-    }
 
     public TextField getUsernameText() {
         return usernameText;
@@ -119,12 +64,7 @@ public void setLoginScene(Scene loginScene) {
 
     //functions
 
-    public void submitAccountInfo(ActionEvent actionEvent) {
-        //if(getCreatePasswordText().getText() == null && getCreatePasswordText().getText() == null && getCreatePasswordReenterText().getText() == null
-        //        && getCreatePasswordReenterText().getText() == null){
-        //    errorCreateAccount.setText("Please enter the information");
-        //}
-
+    public void submitAccountInfo() {
         boolean successful = true;
 
         if(!manager.validateUserNameCreation(getUsernameText().getText(), getReenterUsernameText().getText())){
@@ -157,7 +97,7 @@ public void setLoginScene(Scene loginScene) {
     }
 
 
-   public void returnToLogIn(ActionEvent actionEvent) throws IOException {
+   public void returnToLogIn(){
         stage.setScene(loginScene);
         stage.setTitle("Writing Wizard");
         stage.show();

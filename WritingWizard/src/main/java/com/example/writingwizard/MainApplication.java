@@ -4,14 +4,11 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-
 import java.io.IOException;
-import java.net.URISyntaxException;
-
 
 public class MainApplication extends Application {
     @Override
-    public void start(Stage stage) throws IOException, URISyntaxException {
+    public void start(Stage stage) throws IOException {
 
         FXMLLoader loginLoader = new FXMLLoader(MainApplication.class.getResource("login.fxml"));
         Scene loginScene = new Scene(loginLoader.load(), 1366, 768);
@@ -24,8 +21,6 @@ public class MainApplication extends Application {
 
         FXMLLoader viewOnlyLoader = new FXMLLoader(MainApplication.class.getResource("view-only.fxml"));
         Scene viewOnlyScene = new Scene(viewOnlyLoader.load(),1366,768);
-
-
 
         ViewOnlyController viewOnlyController = viewOnlyLoader.getController();
         viewOnlyController.setStage(stage);
@@ -54,8 +49,6 @@ public class MainApplication extends Application {
         textEditorController.setViewOnlyScene(viewOnlyScene);
         viewOnlyController.setTextEditorScene(textEditorScene);
 
-
-
         viewOnlyController.setLoginScene(loginScene);
 
         textEditorController.initializeFonts();
@@ -68,9 +61,7 @@ public class MainApplication extends Application {
         stage.setScene(loginScene);
         stage.setTitle("Writing Wizard");
 
-
         stage.show();
-
 
     }
 

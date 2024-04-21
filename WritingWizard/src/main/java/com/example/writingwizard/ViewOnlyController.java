@@ -10,8 +10,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.Optional;
 
@@ -42,7 +40,7 @@ public class ViewOnlyController {
 
 
     //method
-    public void signOutViewOnly() throws IOException {
+    public void signOutViewOnly() {
         stage.setScene(loginScene);
         stage.setTitle("Writing Wizard");
         stage.show();
