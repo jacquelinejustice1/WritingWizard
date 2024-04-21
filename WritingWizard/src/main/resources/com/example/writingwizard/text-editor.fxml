@@ -12,9 +12,9 @@
     </padding>
     <AnchorPane prefHeight="36.0" prefWidth="1366.0">
         <!--Logo and Name of Application -->
-      <ImageView fitHeight="76.0" fitWidth="77.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="99.0" fitWidth="102.0" layoutX="23.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
         </ImageView>
-      <ImageView fitHeight="63.0" fitWidth="282.0" layoutX="86.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fitHeight="63.0" fitWidth="282.0" layoutX="177.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true" />
       <Button layoutX="1133.0" layoutY="67.0" mnemonicParsing="false" onAction="#signOut" prefHeight="39.0" prefWidth="86.0" style="-fx-background-color: #8515FF;" text="SIGN OUT" textFill="WHITE">
          <font>
             <Font name="Arial Bold" size="12.0" />

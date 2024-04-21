@@ -63,19 +63,19 @@ public class LoginController {
     //functions
 
     public void signInButton(ActionEvent actionEvent) throws IOException {
-        /*
+
      if(manager.validateLogin(usernameLogin.getText(),passwordLogin.getText())){
 
-         */
+
          stage.setScene(textEditorScene);
          stage.setTitle("Text Editor");
          stage.show();
-         /*
+
      }else{
          errorLogin.setText("Error, please try again.");
      }
 
-          */
+
 
     }
 
