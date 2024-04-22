@@ -90,15 +90,6 @@ public class Manager {
         return PermissionLevel.none;
     }
 
-    /*public HashMap<TextFile, Permission[]> getFiles() {
-        HashMap<TextFile, Permission[]> hash = new HashMap<>();
-        TextFile[] files = getUserFiles(currentuser);
-        for (TextFile file: files) {
-            hash.put(file, file.getPermissions());
-        }
-        return hash;
-    }*/
-
     /**
      * Maps PermissionLevel to TextFile.
      * @return the paired PermissionLevels and TextFiles.
