@@ -73,11 +73,13 @@ public class EditorController {
     public void setLoginScene(Scene loginScene) {
         this.loginScene = loginScene;
     }
-    public void setDocumentName(TextField documentName){
-        this.documentName = documentName;
+    public void setDocumentName(String name){
+        documentName.setText(name);
     }
     public void setTextEditorScene(Scene textEditorScene){ this.textEditorScene = textEditorScene; }
-
+    public void setDocTextArea(String contents){
+        docTextArea.setText(contents);
+    }
     //getters
     public TextArea getDocTextArea(){
         return docTextArea;
@@ -398,6 +400,9 @@ public class EditorController {
      * 2- Enter the username of whom the user wishes to give the permissions to
      */
     public void shareDocument(ActionEvent actionEvent) {
+        if(!Manager.currentuser.getName().equals(Manager.currentFile.getOwnerName())) {
+            return;
+        }
         //share dialog variables
         ComboBox<PermissionLevel> sharingOptions = new ComboBox<>();
         TextField shareUsernameDialog = new TextField();
@@ -480,15 +485,18 @@ public class EditorController {
         if (result.isPresent() && result.get() == ButtonType.FINISH) {
             if(Manager.hasWrite()){
                 Manager.openFile(textFileNames.getValue());
+                setDocTextArea(textFileNames.getValue().getContent());
+                setDocumentName(textFileNames.getValue().getFileName());
             }else{
+                TextFile ownerName =
+                        new TextFile(textFileNames.getValue().getFileName(),textFileNames.getValue().getContent(),textFileNames.getValue().getOwnerName(),textFileNames.getValue().getPermissions());
                 Manager.openFile(textFileNames.getValue());
                 viewOnlyController.setDocTextArea(textFileNames.getValue().getContent());
-                viewOnlyController.setAdminUsername(Manager.currentuser.getName());
+                viewOnlyController.setAdminUsername(ownerName.getOwnerName());
                 viewOnlyController.setViewOnlyDocumentName(textFileNames.getValue().getFileName());
                 stage.setScene(viewOnlyScene);
                 stage.setTitle("View Only");
                 stage.show();
-                //Manager.openFile(textFileNames.getValue());
             }
         }
         dialogContentOpen.getChildren().clear();
@@ -560,7 +568,7 @@ public class EditorController {
             if (result.isPresent() && result.get() == ButtonType.APPLY) {
                 Manager.currentFile.setFileName(docNameIfEmpty.getText());
                 manager.saveFile(docTextArea.getText());
-                setDocumentName(docNameIfEmpty);
+                setDocumentName(docNameIfEmpty.getText());
             }
 
         }else {
