@@ -5,9 +5,10 @@ import DataStructures.*;
 
 public class Database {
     private static final String userFile = "Users.dat";
+    private static final String permissionFile = "Perms.dat";
     private static final String fileFile = "TextFiles.dat";
 
-    /***
+    /**
      * Read from user file
      * @return all users
      */
@@ -23,7 +24,7 @@ public class Database {
         return new User[0];
     }
 
-    /***
+    /**
      * Write to user file
      * @param users updated users array
      */
@@ -37,9 +38,39 @@ public class Database {
         }
     }
 
+    /**
+     * Read from permission file
+     * @return all permissions
+     */
+    public Permission[] readPermissions() {
+        try {
+            ObjectInputStream in = new ObjectInputStream(new FileInputStream(permissionFile));
+            Permission[] perms = (Permission[]) in.readObject();
+            in.close();
+            return perms;
+        } catch (ClassNotFoundException ex) {
+        } catch (Exception e) {
+        }
+        return new Permission[0];
+    }
+
     /***
-     * Read from user file
-     * @return all users
+     * Write to permission file
+     * @param perms updated permission array
+     */
+    public void writePermissions(Permission[] perms) {
+        try {
+            ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(permissionFile, false));
+            out.writeObject(perms);
+            out.close();
+        } catch (IOException ex) {
+            System.out.println("Error writing updated Permissions!");
+        }
+    }
+
+    /***
+     * Read from file file
+     * @return all files
      */
     public TextFile[] readFiles() {
         try {
@@ -54,7 +85,7 @@ public class Database {
     }
 
     /***
-     * Write to user file
+     * Write to file file
      * @param files updated files array
      */
     public void writeFiles(TextFile[] files) {
