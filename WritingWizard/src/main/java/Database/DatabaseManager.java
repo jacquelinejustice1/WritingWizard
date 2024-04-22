@@ -99,8 +99,13 @@ public class DatabaseManager {
         ArrayList<TextFile> userFilesList = new ArrayList<>(Arrays.asList(allFiles));
 
         for(TextFile file : allFiles) {
+            if(file.getOwnerName().equals(user.getName())) {
+                userFilesList.add(file);
+                continue;
+            }
+
             for(Permission perm : file.getPermissions())
-                if(perm.getUsername().equals(user.getName()) || file.getOwnerName().equals(user.getName())){
+                if(perm.getUsername().equals(user.getName())){
                     userFilesList.add(file);
                     break;
                 }
