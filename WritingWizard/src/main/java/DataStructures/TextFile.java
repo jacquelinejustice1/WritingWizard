@@ -98,4 +98,11 @@ public class TextFile implements Serializable {
 
         return true;
     }
+
+    @Override
+
+    public String toString() {
+        return fileName + ", owner: " + ownerName;
+    }
+
 }
