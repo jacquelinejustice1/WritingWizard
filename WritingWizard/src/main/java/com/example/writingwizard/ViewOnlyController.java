@@ -90,7 +90,7 @@ public class ViewOnlyController {
                 Manager.openFile(textFileNamesVO.getValue());
                 editorController.setDocTextArea(textFileNamesVO.getValue().getContent());
                 editorController.setDocumentName(textFileNamesVO.getValue().getFileName());
-                stage.setScene(createAccountScene);
+                stage.setScene(textEditorScene);
                 stage.setTitle("Text Editor");
                 stage.show();
             }else{
