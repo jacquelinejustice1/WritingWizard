@@ -135,8 +135,6 @@ public class DatabaseManager {
         TextFile[] userFiles = new TextFile[userFilesList.size()];
         userFiles = userFilesList.toArray(userFiles);
 
-        System.out.println(userFilesList);
-
         return userFiles;
     }
 
@@ -165,8 +163,6 @@ public class DatabaseManager {
         Permission[] allPerms = db.readPermissions();
         ArrayList<Permission> filePermList = new ArrayList<>();
         Permission[] filePerms;
-
-        System.out.println(Arrays.toString(allPerms));
 
         for(Permission perm : allPerms) {
             if(perm.getFileName().equals(file.getFileName()) && perm.getOwnerName().equals(file.getOwnerName()))
