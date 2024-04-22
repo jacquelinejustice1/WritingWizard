@@ -4,9 +4,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-
 import java.io.IOException;
-import java.util.Objects;
 
 public class MainApplication extends Application {
     @Override
@@ -23,8 +21,6 @@ public class MainApplication extends Application {
 
         FXMLLoader viewOnlyLoader = new FXMLLoader(MainApplication.class.getResource("view-only.fxml"));
         Scene viewOnlyScene = new Scene(viewOnlyLoader.load(),1366,768);
-
-
 
         ViewOnlyController viewOnlyController = viewOnlyLoader.getController();
         viewOnlyController.setStage(stage);
@@ -53,8 +49,6 @@ public class MainApplication extends Application {
         textEditorController.setViewOnlyScene(viewOnlyScene);
         viewOnlyController.setTextEditorScene(textEditorScene);
 
-
-
         viewOnlyController.setLoginScene(loginScene);
 
         textEditorController.initializeFonts();
@@ -64,13 +58,10 @@ public class MainApplication extends Application {
 
         textEditorScene.getStylesheets().add(getClass().getResource("stylesheet.css").toExternalForm());
 
-
         stage.setScene(loginScene);
         stage.setTitle("Writing Wizard");
 
-       // stage.getIcons().add(new Image());
         stage.show();
-
 
     }
 

@@ -1,7 +1,6 @@
 package com.example.writingwizard;
 
 
-import DataStructures.Permission;
 import DataStructures.PermissionLevel;
 import DataStructures.TextFile;
 import javafx.collections.FXCollections;
@@ -9,7 +8,6 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
-import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -21,15 +19,16 @@ import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 import javafx.scene.control.ComboBox;
 import java.awt.GraphicsEnvironment;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Optional;
-
-import static java.util.Arrays.asList;
 
 
 public class EditorController {
 
+    @FXML
+    private Button undoStrikeButton;
+    @FXML
+    private Button undoUnderlineButton;
     @FXML
     private Button underlineButton;
     @FXML
@@ -46,63 +45,46 @@ public class EditorController {
     @FXML
     private Label wordCounter;
     @FXML
-    private Button saveDocumentButton;
-    @FXML
     private ComboBox<String> fontSelect = new ComboBox<>();
     @FXML
     private ColorPicker fontColor;
     @FXML
     private ComboBox<Integer> fontSize = new ComboBox<>();
     @FXML
-    private Button shareButton;
-    @FXML
-    private Button openFileButton;
-    @FXML
-    private Button newFileButton;
-    @FXML
     private TextField documentName;
     private Stage stage;
     @FXML
     private TextArea docTextArea;
     private Scene loginScene;
-
-    //share dialog variables
-    ComboBox<String> sharingOptions = new ComboBox<>();
-    TextField shareUsernameDialog = new TextField();
-    Label shareType = new Label("View Only, Modifiable, or None");
-    Label usernameOptionLabel = new Label("Share with");
-
-    //for text editing buttons
-    String selectedText;
     Font font;
 
     //for clear button
     Label confirm = new Label("Are you sure you would \n like to clear the text area?");
     private Scene viewOnlyScene;
+    private Scene textEditorScene;
 
     //setters
     public void setViewOnlyScene(Scene viewOnlyScene) {
         this.viewOnlyScene = viewOnlyScene;
     }
-    
     public void setStage(Stage stage) {
         this.stage = stage;
-    }
-    public void setTextEditorScene(Scene textEditorScene) {
     }
     public void setLoginScene(Scene loginScene) {
         this.loginScene = loginScene;
     }
-    public void setDocTextArea(TextArea docTextArea){
-        this.docTextArea = docTextArea;
+    public void setDocumentName(TextField documentName){
+        this.documentName = documentName;
     }
+    public void setTextEditorScene(Scene textEditorScene){ this.textEditorScene = textEditorScene; }
 
     //getters
     public TextArea getDocTextArea(){
         return docTextArea;
-    };
-    public void getDocumentName(TextField documentName){
-        this.documentName = documentName;
+    }
+
+    public TextField getDocumentName(){
+        return documentName;
     }
 
     /**
@@ -146,17 +128,14 @@ public class EditorController {
 
         setColor(Color.BLACK);
 
-        fontColor.setOnAction(e -> {
-            setColor(fontColor.getValue());
-        });
+        fontColor.setOnAction(e -> setColor(fontColor.getValue()));
     }
 
     /**
      *
-     * @param actionEvent
      * When the user selects a font, the font is changes in the text area
      */
-    public void changeFontSize(ActionEvent actionEvent) {
+    public void changeFontSize() {
         if(fontSelect.getValue() == null && fontSize.getValue() == null){
             font = Font.font("Arial", FontWeight.NORMAL, 11);
             getDocTextArea().setFont(font);
@@ -170,7 +149,11 @@ public class EditorController {
             getDocTextArea().setFont(Font.font(fontSelect.getValue(),FontWeight.NORMAL,fontSize.getValue()));
         }
     }
-    public void changeFont(ActionEvent actionEvent) {
+
+    /**
+     * Changes the font to the one the user selects
+     */
+    public void changeFont() {
         if(fontSelect.getValue() == null && fontSize.getValue() == null){
             font = Font.font("Arial", FontWeight.NORMAL, 11);
             getDocTextArea().setFont(font);
@@ -185,6 +168,11 @@ public class EditorController {
         }
     }
 
+    /**
+     *
+     * @param actionEvent
+     * Clears the text area when the dialog option is confirmed
+     */
     public void clearTextArea(ActionEvent actionEvent) {
         Dialog<ButtonType> dialogClear = new Dialog<>();
         dialogClear.initOwner(((Node) actionEvent.getSource()).getScene().getWindow());
@@ -209,15 +197,12 @@ public class EditorController {
     }
     /**
      *
-     * @param actionEvent
      * Changes the font color
      */
-    public void changeFontColor(ActionEvent actionEvent) {
+    public void changeFontColor() {
         setColor(Color.BLACK);
 
-        fontColor.setOnAction(e -> {
-            setColor(fontColor.getValue());
-        });
+        fontColor.setOnAction(e -> setColor(fontColor.getValue()));
 
     }
     /**
@@ -278,10 +263,9 @@ public class EditorController {
 
     /**
      *
-     * @param actionEvent
      * When user clicks Bold Text button, text in the text area turns bold.
      */
-    public void boldText(ActionEvent actionEvent) {
+    public void boldText() {
         if(fontSelect.getValue() == null && fontSize.getValue() == null){
             font = Font.font("Arial", FontWeight.BOLD, 11);
             getDocTextArea().setFont(font);
@@ -303,10 +287,9 @@ public class EditorController {
 
     /**
      *
-     * @param actionEvent
      * When the user clicks the italic Text button, text in the text area turns italic
      */
-    public void italicText(ActionEvent actionEvent) {
+    public void italicText() {
         if(fontSelect.getValue() == null && fontSize.getValue() == null){
             font = Font.font("Arial", FontPosture.ITALIC, 11);
             getDocTextArea().setFont(font);
@@ -327,10 +310,9 @@ public class EditorController {
 
     /**
      *
-     * @param actionEvent
      * When the user clicks the Underline Text button, text in the text area is underlined
      */
-    public void underlineText(ActionEvent actionEvent) {
+    public void underlineText() {
         underlineButton.setOnAction(e ->{
             docTextArea.getStyleClass().clear();
             docTextArea.getStyleClass().add("underline-textarea");
@@ -339,10 +321,9 @@ public class EditorController {
 
     /**
      *
-     * @param actionEvent
      * When the user clicks the strike button, text in the text area is struck out
      */
-    public void strikeText(ActionEvent actionEvent) {
+    public void strikeText() {
         strikeButton.setOnAction(e ->{
             docTextArea.getStyleClass().clear();
             docTextArea.getStyleClass().add("strike-out-textarea");
@@ -351,11 +332,24 @@ public class EditorController {
     }
 
     /**
+     * When clicked, the strike is gone
+     */
+    public void undoStrike() {
+        undoStrikeButton.setOnAction(e -> docTextArea.getStyleClass().add("strike-out-undo-textarea"));
+    }
+
+    /**
+     * When clicked, the underline is gone
+     */
+    public void undoUnderline() {
+        undoUnderlineButton.setOnAction(e -> docTextArea.getStyleClass().add("underline-textarea-undo"));
+    }
+
+    /**
      *
-     * @param actionEvent
      * Aligns text in the textarea to the right alignment
      */
-    public void rightAlignment(ActionEvent actionEvent) {
+    public void rightAlignment() {
         rightAlignButton.setOnAction(e ->{
             docTextArea.getStyleClass().clear();
             docTextArea.getStyleClass().add("right-aligned-textarea");
@@ -364,10 +358,9 @@ public class EditorController {
     }
     /**
      *
-     * @param actionEvent
      * When clicked, the text in the text area is aligned to the left
      */
-    public void leftAlignment(ActionEvent actionEvent){
+    public void leftAlignment(){
         leftAlignButton.setOnAction(e ->{
             docTextArea.getStyleClass().clear();
             docTextArea.getStyleClass().add("left-aligned-textarea");
@@ -375,10 +368,9 @@ public class EditorController {
     }
     /**
      *
-     * @param actionEvent
      * When clicked, the text in the text area is center aligned
      */
-    public void centerAlignment(ActionEvent actionEvent) {
+    public void centerAlignment() {
         centerAlignButton.setOnAction(e -> {
             docTextArea.getStyleClass().clear();
             docTextArea.getStyleClass().add("centered-textarea");
@@ -386,12 +378,12 @@ public class EditorController {
 
     }
 
-        /**
-         *
-         * @param actionEvent
-         * When the user clicks the sign-out button, the stage is returned to the login stage
-         */
-    public void signOut(ActionEvent actionEvent) {
+    /**
+     *
+     * Signs the user out
+     */
+    public void signOut() {
+        docTextArea.clear();
         stage.setScene(loginScene);
         stage.setTitle("Writing Wizard");
         stage.show();
@@ -406,6 +398,11 @@ public class EditorController {
      * 2- Enter the username of whom the user wishes to give the permissions to
      */
     public void shareDocument(ActionEvent actionEvent) {
+        //share dialog variables
+        ComboBox<PermissionLevel> sharingOptions = new ComboBox<>();
+        TextField shareUsernameDialog = new TextField();
+        Label shareType = new Label("Set Permission Level: None, Read, Write");
+        Label usernameOptionLabel = new Label("Share with");
         //setting the dialog up
         Dialog<ButtonType> dialog = new Dialog<>();
         dialog.initOwner(((Node) actionEvent.getSource()).getScene().getWindow());
@@ -418,7 +415,7 @@ public class EditorController {
 
         //adding what type of share file
         dialogContent.getChildren().add(shareType);
-        sharingOptions.getItems().addAll("View Only", "Modifiable","None");
+        sharingOptions.getItems().addAll(PermissionLevel.none,PermissionLevel.read,PermissionLevel.write);
         dialogContent.getChildren().addAll(sharingOptions);
 
         //adding username
@@ -430,8 +427,12 @@ public class EditorController {
         //buttons
         dialog.getDialogPane().getButtonTypes().addAll(ButtonType.FINISH, ButtonType.CANCEL);
 
-        dialog.showAndWait();
 
+        Optional<ButtonType> result = dialog.showAndWait();
+
+        if(result.isPresent() && result.get() == ButtonType.FINISH) {
+            manager.saveSharedInfo(sharingOptions.getValue(),shareUsernameDialog.getText());
+        }
 
         //clearing when done
         dialogContent.getChildren().clear();
@@ -439,14 +440,21 @@ public class EditorController {
 
     }
 
+    /**
+     *
+     * @param actionEvent
+     * When the user clicks the open file button, the user is presented with a prompt that
+     * allows the user to select a file. Based on the selected files permissions, the
+     * file can either open in the current text editing scene or the view only scene.
+     */
     public void openDocument(ActionEvent actionEvent) {
         Label selectFile = new Label("Select a file to open:");
-        ComboBox<String> textFileNames = new ComboBox<>();
+        ComboBox<TextFile> textFileNames = new ComboBox<>();
         textFileNames.setPromptText("Document Name : Permission");
-        HashMap<PermissionLevel, TextFile> filesMap = manager.getFiles();
+        HashMap<PermissionLevel, TextFile> filesMap = Manager.getFiles();
 
         for (TextFile file : filesMap.values()) {
-            textFileNames.getItems().add(file.getFileName());
+            textFileNames.getItems().add(file);
         }
 
         textFileNames.setMinWidth(400);
@@ -467,30 +475,97 @@ public class EditorController {
         openDialog.getDialogPane().setContent(dialogContentOpen);
 
         Optional<ButtonType> result = openDialog.showAndWait();
-
-        if (Manager.hasWrite()) {
-            //Manager.openFile(TextFile);
-        } else {
-            //Manager.openFile(TextFile);
-            //view only
-        }
+        ViewOnlyController viewOnlyController = new ViewOnlyController();
 
         if (result.isPresent() && result.get() == ButtonType.FINISH) {
-
-            stage.setScene(viewOnlyScene);
-            stage.setTitle("View Only");
-            stage.show();
+            if(Manager.hasWrite()){
+                Manager.openFile(textFileNames.getValue());
+            }else{
+                Manager.openFile(textFileNames.getValue());
+                viewOnlyController.setDocTextArea(textFileNames.getValue().getContent());
+                viewOnlyController.setAdminUsername(Manager.currentuser.getName());
+                viewOnlyController.setViewOnlyDocumentName(textFileNames.getValue().getFileName());
+                stage.setScene(viewOnlyScene);
+                stage.setTitle("View Only");
+                stage.show();
+                //Manager.openFile(textFileNames.getValue());
+            }
         }
         dialogContentOpen.getChildren().clear();
     }
 
+    /**
+     *
+     * @param actionEvent
+     * When the user clicks the new file buttons, the text area is cleared
+     * and a new file is created.
+     */
     public void createNewDocument(ActionEvent actionEvent) {
-       // manager.createFile(documentName.getText(),docTextArea.getText(),manager.currentuser);
+        Label confirmNewDoc = new Label("Would you like to create a new document?");
+        Label confirmBeforeDelete = new Label("Make sure the current document is saved before proceeding.");
+        Dialog<ButtonType> newDocDialog = new Dialog<>();
+        newDocDialog.initOwner(((Node) actionEvent.getSource()).getScene().getWindow());
+        newDocDialog.setTitle("Create New Document");
+        newDocDialog.setWidth(500);
+        newDocDialog.setHeight(250);
+        VBox dialogContentNewFile = new VBox();
+        dialogContentNewFile.setSpacing(10);
+        dialogContentNewFile.setPadding(new Insets(10));
+
+        dialogContentNewFile.getChildren().add(confirmNewDoc);
+        dialogContentNewFile.getChildren().add(confirmBeforeDelete);
+
+        newDocDialog.getDialogPane().getButtonTypes().addAll(ButtonType.FINISH, ButtonType.CANCEL);
+        newDocDialog.getDialogPane().setContent(dialogContentNewFile);
+
+        Optional<ButtonType> result = newDocDialog.showAndWait();
+
+        if (result.isPresent() && result.get() == ButtonType.FINISH) {
+            docTextArea.clear();
+            Manager.createFile(documentName.getText(),docTextArea.getText());
+
+        }
 
     }
 
+    /**
+     *
+     * @param actionEvent
+     * When the save document button is clicked, the document will save
+     * if the document is not named, prompts the user to enter a name for the document
+     */
     public void saveDocument(ActionEvent actionEvent) {
+        if(getDocumentName().getText().isEmpty()){
+            Dialog<ButtonType> saveDocumentName = new Dialog<>();
+            TextField docNameIfEmpty = new TextField();
+            docNameIfEmpty.setPromptText(("Enter document name here"));
+            Label docNameEnter = new Label("The document is not named, please enter a name:");
+            saveDocumentName.initOwner(((Node) actionEvent.getSource()).getScene().getWindow());
+            saveDocumentName.setTitle("Create New Document");
+            saveDocumentName.setWidth(500);
+            saveDocumentName.setHeight(250);
+            VBox dialogContentSaveFile = new VBox();
+            dialogContentSaveFile.setSpacing(10);
+            dialogContentSaveFile.setPadding(new Insets(10));
 
+            dialogContentSaveFile.getChildren().add(docNameEnter);
+            dialogContentSaveFile.getChildren().add(docNameIfEmpty);
+
+            saveDocumentName.getDialogPane().getButtonTypes().addAll(ButtonType.APPLY, ButtonType.CANCEL);
+            saveDocumentName.getDialogPane().setContent(dialogContentSaveFile);
+
+            Optional<ButtonType> result = saveDocumentName.showAndWait();
+
+            if (result.isPresent() && result.get() == ButtonType.APPLY) {
+                Manager.currentFile.setFileName(docNameIfEmpty.getText());
+                manager.saveFile(docTextArea.getText());
+                setDocumentName(docNameIfEmpty);
+            }
+
+        }else {
+            Manager.currentFile.setFileName(documentName.getText());
+            manager.saveFile(docTextArea.getText());
+        }
     }
 
 

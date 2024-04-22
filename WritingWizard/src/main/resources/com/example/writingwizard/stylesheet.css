@@ -16,3 +16,9 @@
 .underline-textarea .text{
     -fx-underline: true;
 }
+.underline-textarea-undo .text{
+    -fx-underline: false;
+}
+.strike-out-undo-textarea .text{
+    -fx-strikethrough: false;
+}

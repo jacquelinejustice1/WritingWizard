@@ -1,6 +1,6 @@
 package com.example.writingwizard;
 
-import DataStructures.Permission;
+
 import DataStructures.TextFile;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -10,24 +10,20 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-
-import java.io.IOException;
 import java.util.HashMap;
+import java.util.Optional;
 
 public class ViewOnlyController {
-    Manager manager = new Manager();
     private Stage stage;
     @FXML
     private Label viewOnlyDocumentName;
-    @FXML
-    private Button signOutViewOnlyButton;
     @FXML
     private TextArea docTextArea;
     @FXML
     private Label adminUsername;
     private Scene loginScene;
     private Scene viewOnlyScene;
-    private Scene textEditorScene;
+
 
     //setters
 
@@ -37,18 +33,14 @@ public class ViewOnlyController {
     public void setLoginScene(Scene loginScene) {
         this.loginScene = loginScene;
     }
-    public void setAdminUsername(Label adminUsername){ this.adminUsername = adminUsername; }
-    public void setDocTextArea(TextArea docTextArea){ this.docTextArea = docTextArea; }
-    public void setSignOutViewOnlyButton(Button signOutViewOnlyButton){ this.signOutViewOnlyButton = signOutViewOnlyButton; }
-    public void setViewOnlyDocumentName(Label viewOnlyDocumentName) { this.viewOnlyDocumentName = viewOnlyDocumentName; }
-    //getters
-    public Label getAdminUsername(){return adminUsername; }
-    public TextArea getDocTextArea(){return docTextArea; }
-    public Button getSignOutViewOnlyButton(){return signOutViewOnlyButton; }
-    public Label getViewOnlyDocumentName() { return viewOnlyDocumentName; }
+    public void setAdminUsername(String adminUsernameString){ adminUsername.setText(adminUsernameString); }
+    public void setDocTextArea(String contents){ docTextArea.setText(contents); }
+    public void setViewOnlyDocumentName(String viewOnlyDocumentNameString) { viewOnlyDocumentName.setText(viewOnlyDocumentNameString); }
+
+
 
     //method
-    public void signOutViewOnly(ActionEvent actionEvent) throws IOException {
+    public void signOutViewOnly() {
         stage.setScene(loginScene);
         stage.setTitle("Writing Wizard");
         stage.show();
@@ -58,23 +50,24 @@ public class ViewOnlyController {
     }
 
 
+
     public void openFileViewOnly(ActionEvent actionEvent) {
         Label selectFile = new Label("Select a file to open (view only):");
-        ComboBox<String> textFileNamesVO = new ComboBox<>();
+        ComboBox<TextFile> textFileNamesVO = new ComboBox<>();
         textFileNamesVO.setPromptText("Document Name : Permission");
-        HashMap<DataStructures.PermissionLevel, TextFile> filesMap = manager.getFiles();
+        HashMap<DataStructures.PermissionLevel, TextFile> filesMap = Manager.getFiles();
 
         for (TextFile file : filesMap.values()) {
-            textFileNamesVO.getItems().add(file.getFileName());
+            textFileNamesVO.getItems().add(file);
         }
 
         textFileNamesVO.setMinWidth(400);
         //setting the dialog up
-        Dialog<ButtonType> openDialog = new Dialog<>();
-        openDialog.initOwner(((Node) actionEvent.getSource()).getScene().getWindow());
-        openDialog.setTitle("Open Document");
-        openDialog.setWidth(700);
-        openDialog.setHeight(700);
+        Dialog<ButtonType> openDialogVO = new Dialog<>();
+        openDialogVO.initOwner(((Node) actionEvent.getSource()).getScene().getWindow());
+        openDialogVO.setTitle("Open Document");
+        openDialogVO.setWidth(700);
+        openDialogVO.setHeight(700);
         VBox dialogContentOpen = new VBox();
         dialogContentOpen.setSpacing(10);
         dialogContentOpen.setPadding(new Insets(10));
@@ -82,16 +75,29 @@ public class ViewOnlyController {
         dialogContentOpen.getChildren().add(selectFile);
         dialogContentOpen.getChildren().add(textFileNamesVO);
 
-        openDialog.getDialogPane().getButtonTypes().addAll(ButtonType.FINISH, ButtonType.CANCEL);
-        openDialog.getDialogPane().setContent(dialogContentOpen);
+        openDialogVO.getDialogPane().getButtonTypes().addAll(ButtonType.FINISH, ButtonType.CANCEL);
+        openDialogVO.getDialogPane().setContent(dialogContentOpen);
 
-        openDialog.showAndWait();
+        Optional<ButtonType> result = openDialogVO.showAndWait();
+        ViewOnlyController viewOnlyController = new ViewOnlyController();
+
+        if (result.isPresent() && result.get() == ButtonType.FINISH) {
+            if(Manager.hasWrite()){
+                Manager.openFile(textFileNamesVO.getValue());
+            }else{
+                Manager.openFile(textFileNamesVO.getValue());
+                viewOnlyController.setDocTextArea(textFileNamesVO.getValue().getContent());
+                viewOnlyController.setAdminUsername(Manager.currentuser.getName());
+                viewOnlyController.setViewOnlyDocumentName(textFileNamesVO.getValue().getFileName());
+                stage.setScene(viewOnlyScene);
+                stage.setTitle("View Only");
+                stage.show();
+                //Manager.openFile(textFileNames.getValue());
+            }
+        }
 
         dialogContentOpen.getChildren().clear();
 
     }
 
-    public void setViewOnlyScene(Scene textEditorScene) {
-        this.textEditorScene = textEditorScene;
-    }
 }
