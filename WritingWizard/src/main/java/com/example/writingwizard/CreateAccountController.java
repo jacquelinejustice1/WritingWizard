@@ -81,8 +81,10 @@ public class CreateAccountController {
             errorPassword.setText("");
             boolean account = manager.createUser(getUsernameText().getText(),getCreatePasswordText().getText());
             if(account){
-
-
+                usernameText.clear();
+                createPasswordReenterText.clear();
+                reenterUsernameText.clear();
+                createPasswordReenterText.clear();
                 stage.setScene(textEditorScene);
                 stage.setTitle("Text Editor");
                 stage.show();
