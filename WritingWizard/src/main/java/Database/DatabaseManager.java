@@ -75,7 +75,8 @@ public class DatabaseManager {
             if(textFile.getFileName().equals(file.getFileName())
                     && textFile.getOwnerName().equals(file.getOwnerName())) {
 
-                textFile = file;
+                textFile.setContent(file.getContent());
+                textFile.setPermissions(file.getPermissions());
 
                 //Write textFiles
                 db.writeFiles(allFiles);
