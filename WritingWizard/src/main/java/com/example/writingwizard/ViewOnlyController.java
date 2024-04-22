@@ -23,6 +23,10 @@ public class ViewOnlyController {
     private Label adminUsername;
     private Scene loginScene;
     private Scene viewOnlyScene;
+    private Scene createAccountScene;
+    private Scene textEditorScene;
+
+    EditorController editorController = new EditorController();
 
 
     //setters
@@ -82,8 +86,11 @@ public class ViewOnlyController {
         if (result.isPresent() && result.get() == ButtonType.FINISH) {
             if(Manager.hasWrite()){
                 Manager.openFile(textFileNamesVO.getValue());
-                setDocTextArea(textFileNamesVO.getValue().getContent());
-                setViewOnlyDocumentName(textFileNamesVO.getValue().getFileName());
+                editorController.setDocTextArea(textFileNamesVO.getValue().getContent());
+                editorController.setDocumentName(textFileNamesVO.getValue().getFileName());
+                stage.setScene(createAccountScene);
+                stage.setTitle("Text Editor");
+                stage.show();
             }else{
                 TextFile ownerName =
                         new TextFile(textFileNamesVO.getValue().getFileName(),
@@ -92,12 +99,9 @@ public class ViewOnlyController {
                                 textFileNamesVO.getValue().getPermissions());
 
                 Manager.openFile(textFileNamesVO.getValue());
-                viewOnlyController.setDocTextArea(textFileNamesVO.getValue().getContent());
-                viewOnlyController.setAdminUsername(ownerName.getOwnerName());
-                viewOnlyController.setViewOnlyDocumentName(textFileNamesVO.getValue().getFileName());
-                stage.setScene(viewOnlyScene);
-                stage.setTitle("View Only");
-                stage.show();
+                setDocTextArea(textFileNamesVO.getValue().getContent());
+                setAdminUsername(ownerName.getOwnerName());
+                setViewOnlyDocumentName(textFileNamesVO.getValue().getFileName());
 
             }
         }
@@ -106,4 +110,7 @@ public class ViewOnlyController {
 
     }
 
+    public void setViewOnlyScene(Scene textEditorScene) {
+        this.textEditorScene = textEditorScene;
+    }
 }

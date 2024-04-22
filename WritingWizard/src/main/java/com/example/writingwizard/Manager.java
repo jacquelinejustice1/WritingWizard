@@ -153,13 +153,6 @@ public class Manager {
         Permission p = new Permission(usernameToShareWith, permissionLevel, currentFile.getFileName(), currentuser.getName());
         currentFile.addPermission(p);
         DatabaseManager.saveFile(currentFile);
-        //sets the currentfile's permission level to the one selected by the currect user
-        //and gives the username entered that permission to the document
     }
-
-    //public boolean checkIfSaved(TextFile file){
-       // return fileExists(file);
-    //}
-
 
 }

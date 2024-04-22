@@ -50,6 +50,8 @@ public class MainApplication extends Application {
         viewOnlyController.setTextEditorScene(textEditorScene);
 
         viewOnlyController.setLoginScene(loginScene);
+        viewOnlyController.setViewOnlyScene(textEditorScene);
+        textEditorController.setTextEditorScene(viewOnlyScene);
 
         textEditorController.initializeFonts();
         textEditorController.initializeFontSize();
