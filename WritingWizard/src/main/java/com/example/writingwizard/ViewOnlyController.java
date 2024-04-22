@@ -28,7 +28,9 @@ public class ViewOnlyController {
 
     EditorController editorController = new EditorController();
 
-
+    public TextArea getDocTextArea() {
+        return docTextArea;
+    }
     //setters
 
     public void setTextEditorScene(Scene viewOnlyScene) {
@@ -112,5 +114,9 @@ public class ViewOnlyController {
 
     public void setViewOnlyScene(Scene textEditorScene) {
         this.textEditorScene = textEditorScene;
+    }
+
+    public void makeNotEditable(TextArea doc){
+        docTextArea.setEditable(false);
     }
 }

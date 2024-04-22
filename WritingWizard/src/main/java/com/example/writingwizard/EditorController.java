@@ -494,6 +494,7 @@ public class EditorController {
                 viewOnlyController.setDocTextArea(textFileNames.getValue().getContent());
                 viewOnlyController.setAdminUsername(ownerName.getOwnerName());
                 viewOnlyController.setViewOnlyDocumentName(textFileNames.getValue().getFileName());
+                viewOnlyController.makeNotEditable(viewOnlyController.getDocTextArea());
                 stage.setScene(viewOnlyScene);
                 stage.setTitle("View Only");
                 stage.show();
