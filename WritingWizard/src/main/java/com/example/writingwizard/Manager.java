@@ -27,6 +27,7 @@ public class Manager {
             User user = new User(username, password);
             DatabaseManager.createAccount(user);
             currentuser = new User(username, password);
+            createFile("","");
             return true;
         } else
             return false;
@@ -64,6 +65,7 @@ public class Manager {
             if (DatabaseManager.userExists(username)) {
                 if (DatabaseManager.validateAccount(username, password) != null) {
                     currentuser = new User(username, password);
+                    createFile("", "");
                     return true;
                 } else
                     return false;
