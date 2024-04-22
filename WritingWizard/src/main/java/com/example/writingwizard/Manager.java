@@ -119,6 +119,7 @@ public class Manager {
      * @return content of file.
      */
      public static String openFile(TextFile file){
+         currentFile = file;
         return file.getContent();
         //opens text file from user that shared the text files to the document
      }
@@ -151,6 +152,7 @@ public class Manager {
     public void saveSharedInfo(PermissionLevel permissionLevel, String usernameToShareWith) {
         Permission p = new Permission(usernameToShareWith, permissionLevel);
         currentFile.addPermission(p);
+        DatabaseManager.saveFile(currentFile);
         //sets the currentfile's permission level to the one selected by the currect user
         //and gives the username entered that permission to the document
     }
