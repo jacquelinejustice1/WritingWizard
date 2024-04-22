@@ -84,7 +84,7 @@ public class CreateAccountController {
                 usernameText.clear();
                 createPasswordReenterText.clear();
                 reenterUsernameText.clear();
-                createPasswordReenterText.clear();
+                createPasswordText.clear();
                 stage.setScene(textEditorScene);
                 stage.setTitle("Text Editor");
                 stage.show();
