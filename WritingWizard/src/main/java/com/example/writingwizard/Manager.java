@@ -150,7 +150,7 @@ public class Manager {
      * @param usernameToShareWith user to share the file with.
      */
     public void saveSharedInfo(PermissionLevel permissionLevel, String usernameToShareWith) {
-        Permission p = new Permission(usernameToShareWith, permissionLevel, currentuser.getName(), currentFile.getFileName());
+        Permission p = new Permission(usernameToShareWith, permissionLevel, currentFile.getFileName(), currentuser.getName());
         currentFile.addPermission(p);
         DatabaseManager.saveFile(currentFile);
         //sets the currentfile's permission level to the one selected by the currect user

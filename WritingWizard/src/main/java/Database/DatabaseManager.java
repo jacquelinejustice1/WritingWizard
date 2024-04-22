@@ -84,9 +84,10 @@ public class DatabaseManager {
                 Permission[] allPerms = db.readPermissions();
                 ArrayList<Permission> permsList = new ArrayList<>(Arrays.asList(allPerms));
 
-                for(Permission perm : getFilePermissions(textFile))
-                    if(!permsList.contains(perm))
+                for(Permission perm : textFile.getPermissions()) {
+                    if (!permsList.contains(perm))
                         permsList.add(perm);
+                }
 
                 allPerms = new Permission[permsList.size()];
                 allPerms = permsList.toArray(allPerms);
@@ -115,18 +116,16 @@ public class DatabaseManager {
         ArrayList<TextFile> userFilesList = new ArrayList<>();
 
         for(TextFile file : allFiles) {
+
+            file.setPermissions(getFilePermissions(file));
+
             if(file.getOwnerName().equals(user.getName())) {
-                System.out.println("Owner");
                 userFilesList.add(file);
                 continue;
-            } else {
-                file.setPermissions(getFilePermissions(file));
-                System.out.println(Arrays.toString(file.getPermissions()));
             }
 
             for(Permission perm : file.getPermissions())
                 if(perm.getUsername().equals(user.getName())){
-                    System.out.println("Permitted");
                     userFilesList.add(file);
                     break;
                 }
@@ -165,6 +164,8 @@ public class DatabaseManager {
         Permission[] allPerms = db.readPermissions();
         ArrayList<Permission> filePermList = new ArrayList<>();
         Permission[] filePerms;
+
+        System.out.println(Arrays.toString(allPerms));
 
         for(Permission perm : allPerms) {
             if(perm.getFileName().equals(file.getFileName()) && perm.getOwnerName().equals(file.getOwnerName()))
