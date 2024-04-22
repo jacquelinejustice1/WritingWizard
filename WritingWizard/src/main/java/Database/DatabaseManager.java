@@ -91,6 +91,8 @@ public class DatabaseManager {
                 allPerms = new Permission[permsList.size()];
                 allPerms = permsList.toArray(allPerms);
 
+                db.writePermissions(allPerms);
+
                 return;
             }
         }
@@ -119,6 +121,7 @@ public class DatabaseManager {
                 continue;
             } else {
                 file.setPermissions(getFilePermissions(file));
+                System.out.println(Arrays.toString(file.getPermissions()));
             }
 
             for(Permission perm : file.getPermissions())
