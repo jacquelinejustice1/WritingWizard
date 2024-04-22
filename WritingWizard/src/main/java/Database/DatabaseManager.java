@@ -96,16 +96,18 @@ public class DatabaseManager {
      */
     public static TextFile[] getUserFiles(User user) {
         TextFile[] allFiles = db.readFiles();
-        ArrayList<TextFile> userFilesList = new ArrayList<>(Arrays.asList(allFiles));
+        ArrayList<TextFile> userFilesList = new ArrayList<>();
 
         for(TextFile file : allFiles) {
             if(file.getOwnerName().equals(user.getName())) {
+                System.out.println("Owner");
                 userFilesList.add(file);
                 continue;
             }
 
             for(Permission perm : file.getPermissions())
                 if(perm.getUsername().equals(user.getName())){
+                    System.out.println("Permitted");
                     userFilesList.add(file);
                     break;
                 }
@@ -113,6 +115,8 @@ public class DatabaseManager {
 
         TextFile[] userFiles = new TextFile[userFilesList.size()];
         userFiles = userFilesList.toArray(userFiles);
+
+        System.out.println(userFilesList);
 
         return userFiles;
     }
