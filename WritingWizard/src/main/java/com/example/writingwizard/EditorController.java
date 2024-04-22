@@ -564,15 +564,19 @@ public class EditorController {
             Optional<ButtonType> result = saveDocumentName.showAndWait();
 
             if (result.isPresent() && result.get() == ButtonType.APPLY) {
-                Manager.currentFile.setFileName(docNameIfEmpty.getText());
-                manager.saveFile(docTextArea.getText());
-                setDocumentName(docNameIfEmpty.getText());
+                if(Manager.hasWrite()) {
+                    Manager.currentFile.setFileName(docNameIfEmpty.getText());
+                    manager.saveFile(docTextArea.getText());
+                    setDocumentName(docNameIfEmpty.getText());
+                }
             }
 
-        }else {
-            Manager.currentFile.setFileName(documentName.getText());
-            manager.saveFile(docTextArea.getText());
-        }
+            } else {
+               if(Manager.hasWrite()) {
+                Manager.currentFile.setFileName(documentName.getText());
+                manager.saveFile(docTextArea.getText());
+              }
+            }
     }
 
 
