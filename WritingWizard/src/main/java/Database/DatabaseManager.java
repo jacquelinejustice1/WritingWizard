@@ -126,7 +126,7 @@ public class DatabaseManager {
             }
 
             for(Permission perm : file.getPermissions())
-                if(perm.getUsername().equals(user.getName())){
+                if(perm.getUsername().equals(user.getName()) && perm.getPermissionLevel() != PermissionLevel.none){
                     userFilesList.add(file);
                     break;
                 }

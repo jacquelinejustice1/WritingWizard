@@ -491,8 +491,8 @@ public class EditorController {
                 //TextFile ownerName =
                 //        new TextFile(textFileNames.getValue().getFileName(),textFileNames.getValue().getContent(),textFileNames.getValue().getOwnerName(),textFileNames.getValue().getPermissions());
                 Manager.openFile(textFileNames.getValue());
-                docTextArea.setEditable(false);
-                documentName.setEditable(false);
+                //docTextArea.setEditable(false);
+                //documentName.setEditable(false);
                 setDocTextArea(textFileNames.getValue().getContent());
                 setDocumentName(textFileNames.getValue().getFileName());
             }
@@ -542,6 +542,8 @@ public class EditorController {
      * if the document is not named, prompts the user to enter a name for the document
      */
     public void saveDocument(ActionEvent actionEvent) {
+        if(Manager.checkPermissions(Manager.currentFile) != PermissionLevel.write)
+            return;
         if(getDocumentName().getText().isEmpty()){
             Dialog<ButtonType> saveDocumentName = new Dialog<>();
             TextField docNameIfEmpty = new TextField();
