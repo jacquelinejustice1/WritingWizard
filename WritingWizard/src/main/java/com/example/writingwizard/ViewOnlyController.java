@@ -37,8 +37,6 @@ public class ViewOnlyController {
     public void setDocTextArea(String contents){ docTextArea.setText(contents); }
     public void setViewOnlyDocumentName(String viewOnlyDocumentNameString) { viewOnlyDocumentName.setText(viewOnlyDocumentNameString); }
 
-
-
     //method
     public void signOutViewOnly() {
         stage.setScene(loginScene);
@@ -84,15 +82,23 @@ public class ViewOnlyController {
         if (result.isPresent() && result.get() == ButtonType.FINISH) {
             if(Manager.hasWrite()){
                 Manager.openFile(textFileNamesVO.getValue());
+                setDocTextArea(textFileNamesVO.getValue().getContent());
+                setViewOnlyDocumentName(textFileNamesVO.getValue().getFileName());
             }else{
+                TextFile ownerName =
+                        new TextFile(textFileNamesVO.getValue().getFileName(),
+                                textFileNamesVO.getValue().getContent(),
+                                textFileNamesVO.getValue().getOwnerName(),
+                                textFileNamesVO.getValue().getPermissions());
+
                 Manager.openFile(textFileNamesVO.getValue());
                 viewOnlyController.setDocTextArea(textFileNamesVO.getValue().getContent());
-                viewOnlyController.setAdminUsername(Manager.currentuser.getName());
+                viewOnlyController.setAdminUsername(ownerName.getOwnerName());
                 viewOnlyController.setViewOnlyDocumentName(textFileNamesVO.getValue().getFileName());
                 stage.setScene(viewOnlyScene);
                 stage.setTitle("View Only");
                 stage.show();
-                //Manager.openFile(textFileNames.getValue());
+
             }
         }
 
