@@ -101,6 +101,7 @@ public class ViewOnlyController {
                                 textFileNamesVO.getValue().getPermissions());
 
                 Manager.openFile(textFileNamesVO.getValue());
+                makeNotEditable(docTextArea);
                 setDocTextArea(textFileNamesVO.getValue().getContent());
                 setAdminUsername(ownerName.getOwnerName());
                 setViewOnlyDocumentName(textFileNamesVO.getValue().getFileName());
