@@ -107,7 +107,7 @@ public class Manager {
         HashMap<PermissionLevel, TextFile> hash = new HashMap<>();
         TextFile[] files = getUserFiles(currentuser);
         for (TextFile file: files) {
-            hash.put(checkPermissions(currentFile), file);
+            hash.put(checkPermissions(file), file);
         }
         return hash;
     }
