@@ -521,6 +521,7 @@ public class EditorController {
         Optional<ButtonType> result = newDocDialog.showAndWait();
 
         if (result.isPresent() && result.get() == ButtonType.FINISH) {
+            documentName.clear();
             docTextArea.clear();
             Manager.createFile(documentName.getText(),docTextArea.getText());
 
