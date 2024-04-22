@@ -118,6 +118,6 @@ public class ViewOnlyController {
     }
 
     public void makeNotEditable(TextArea doc){
-        docTextArea.setEditable(false);
+        doc.setEditable(false);
     }
 }

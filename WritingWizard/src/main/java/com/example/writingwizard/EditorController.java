@@ -488,16 +488,13 @@ public class EditorController {
                 setDocTextArea(textFileNames.getValue().getContent());
                 setDocumentName(textFileNames.getValue().getFileName());
             }else{
-                TextFile ownerName =
-                        new TextFile(textFileNames.getValue().getFileName(),textFileNames.getValue().getContent(),textFileNames.getValue().getOwnerName(),textFileNames.getValue().getPermissions());
+                //TextFile ownerName =
+                //        new TextFile(textFileNames.getValue().getFileName(),textFileNames.getValue().getContent(),textFileNames.getValue().getOwnerName(),textFileNames.getValue().getPermissions());
                 Manager.openFile(textFileNames.getValue());
-                viewOnlyController.setDocTextArea(textFileNames.getValue().getContent());
-                viewOnlyController.setAdminUsername(ownerName.getOwnerName());
-                viewOnlyController.setViewOnlyDocumentName(textFileNames.getValue().getFileName());
-                viewOnlyController.makeNotEditable(viewOnlyController.getDocTextArea());
-                stage.setScene(viewOnlyScene);
-                stage.setTitle("View Only");
-                stage.show();
+                docTextArea.setEditable(false);
+                documentName.setEditable(false);
+                setDocTextArea(textFileNames.getValue().getContent());
+                setDocumentName(textFileNames.getValue().getFileName());
             }
         }
         dialogContentOpen.getChildren().clear();
