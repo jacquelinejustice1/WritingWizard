@@ -84,6 +84,15 @@ public class TextFile implements Serializable {
         return permissions;
     }
 
+
+    /**
+     * permissions setter
+     * @param permissions new permissions array
+     */
+    public void setPermissions(Permission[] permissions) {
+        this.permissions = permissions;
+    }
+
     /**
      * Add permission to file (WIP)
      * @param permission permission to add

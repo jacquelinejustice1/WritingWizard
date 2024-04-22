@@ -76,7 +76,21 @@ public class DatabaseManager {
                     && textFile.getOwnerName().equals(file.getOwnerName())) {
 
                 textFile = file;
+
+                //Write textFiles
                 db.writeFiles(allFiles);
+
+                //Write permissions
+                Permission[] allPerms = db.readPermissions();
+                ArrayList<Permission> permsList = new ArrayList<>(Arrays.asList(allPerms));
+
+                for(Permission perm : getFilePermissions(textFile))
+                    if(!permsList.contains(perm))
+                        permsList.add(perm);
+
+                allPerms = new Permission[permsList.size()];
+                allPerms = permsList.toArray(allPerms);
+
                 return;
             }
         }
@@ -103,6 +117,8 @@ public class DatabaseManager {
                 System.out.println("Owner");
                 userFilesList.add(file);
                 continue;
+            } else {
+                file.setPermissions(getFilePermissions(file));
             }
 
             for(Permission perm : file.getPermissions())
@@ -140,5 +156,21 @@ public class DatabaseManager {
         db.writeFiles(allFiles);
 
         return success;
+    }
+
+    private static Permission[] getFilePermissions(TextFile file) {
+        Permission[] allPerms = db.readPermissions();
+        ArrayList<Permission> filePermList = new ArrayList<>();
+        Permission[] filePerms;
+
+        for(Permission perm : allPerms) {
+            if(perm.getFileName().equals(file.getFileName()) && perm.getOwnerName().equals(file.getOwnerName()))
+                filePermList.add(perm);
+        }
+
+        filePerms = new Permission[filePermList.size()];
+        filePerms = filePermList.toArray(filePerms);
+
+        return filePerms;
     }
 }
