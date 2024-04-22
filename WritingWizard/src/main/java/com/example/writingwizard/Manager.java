@@ -103,11 +103,11 @@ public class Manager {
      * Maps PermissionLevel to TextFile.
      * @return the paired PermissionLevels and TextFiles.
      */
-    public static HashMap<PermissionLevel, TextFile> getFiles() {
-        HashMap<PermissionLevel, TextFile> hash = new HashMap<>();
+    public static HashMap<TextFile, PermissionLevel> getFiles() {
+        HashMap<TextFile, PermissionLevel> hash = new HashMap<>();
         TextFile[] files = getUserFiles(currentuser);
         for (TextFile file: files) {
-            hash.put(checkPermissions(file), file);
+            hash.put(file, checkPermissions(file));
         }
         return hash;
     }
