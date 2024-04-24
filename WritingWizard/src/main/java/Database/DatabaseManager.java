@@ -86,8 +86,12 @@ public class DatabaseManager {
                 ArrayList<Permission> permsList = new ArrayList<>(Arrays.asList(allPerms));
 
                 for(Permission perm : textFile.getPermissions()) {
-                    if (!permsList.contains(perm))
+                    if (!permsList.contains(perm)) {
                         permsList.add(perm);
+                    } else {
+                        permsList.remove(perm);
+                        permsList.add(perm);
+                    }
                 }
 
                 allPerms = new Permission[permsList.size()];

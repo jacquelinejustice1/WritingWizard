@@ -42,6 +42,8 @@ public class LoginController {
     public void signInButton() {
 
      if(manager.validateLogin(usernameLogin.getText(),passwordLogin.getText())){
+         usernameLogin.clear();
+         passwordLogin.clear();
          stage.setScene(textEditorScene);
          stage.setTitle("Text Editor");
          stage.show();

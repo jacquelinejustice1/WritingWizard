@@ -386,6 +386,7 @@ public class EditorController {
      */
     public void signOut() {
         docTextArea.clear();
+        documentName.clear();
         stage.setScene(loginScene);
         stage.setTitle("Writing Wizard");
         stage.show();
