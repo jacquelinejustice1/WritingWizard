@@ -38,6 +38,14 @@ public class LoginController {
         this.textEditorScene = textEditorScene;
     }
 
+    public TextField getUsernameLogin() {
+        return usernameLogin;
+    }
+
+    public PasswordField getPasswordLogin() {
+        return passwordLogin;
+    }
+
     //functions
     public void signInButton() {
 
@@ -47,6 +55,9 @@ public class LoginController {
          stage.setScene(textEditorScene);
          stage.setTitle("Text Editor");
          stage.show();
+         usernameLogin.clear();
+         passwordLogin.clear();
+         errorLogin.setText("");
 
       }else{
            errorLogin.setText("Error, please try again.");

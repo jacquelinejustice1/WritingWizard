@@ -88,6 +88,7 @@ public class CreateAccountController {
                 stage.setScene(textEditorScene);
                 stage.setTitle("Text Editor");
                 stage.show();
+                errorCreateAccount.setText("");
 
             }else{
                 errorCreateAccount.setText("Username taken. Try Again");

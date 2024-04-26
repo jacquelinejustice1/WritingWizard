@@ -385,6 +385,7 @@ public class EditorController {
      * Signs the user out
      */
     public void signOut() {
+
         docTextArea.clear();
         documentName.clear();
         stage.setScene(loginScene);
@@ -489,11 +490,9 @@ public class EditorController {
                 setDocTextArea(textFileNames.getValue().getContent());
                 setDocumentName(textFileNames.getValue().getFileName());
             }else{
-                //TextFile ownerName =
-                //        new TextFile(textFileNames.getValue().getFileName(),textFileNames.getValue().getContent(),textFileNames.getValue().getOwnerName(),textFileNames.getValue().getPermissions());
                 Manager.openFile(textFileNames.getValue());
-                //docTextArea.setEditable(false);
-                //documentName.setEditable(false);
+                docTextArea.setEditable(false);
+                documentName.setEditable(false);
                 setDocTextArea(textFileNames.getValue().getContent());
                 setDocumentName(textFileNames.getValue().getFileName());
             }
@@ -531,9 +530,7 @@ public class EditorController {
             documentName.clear();
             docTextArea.clear();
             Manager.createFile(documentName.getText(),docTextArea.getText());
-
         }
-
     }
 
     /**
